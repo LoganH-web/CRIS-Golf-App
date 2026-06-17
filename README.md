@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CRIS Golf Program
 
-## Getting Started
+A static, mobile-first web app for the **Chiang Rai International School (CRIS) Golf Program** — presenting the program's three offerings (Junior, Intermediate, and beyond), schedules, and contact details to prospective families.
 
-First, run the development server:
+Built with [Next.js](https://nextjs.org) using static export (`output: "export"`) so the app deploys as plain static files.
+
+## Tech stack
+
+- **Next.js** (App Router, static export)
+- **TypeScript**
+- **Tailwind CSS**
+- **Geist** font via `next/font`
+
+## Getting started
+
+Install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Produce the static export in `out/`:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Path          | Purpose                                                         |
+| ------------- | -------------------------------------------------------------- |
+| `app/`        | App Router routes and the shared app shell (`layout.tsx`)      |
+| `components/` | Reusable UI, including the persistent layout chrome            |
+| `config/`     | Single-source configuration (e.g. navigation)                  |
+| `content/`    | Source-of-truth program content and the original source images |
+| `types/`      | Shared TypeScript types                                        |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Documentation
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `mvp_guideline.md` — the phased MVP build plan and acceptance criteria.
+- `GUIDELINES.md` — code standards and conventions for this project.
+- `content/programs.md` — the English source-of-truth for program content.

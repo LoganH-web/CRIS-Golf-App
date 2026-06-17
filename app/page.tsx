@@ -1,12 +1,19 @@
-// Subphase 1A placeholder — proves Tailwind is wired and the static export pipeline works.
-// Subsequent subphases will replace this with the full Home / Entry screen.
+/**
+ * Home / Entry screen — route: /
+ *
+ * The branded landing screen opened when a visitor scans the QR code.
+ * In subphase 1B this is a styled stub. Real brand assets and copy land in 1D.
+ * The language-picker UI lands in 1C.
+ */
 
-export default function HomePage() {
+export default function HomePage(): React.ReactElement {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-white px-6 text-center">
-      {/* Brand mark — replaced with real logo in a later subphase */}
-      <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-sky-900 text-white">
-        <span className="text-2xl font-bold">CG</span>
+    <main className="flex flex-1 flex-col items-center justify-center px-6 py-12 text-center">
+      {/* Brand mark — replaced with real logo in subphase 1D */}
+      <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-sky-900 text-white">
+        <span className="text-2xl font-bold" aria-hidden="true">
+          CG
+        </span>
       </div>
 
       {/* App name */}
@@ -15,13 +22,21 @@ export default function HomePage() {
       </h1>
 
       {/* Tagline */}
-      <p className="mt-3 text-base text-slate-600 sm:text-lg">
+      <p className="mt-2 text-sm text-slate-500 sm:text-base">
         Chiang Rai International School &ndash; Golf Program
       </p>
 
-      {/* Build-pipeline confirmation note — remove when real content lands */}
-      <p className="mt-10 rounded-lg border border-amber-200 bg-amber-50 px-5 py-3 text-sm text-amber-800">
-        Scaffold placeholder &mdash; full app coming soon.
+      {/*
+       * Language-picker placeholder — functional language switcher lands in 1C.
+       * The real picker will offer EN / KO / ZH-Hans / TH.
+       */}
+      <p className="mt-8 text-xs text-slate-400">
+        Language selection coming in subphase 1C.
+      </p>
+
+      {/* 1B scaffold notice — remove when real content lands in 1D */}
+      <p className="mt-6 rounded-lg border border-amber-200 bg-amber-50 px-5 py-3 text-xs text-amber-700">
+        App shell and routing — full content arrives in subphase 1D.
       </p>
     </main>
   );

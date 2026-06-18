@@ -1,8 +1,7 @@
 {
   "meta": {
     "appName": "CRIS 골프 프로그램",
-    "tagline": "치앙라이 국제학교 – 골프 프로그램",
-    "lang": "ko"
+    "tagline": "치앙라이 국제학교 – 골프 프로그램"
   },
   "nav": {
     "home": "홈",
@@ -21,14 +20,13 @@
   "header": {
     "appName": "CRIS 골프 프로그램",
     "langSwitcherLabel": "언어 변경",
-    "currentLang": "KO"
+    "listboxLabel": "언어 선택"
   },
   "footer": {
     "heading": "문의하기",
     "phone": "+66 (0) 53 600-900",
     "email": "admin@cris.ac.th",
     "address": "치앙라이 국제학교, 치앙라이, 태국",
-    "websiteLabel": "웹사이트",
     "website": "golf.cris.ac.th"
   },
   "home": {
@@ -203,11 +201,5 @@
     ],
     "moreQuestionsNote": "목록에 없는 질문이 있으신가요?",
     "contactLink": "직접 문의하기"
-  },
-  "langSwitcher": {
-    "en": "English",
-    "ko": "한국어",
-    "zh": "简体中文",
-    "th": "ไทย"
   }
 }

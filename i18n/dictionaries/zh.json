@@ -1,8 +1,7 @@
 {
   "meta": {
     "appName": "CRIS高尔夫课程",
-    "tagline": "清莱国际学校 – 高尔夫课程",
-    "lang": "zh"
+    "tagline": "清莱国际学校 – 高尔夫课程"
   },
   "nav": {
     "home": "首页",
@@ -21,14 +20,13 @@
   "header": {
     "appName": "CRIS高尔夫课程",
     "langSwitcherLabel": "切换语言",
-    "currentLang": "ZH"
+    "listboxLabel": "选择语言"
   },
   "footer": {
     "heading": "联系我们",
     "phone": "+66 (0) 53 600-900",
     "email": "admin@cris.ac.th",
     "address": "清莱国际学校，清莱，泰国",
-    "websiteLabel": "官方网站",
     "website": "golf.cris.ac.th"
   },
   "home": {
@@ -203,11 +201,5 @@
     ],
     "moreQuestionsNote": "有其他问题？",
     "contactLink": "直接联系我们"
-  },
-  "langSwitcher": {
-    "en": "English",
-    "ko": "한국어",
-    "zh": "简体中文",
-    "th": "ไทย"
   }
 }

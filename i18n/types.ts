@@ -34,7 +34,6 @@ export interface Dictionary {
   meta: {
     appName: string;
     tagline: string;
-    lang: string;
   };
   nav: {
     home: string;
@@ -53,14 +52,13 @@ export interface Dictionary {
   header: {
     appName: string;
     langSwitcherLabel: string;
-    currentLang: string;
+    listboxLabel: string;
   };
   footer: {
     heading: string;
     phone: string;
     email: string;
     address: string;
-    websiteLabel: string;
     website: string;
   };
   home: {
@@ -158,11 +156,5 @@ export interface Dictionary {
     }>;
     moreQuestionsNote: string;
     contactLink: string;
-  };
-  langSwitcher: {
-    en: string;
-    ko: string;
-    zh: string;
-    th: string;
   };
 }

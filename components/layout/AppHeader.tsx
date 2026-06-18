@@ -24,7 +24,10 @@ export function AppHeader({ dict }: AppHeaderProps): React.ReactElement {
       </span>
 
       {/* Working language switcher — EN / KO / ZH-Hans / TH */}
-      <LanguageSwitcher />
+      <LanguageSwitcher
+        triggerLabel={dict.header.langSwitcherLabel}
+        listboxLabel={dict.header.listboxLabel}
+      />
     </header>
   );
 }

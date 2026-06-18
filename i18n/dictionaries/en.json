@@ -1,8 +1,7 @@
 {
   "meta": {
     "appName": "CRIS Golf Program",
-    "tagline": "Chiang Rai International School – Golf Program",
-    "lang": "en"
+    "tagline": "Chiang Rai International School – Golf Program"
   },
   "nav": {
     "home": "Home",
@@ -21,14 +20,13 @@
   "header": {
     "appName": "CRIS Golf Program",
     "langSwitcherLabel": "Change language",
-    "currentLang": "EN"
+    "listboxLabel": "Select language"
   },
   "footer": {
     "heading": "Contact Us",
     "phone": "+66 (0) 53 600-900",
     "email": "admin@cris.ac.th",
     "address": "Chiang Rai International School, Chiang Rai, Thailand",
-    "websiteLabel": "Website",
     "website": "golf.cris.ac.th"
   },
   "home": {
@@ -203,11 +201,5 @@
     ],
     "moreQuestionsNote": "Have a question not listed here?",
     "contactLink": "Contact us directly"
-  },
-  "langSwitcher": {
-    "en": "English",
-    "ko": "한국어",
-    "zh": "简体中文",
-    "th": "ไทย"
   }
 }

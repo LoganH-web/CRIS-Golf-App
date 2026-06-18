@@ -1,8 +1,7 @@
 {
   "meta": {
     "appName": "CRIS Golf Program",
-    "tagline": "โรงเรียนนานาชาติเชียงราย – โปรแกรมกอล์ฟ",
-    "lang": "th"
+    "tagline": "โรงเรียนนานาชาติเชียงราย – โปรแกรมกอล์ฟ"
   },
   "nav": {
     "home": "หน้าหลัก",
@@ -21,14 +20,13 @@
   "header": {
     "appName": "CRIS Golf Program",
     "langSwitcherLabel": "เปลี่ยนภาษา",
-    "currentLang": "TH"
+    "listboxLabel": "เลือกภาษา"
   },
   "footer": {
     "heading": "ติดต่อเรา",
     "phone": "+66 (0) 53 600-900",
     "email": "admin@cris.ac.th",
     "address": "โรงเรียนนานาชาติเชียงราย เชียงราย ประเทศไทย",
-    "websiteLabel": "เว็บไซต์",
     "website": "golf.cris.ac.th"
   },
   "home": {
@@ -203,11 +201,5 @@
     ],
     "moreQuestionsNote": "มีคำถามอื่นที่ไม่อยู่ในรายการ?",
     "contactLink": "ติดต่อเราโดยตรง"
-  },
-  "langSwitcher": {
-    "en": "English",
-    "ko": "한국어",
-    "zh": "简体中文",
-    "th": "ไทย"
   }
 }

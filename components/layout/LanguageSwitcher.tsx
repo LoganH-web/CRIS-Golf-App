@@ -30,7 +30,17 @@ import { setStoredLocale } from "@/i18n/detectLocale";
 import { useLocale } from "@/context/LocaleContext";
 import { useState, useRef, useEffect } from "react";
 
-export function LanguageSwitcher(): React.ReactElement {
+interface LanguageSwitcherProps {
+  /** aria-label for the trigger button — from dict.header.langSwitcherLabel. */
+  triggerLabel: string;
+  /** aria-label for the open listbox — from dict.header.listboxLabel. */
+  listboxLabel: string;
+}
+
+export function LanguageSwitcher({
+  triggerLabel,
+  listboxLabel,
+}: LanguageSwitcherProps): React.ReactElement {
   const router = useRouter();
   const pathname = usePathname();
   const activeLocale = useLocale();
@@ -91,7 +101,7 @@ export function LanguageSwitcher(): React.ReactElement {
         onClick={() => setIsOpen((prev) => !prev)}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
-        aria-label="Change language"
+        aria-label={triggerLabel}
         className="flex items-center gap-1 rounded-md border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-700 hover:border-slate-300 hover:bg-slate-50 active:bg-slate-100 transition-colors"
       >
         <span>{LOCALE_SHORT_LABELS[activeLocale]}</span>
@@ -116,7 +126,7 @@ export function LanguageSwitcher(): React.ReactElement {
       {isOpen && (
         <ul
           role="listbox"
-          aria-label="Select language"
+          aria-label={listboxLabel}
           className="absolute right-0 top-full mt-1 z-50 min-w-[10rem] overflow-hidden rounded-md border border-slate-200 bg-white shadow-md"
         >
           {LOCALES.map((locale) => {

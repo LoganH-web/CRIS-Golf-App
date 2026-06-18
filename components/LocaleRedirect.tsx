@@ -24,7 +24,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { detectLocale } from "@/i18n/detectLocale";
 
-export function LocaleRedirect(): React.ReactElement {
+export function LocaleRedirect(): null {
   const router = useRouter();
 
   useEffect(() => {
@@ -33,5 +33,5 @@ export function LocaleRedirect(): React.ReactElement {
   }, [router]);
 
   // Show nothing while the redirect is in flight — the target page renders immediately.
-  return <></>;
+  return null;
 }

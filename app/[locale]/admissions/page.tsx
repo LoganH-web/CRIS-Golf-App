@@ -2,16 +2,17 @@
  * Admissions screen — route: /{locale}/admissions
  *
  * Explains the admissions process step-by-step (numbered steps component)
- * and provides placeholder action buttons for:
- *   - "Contact Admissions / Enquire" → golf.cris.ac.th/contact (1E wires this)
- *   - "Request Info" → mailto:admission@cris.ac.th (1E wires this)
+ * and provides wired action buttons (wired in 1E):
+ *   - "Contact Admissions / Enquire" → §8 HandOffModal → golf.cris.ac.th/contact
+ *   - "Request Info" → mailto:admission@cris.ac.th (no modal needed for mailto)
  *
- * Buttons are visually complete but non-wired (disabled / no-op) in 1D.
- * The §8 hand-off disclosure is wired in 1E.
+ * The interactive section is extracted to <AdmissionsActions> (client component)
+ * so this page remains a server component (better for static export / SEO).
  */
 
 import { getDictionary } from "@/i18n/getDictionary";
 import { isValidLocale } from "@/i18n/detectLocale";
+import { AdmissionsActions } from "@/components/screens/AdmissionsActions";
 import type { Locale } from "@/i18n/types";
 
 interface AdmissionsPageProps {
@@ -65,7 +66,7 @@ export default async function AdmissionsPage({ params }: AdmissionsPageProps): P
         </ol>
       </section>
 
-      {/* Action buttons */}
+      {/* Action buttons — wired in 1E via AdmissionsActions (client component) */}
       <section aria-labelledby="actions-heading">
         <h2
           id="actions-heading"
@@ -74,68 +75,7 @@ export default async function AdmissionsPage({ params }: AdmissionsPageProps): P
           {d.actionsHeading}
         </h2>
 
-        <div className="flex flex-col gap-3">
-          {/*
-           * 1E: wire this button to open golf.cris.ac.th/contact in the in-app
-           * browser with the §8 hand-off disclosure shown first.
-           * URL must come from config/links.ts (config-driven for easy swap to
-           * the future full "Apply" form URL).
-           */}
-          <button
-            type="button"
-            disabled
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-sky-900 px-5 py-3.5 text-sm font-semibold text-white opacity-70 cursor-not-allowed"
-            aria-label={d.contactButton}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <line x1="19" x2="19" y1="8" y2="14" />
-              <line x1="22" x2="16" y1="11" y2="11" />
-            </svg>
-            {d.contactButton}
-          </button>
-
-          {/*
-           * 1E: wire this button to mailto:admission@cris.ac.th.
-           * Keep as a <button> here so 1E can convert it to an <a href="mailto:...">
-           * or use router.push without structural change.
-           */}
-          <button
-            type="button"
-            disabled
-            className="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3.5 text-sm font-semibold text-slate-700 opacity-70 cursor-not-allowed"
-            aria-label={d.requestInfoButton}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <rect width="20" height="16" x="2" y="4" rx="2" />
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-            </svg>
-            {d.requestInfoButton}
-          </button>
-        </div>
+        <AdmissionsActions dict={dict} />
 
         {/* Contextual note about the contact button destination */}
         <p className="mt-3 text-center text-xs text-slate-400">

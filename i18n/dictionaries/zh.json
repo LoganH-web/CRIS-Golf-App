@@ -87,6 +87,12 @@
     "photoPlaceholder": "课程照片即将发布",
     "videoPlaceholder": "介绍视频即将发布"
   },
+  "handOff": {
+    "title": "即将离开 CRIS 高尔夫课程应用",
+    "body": "您即将离开 CRIS 高尔夫课程应用，前往 CRIS 官方网站。您在该网站上输入的任何信息将根据 CRIS 的隐私政策由 CRIS 收集处理——本应用不收集或存储您的任何数据。",
+    "continueButton": "前往 CRIS 官网",
+    "cancelButton": "取消"
+  },
   "admissions": {
     "heading": "招生",
     "lead": "加入CRIS高尔夫课程非常简单。请按照以下步骤进行咨询，我们的招生团队将全程指导您。",
@@ -115,6 +121,7 @@
     ],
     "actionsHeading": "准备好咨询了吗？",
     "contactButton": "联系招生处/咨询",
+    "applyButton": "立即申请",
     "requestInfoButton": "通过邮件申请资料",
     "contactButtonNote": "您将被引导至学校网站上的CRIS咨询表格。"
   },

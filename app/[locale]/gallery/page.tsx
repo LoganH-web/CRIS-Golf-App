@@ -18,6 +18,8 @@
 
 import { getDictionary } from "@/i18n/getDictionary";
 import { isValidLocale } from "@/i18n/detectLocale";
+import { YoutubeNocookieEmbed } from "@/components/ui/YoutubeNocookieEmbed";
+import { galleryVideos } from "@/config/links";
 import type { Locale } from "@/i18n/types";
 
 interface GalleryPageProps {
@@ -26,9 +28,6 @@ interface GalleryPageProps {
 
 /** Number of placeholder photo tiles to render in the grid. */
 const PHOTO_PLACEHOLDER_COUNT = 6;
-
-/** Number of placeholder video tiles to render. */
-const VIDEO_PLACEHOLDER_COUNT = 2;
 
 export default async function GalleryPage({ params }: GalleryPageProps): Promise<React.ReactElement> {
   const { locale } = await params;
@@ -110,41 +109,16 @@ export default async function GalleryPage({ params }: GalleryPageProps): Promise
         {/* Privacy note for video embeds */}
         <p className="mb-3 text-xs text-slate-400">{d.videoNote}</p>
 
-        {/*
-         * 1E: replace each placeholder tile with a click-to-load
-         * youtube-nocookie.com embed. Structure:
-         *   <button> (shows thumbnail + play icon)
-         *     → on click, replaces with <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID">
-         * This ensures the YouTube player only contacts Google's servers when
-         * the user actively requests the video (§8 privacy requirement).
-         * Embed URLs must use youtube-nocookie.com, NOT youtube.com.
-         */}
+        {/* Click-to-load youtube-nocookie.com embeds (§8 privacy requirement) */}
+        {/* Zero third-party contact until the user explicitly presses play */}
         <div className="flex flex-col gap-4">
-          {Array.from({ length: VIDEO_PLACEHOLDER_COUNT }).map((_, i) => (
-            <div
-              key={i}
-              className="flex aspect-video items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50"
-              role="img"
-              aria-label={d.videoPlaceholder}
-            >
-              <div className="flex flex-col items-center gap-2 text-slate-400">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="36"
-                  height="36"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <polygon points="5 3 19 12 5 21 5 3" />
-                </svg>
-                <span className="text-sm font-medium">{d.videoPlaceholder}</span>
-              </div>
-            </div>
+          {galleryVideos.map((video) => (
+            <YoutubeNocookieEmbed
+              key={video.index}
+              videoId={video.id}
+              label={d.videoPlaceholder}
+              placeholderText={d.videoPlaceholder}
+            />
           ))}
         </div>
       </section>

@@ -14,6 +14,7 @@
  */
 
 import { FaqAccordion } from "@/components/screens/FaqAccordion";
+import { FaqContactLink } from "@/components/screens/FaqContactLink";
 import { getDictionary } from "@/i18n/getDictionary";
 import { isValidLocale } from "@/i18n/detectLocale";
 import type { Locale } from "@/i18n/types";
@@ -43,19 +44,11 @@ export default async function FaqPage({ params }: FaqPageProps): Promise<React.R
       {/* FAQ accordion */}
       <FaqAccordion items={d.items} />
 
-      {/* More questions CTA */}
-      <div className="mt-6 rounded-xl border border-slate-100 bg-slate-50 px-4 py-4 text-center">
-        <p className="text-sm text-slate-600">
-          {d.moreQuestionsNote}{" "}
-          {/*
-           * 1E: wire this to open mailto:admin@cris.ac.th or to the admissions
-           * screen contact button flow. For now it is a non-wired span.
-           */}
-          <span className="font-medium text-sky-700 cursor-not-allowed opacity-70">
-            {d.contactLink}
-          </span>
-        </p>
-      </div>
+      {/* More questions CTA — wired in 1E via FaqContactLink (mailto:admin@cris.ac.th) */}
+      <FaqContactLink
+        moreQuestionsNote={d.moreQuestionsNote}
+        contactLink={d.contactLink}
+      />
     </main>
   );
 }

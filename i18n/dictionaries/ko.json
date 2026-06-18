@@ -87,6 +87,12 @@
     "photoPlaceholder": "프로그램 사진 준비 중",
     "videoPlaceholder": "소개 영상 준비 중"
   },
+  "handOff": {
+    "title": "CRIS 골프 프로그램 앱을 떠납니다",
+    "body": "CRIS 골프 프로그램 앱을 떠나 CRIS 웹사이트로 이동합니다. 해당 사이트에 입력하신 정보는 CRIS의 개인정보 처리방침에 따라 수집됩니다. 이 앱은 귀하의 데이터를 수집하거나 저장하지 않습니다.",
+    "continueButton": "CRIS 웹사이트로 이동",
+    "cancelButton": "취소"
+  },
   "admissions": {
     "heading": "입학",
     "lead": "CRIS 골프 프로그램 입학은 간단합니다. 아래 단계를 따라 문의하시면, 입학 담당 팀이 전 과정을 안내해 드립니다.",
@@ -115,6 +121,7 @@
     ],
     "actionsHeading": "문의할 준비가 되셨나요?",
     "contactButton": "입학처 문의하기",
+    "applyButton": "지금 지원하기",
     "requestInfoButton": "이메일로 정보 요청",
     "contactButtonNote": "학교 웹사이트의 CRIS 문의 양식으로 이동합니다."
   },

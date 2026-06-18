@@ -104,6 +104,13 @@ export interface Dictionary {
     photoPlaceholder: string;
     videoPlaceholder: string;
   };
+  /** §8 hand-off disclosure modal shown before opening the admissions URL */
+  handOff: {
+    title: string;
+    body: string;
+    continueButton: string;
+    cancelButton: string;
+  };
   admissions: {
     heading: string;
     lead: string;
@@ -113,7 +120,10 @@ export interface Dictionary {
       description: string;
     }>;
     actionsHeading: string;
+    /** Current button label (Enquire phase) */
     contactButton: string;
+    /** Future button label — swaps in when real Apply form is live (admissionsButtonPhase = "apply") */
+    applyButton: string;
     requestInfoButton: string;
     contactButtonNote: string;
   };

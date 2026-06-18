@@ -16,6 +16,8 @@
 
 import { getDictionary } from "@/i18n/getDictionary";
 import { isValidLocale } from "@/i18n/detectLocale";
+import { YoutubeNocookieEmbed } from "@/components/ui/YoutubeNocookieEmbed";
+import { introductionVideos } from "@/config/links";
 import type { Locale } from "@/i18n/types";
 
 interface IntroductionPageProps {
@@ -30,24 +32,24 @@ export default async function IntroductionPage({ params }: IntroductionPageProps
 
   const levels = [
     {
-      key: "junior",
+      key: "junior" as const,
       data: d.levels.junior,
       accentColor: "border-sky-400",
       labelBg: "bg-sky-100 text-sky-800",
     },
     {
-      key: "intermediate",
+      key: "intermediate" as const,
       data: d.levels.intermediate,
       accentColor: "border-emerald-400",
       labelBg: "bg-emerald-100 text-emerald-800",
     },
     {
-      key: "advanced",
+      key: "advanced" as const,
       data: d.levels.advanced,
       accentColor: "border-amber-400",
       labelBg: "bg-amber-100 text-amber-800",
     },
-  ] as const;
+  ];
 
   return (
     <main className="flex flex-col px-4 py-8 sm:px-6">
@@ -113,27 +115,14 @@ export default async function IntroductionPage({ params }: IntroductionPageProps
                 {data.description}
               </p>
 
-              {/* Video placeholder slot */}
-              {/* 1E: replace this placeholder with a click-to-load youtube-nocookie.com embed (§8) */}
-              <div className="mt-4 flex h-32 w-full items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50">
-                <div className="flex flex-col items-center gap-2 text-slate-400">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <polygon points="5 3 19 12 5 21 5 3" />
-                  </svg>
-                  <span className="text-xs">{data.videoLabel}</span>
-                  <span className="text-[10px] text-slate-400">{d.videoPlaceholder}</span>
-                </div>
+              {/* Video slot — click-to-load youtube-nocookie.com embed (§8) */}
+              {/* Zero third-party contact until the user explicitly presses play */}
+              <div className="mt-4">
+                <YoutubeNocookieEmbed
+                  videoId={introductionVideos.find((v) => v.level === key)?.id ?? null}
+                  label={data.videoLabel}
+                  placeholderText={d.videoPlaceholder}
+                />
               </div>
             </div>
           </article>

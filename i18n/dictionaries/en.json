@@ -87,6 +87,12 @@
     "photoPlaceholder": "Program photos coming soon",
     "videoPlaceholder": "Introduction video coming soon"
   },
+  "handOff": {
+    "title": "Leaving the CRIS Golf Program App",
+    "body": "You're leaving the CRIS Golf Program app and going to the CRIS website. Any information you enter there is collected by CRIS under their privacy policy — this app does not collect or store your data.",
+    "continueButton": "Continue to CRIS Website",
+    "cancelButton": "Cancel"
+  },
   "admissions": {
     "heading": "Admissions",
     "lead": "Joining the CRIS Golf Program is straightforward. Follow the steps below to enquire, and our admissions team will guide you through the process.",
@@ -115,6 +121,7 @@
     ],
     "actionsHeading": "Ready to Enquire?",
     "contactButton": "Contact Admissions / Enquire",
+    "applyButton": "Apply Now",
     "requestInfoButton": "Request Information by Email",
     "contactButtonNote": "You will be taken to the CRIS enquiry form on the school's website."
   },

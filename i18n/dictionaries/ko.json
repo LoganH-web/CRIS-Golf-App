@@ -24,38 +24,185 @@
     "currentLang": "KO"
   },
   "footer": {
-    "heading": "연락처",
-    "placeholder": "연락처 정보는 1D 단계에서 추가됩니다."
+    "heading": "문의하기",
+    "phone": "+66 (0) 53 600-900",
+    "email": "admin@cris.ac.th",
+    "address": "치앙라이 국제학교, 치앙라이, 태국",
+    "websiteLabel": "웹사이트",
+    "website": "golf.cris.ac.th"
   },
   "home": {
     "heading": "CRIS 골프 프로그램",
     "tagline": "치앙라이 국제학교 – 골프 프로그램",
-    "scaffoldNotice": "앱 구조 및 라우팅 — 전체 콘텐츠는 1D 단계에서 제공됩니다."
+    "welcomeLine": "치앙라이 국제학교에서 차세대 골퍼를 양성합니다. 4~12학년을 위한 주니어부터 어드밴스드까지 다양한 수준을 제공합니다.",
+    "exploreHeading": "프로그램 살펴보기",
+    "cards": {
+      "introduction": {
+        "title": "학교 소개",
+        "description": "프로그램, 코칭 철학, 세 가지 학년별 과정에 대해 알아보세요."
+      },
+      "admissions": {
+        "title": "입학",
+        "description": "CRIS 골프 프로그램 입학 단계별 안내."
+      },
+      "tuition": {
+        "title": "학비 및 비용",
+        "description": "각 프로그램 수준별 골프 전용 비용 정보."
+      },
+      "gallery": {
+        "title": "갤러리",
+        "description": "훈련 세션 및 토너먼트 사진과 동영상."
+      },
+      "faq": {
+        "title": "FAQ",
+        "description": "프로그램에 관한 자주 묻는 질문의 답변."
+      }
+    }
   },
   "introduction": {
     "heading": "학교 소개",
-    "description": "CRIS 골프 프로그램 및 세 가지 학년 수준 소개: 주니어 (4–5학년), 인터미디에트 (6–8학년), 어드밴스드 (9–12학년). 콘텐츠 및 사진은 1D 단계에서 제공됩니다.",
-    "stubNotice": "임시 — 실제 콘텐츠는 1D 단계에서 제공됩니다."
+    "lead": "The CRIS Golf Program at Chiang Rai International School develops young golfers through structured, age-appropriate training across three program levels. Our coaching team combines international golf instruction standards with a nurturing school environment.",
+    "programOverview": "Students train on-site and at partner facilities in Chiang Rai, with a curriculum that balances technical skill development, course management, and character building. The program is open to students in grades 4 through 12.",
+    "levels": {
+      "junior": {
+        "label": "주니어",
+        "grades": "4–5학년",
+        "description": "An introduction to golf for younger students. The Junior level focuses on fundamentals: grip, stance, swing basics, and etiquette. Sessions are short, fun, and designed to build a lasting love for the game in a supportive group setting.",
+        "photoAlt": "CRIS 주니어 레벨 골프 학생들 연습 장면",
+        "videoLabel": "주니어 프로그램 소개 영상"
+      },
+      "intermediate": {
+        "label": "인터미디에이트",
+        "grades": "6–8학년",
+        "description": "Building on the Junior foundation, Intermediate students develop consistency across all clubs, begin on-course play, and learn basic course management. Competitive opportunities are introduced at this level for students who are ready.",
+        "photoAlt": "CRIS 인터미디에이트 레벨 골프 학생들 코스 장면",
+        "videoLabel": "인터미디에이트 프로그램 소개 영상"
+      },
+      "advanced": {
+        "label": "어드밴스드",
+        "grades": "9–12학년",
+        "description": "The Advanced level prepares serious golfers for inter-school competition and beyond. Students refine their full game — driving, iron play, short game, and mental approach — with individualised coaching and regular competitive play.",
+        "photoAlt": "CRIS 어드밴스드 레벨 골프 학생들 경기 장면",
+        "videoLabel": "어드밴스드 프로그램 소개 영상"
+      }
+    },
+    "photoPlaceholder": "프로그램 사진 준비 중",
+    "videoPlaceholder": "소개 영상 준비 중"
   },
   "admissions": {
     "heading": "입학",
-    "description": "단계별 입학 절차 및 입학 문의 버튼. golf.cris.ac.th/contact로의 연결은 1E 단계에서 구성됩니다.",
-    "stubNotice": "임시 — 실제 콘텐츠는 1D 단계에서 제공됩니다."
+    "lead": "CRIS 골프 프로그램 입학은 간단합니다. 아래 단계를 따라 문의하시면, 입학 담당 팀이 전 과정을 안내해 드립니다.",
+    "stepsHeading": "지원 방법",
+    "steps": [
+      {
+        "title": "자격 확인",
+        "description": "The program is open to currently enrolled CRIS students in grades 4–12. New students may apply for school admission and golf program enrollment simultaneously."
+      },
+      {
+        "title": "프로그램 수준 선택",
+        "description": "Review the Junior (Grades 4–5), Intermediate (Grades 6–8), and Advanced (Grades 9–12) program descriptions to identify the best fit. Our team is happy to advise if you are unsure."
+      },
+      {
+        "title": "입학처 문의",
+        "description": "Reach out to the CRIS admissions team using the button below. You will be directed to our enquiry form where you can share details about your child and ask any questions."
+      },
+      {
+        "title": "평가 및 배치",
+        "description": "New students may be invited for a brief golf assessment so our coaches can confirm the appropriate level placement. This is informal and designed to be a positive experience."
+      },
+      {
+        "title": "등록 확인",
+        "description": "Once placement is confirmed and fees are arranged, you will receive a welcome pack with program schedules, required equipment, and all the details you need to get started."
+      }
+    ],
+    "actionsHeading": "문의할 준비가 되셨나요?",
+    "contactButton": "입학처 문의하기",
+    "requestInfoButton": "이메일로 정보 요청",
+    "contactButtonNote": "학교 웹사이트의 CRIS 문의 양식으로 이동합니다."
   },
   "tuition": {
     "heading": "학비 및 비용",
-    "description": "골프 프로그램 비용표 (학교 제공 골프 전용 수치). 앱 내 화면으로 표시됩니다. 콘텐츠는 1D 단계에서 제공됩니다.",
-    "stubNotice": "임시 — 실제 콘텐츠는 1D 단계에서 제공됩니다."
+    "lead": "CRIS 골프 프로그램은 학교의 일반 학비와 별도의 독자적인 비용 체계를 가지고 있습니다. 골프 전용 비용은 학교에서 직접 제공합니다.",
+    "placeholderHeading": "비용 정보 준비 중",
+    "placeholderBody": "골프 프로그램 비용표는 학교에서 확정 중입니다. 최신 비용 정보는 입학 담당 팀에 문의해 주세요.",
+    "tableNote": "표시된 비용은 학기당 기준입니다. 연간 비용은 두 학기 기준의 참고치입니다. 비용은 변동될 수 있으니 입학처에 현재 일정을 문의하세요.",
+    "levelColumn": "프로그램 수준",
+    "gradesColumn": "학년",
+    "termFeeColumn": "학기당",
+    "annualFeeColumn": "연간 (참고)",
+    "rows": [
+      {
+        "level": "주니어",
+        "grades": "4–5",
+        "termFee": "입학처 문의",
+        "annualFee": "입학처 문의"
+      },
+      {
+        "level": "인터미디에이트",
+        "grades": "6–8",
+        "termFee": "입학처 문의",
+        "annualFee": "입학처 문의"
+      },
+      {
+        "level": "어드밴스드",
+        "grades": "9–12",
+        "termFee": "입학처 문의",
+        "annualFee": "입학처 문의"
+      }
+    ],
+    "feesComingSoon": "상세 비용 정보는 학교 확인 후 이곳에 게시됩니다.",
+    "contactButton": "비용 정보 입학처 문의",
+    "disclaimer": "Golf program fees are separate from and in addition to standard CRIS school tuition. Equipment and tournament entry fees may apply separately."
   },
   "gallery": {
     "heading": "갤러리",
-    "description": "CRIS 골프 프로그램의 선별된 사진 및 동영상. 콘텐츠는 1D 단계에서 제공됩니다.",
-    "stubNotice": "임시 — 실제 콘텐츠는 1D 단계에서 제공됩니다."
+    "lead": "CRIS 골프 프로그램의 훈련 세션, 토너먼트, 학생 성취 사진과 동영상 모음.",
+    "photosHeading": "사진",
+    "videosHeading": "동영상",
+    "photoPlaceholder": "사진 준비 중",
+    "videoPlaceholder": "동영상 준비 중",
+    "videoNote": "동영상은 YouTube의 개인정보 보호 강화 플레이어에서 로드되며 재생 버튼을 누를 때만 외부 서버에 연결됩니다.",
+    "comingSoon": "갤러리 콘텐츠를 준비 중입니다. 곧 업데이트됩니다."
   },
   "faq": {
     "heading": "자주 묻는 질문",
-    "description": "CRIS 골프 프로그램에 관한 자주 묻는 질문. 콘텐츠 및 번역 (EN / KO / ZH-Hans / TH)은 1D 및 1C 단계에서 제공됩니다.",
-    "stubNotice": "임시 — 실제 콘텐츠는 1D 단계에서 제공됩니다."
+    "lead": "CRIS 골프 프로그램에 관한 자주 묻는 질문입니다. 원하는 질문이 없으신가요? 직접 문의해 주세요.",
+    "items": [
+      {
+        "question": "자녀가 몇 학년부터 골프 프로그램을 시작할 수 있나요?",
+        "answer": "프로그램은 4~12학년(약 9~18세) 학생을 대상으로 합니다. 주니어 레벨은 4~5학년, 인터미디에이트는 6~8학년, 어드밴스드는 9~12학년을 위해 설계되었습니다."
+      },
+      {
+        "question": "골프 경험이 없어도 입학할 수 있나요?",
+        "answer": "주니어 레벨은 사전 경험이 필요하지 않습니다. 처음부터 기초부터 시작합니다. 인터미디에이트 및 어드밴스드 배치를 위해서는 코치가 자녀의 현재 수준을 평가하여 가장 적합한 그룹을 배정합니다."
+      },
+      {
+        "question": "어떤 장비가 필요한가요?",
+        "answer": "초보자는 첫 세션에 학교 장비를 사용할 수 있습니다. 실력이 향상될수록 개인 클럽 보유를 권장합니다. 코칭 팀이 자녀의 나이와 체형에 맞는 클럽 사양을 안내해 드립니다."
+      },
+      {
+        "question": "프로그램은 얼마나 자주, 얼마나 오래 진행되나요?",
+        "answer": "세션 빈도 및 시간은 수준과 학사 일정에 따라 다릅니다. 등록 시 전체 프로그램 일정을 제공합니다. 현재 학년도 시간표에 대한 자세한 내용은 입학처에 문의해 주세요."
+      },
+      {
+        "question": "골프 프로그램 비용은 얼마인가요?",
+        "answer": "골프 프로그램 비용은 이 프로그램 전용으로 일반 CRIS 학비와 다릅니다. 비용 세부 사항은 확정 중이니 현재 수치는 입학 팀에 문의해 주세요."
+      },
+      {
+        "question": "CRIS에 재학 중이지 않은 학생도 프로그램에 참여할 수 있나요?",
+        "answer": "골프 프로그램은 CRIS 학교 교육과정의 일부로 주로 재학생을 대상으로 합니다. 학교 입학과 골프 프로그램 모두에 관심이 있으시면 입학 팀이 동시에 도와드릴 수 있습니다."
+      },
+      {
+        "question": "학생들에게 대회 참가 기회가 있나요?",
+        "answer": "네. 인터미디에이트 및 어드밴스드 학생들은 실력이 발전함에 따라 학교 간 대회 및 지역 토너먼트에 참가할 기회가 있습니다. 주니어 학생들은 경쟁 전 기초에 집중합니다."
+      },
+      {
+        "question": "입학 팀에 어떻게 연락할 수 있나요?",
+        "answer": "+66 (0) 53 600-900으로 전화하거나, admin@cris.ac.th로 이메일을 보내거나, 입학 화면의 '입학처 문의하기' 버튼을 이용할 수 있습니다."
+      }
+    ],
+    "moreQuestionsNote": "목록에 없는 질문이 있으신가요?",
+    "contactLink": "직접 문의하기"
   },
   "langSwitcher": {
     "en": "English",

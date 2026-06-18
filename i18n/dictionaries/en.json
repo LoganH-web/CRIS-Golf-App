@@ -24,38 +24,185 @@
     "currentLang": "EN"
   },
   "footer": {
-    "heading": "Contact",
-    "placeholder": "Contact details coming in subphase 1D."
+    "heading": "Contact Us",
+    "phone": "+66 (0) 53 600-900",
+    "email": "admin@cris.ac.th",
+    "address": "Chiang Rai International School, Chiang Rai, Thailand",
+    "websiteLabel": "Website",
+    "website": "golf.cris.ac.th"
   },
   "home": {
     "heading": "CRIS Golf Program",
     "tagline": "Chiang Rai International School – Golf Program",
-    "scaffoldNotice": "App shell and routing — full content arrives in subphase 1D."
+    "welcomeLine": "Developing the next generation of golfers at Chiang Rai International School. Junior through Advanced levels for grades 4–12.",
+    "exploreHeading": "Explore the Program",
+    "cards": {
+      "introduction": {
+        "title": "School Introduction",
+        "description": "Learn about our program, coaching philosophy, and three grade-level tracks."
+      },
+      "admissions": {
+        "title": "Admissions",
+        "description": "Step-by-step guide to joining the CRIS Golf Program."
+      },
+      "tuition": {
+        "title": "Tuition & Fees",
+        "description": "Golf-specific fee information for each program level."
+      },
+      "gallery": {
+        "title": "Gallery",
+        "description": "Photos and videos from training sessions and tournaments."
+      },
+      "faq": {
+        "title": "FAQ",
+        "description": "Answers to common questions about the program."
+      }
+    }
   },
   "introduction": {
     "heading": "School Introduction",
-    "description": "Introduction to the CRIS Golf Program and its three grade levels: Junior (4–5), Intermediate (6–8), and Advanced (9–12). Content and photos arrive in subphase 1D.",
-    "stubNotice": "Placeholder — real content arrives in subphase 1D."
+    "lead": "The CRIS Golf Program at Chiang Rai International School develops young golfers through structured, age-appropriate training across three program levels. Our coaching team combines international golf instruction standards with a nurturing school environment.",
+    "programOverview": "Students train on-site and at partner facilities in Chiang Rai, with a curriculum that balances technical skill development, course management, and character building. The program is open to students in grades 4 through 12.",
+    "levels": {
+      "junior": {
+        "label": "Junior",
+        "grades": "Grades 4–5",
+        "description": "An introduction to golf for younger students. The Junior level focuses on fundamentals: grip, stance, swing basics, and etiquette. Sessions are short, fun, and designed to build a lasting love for the game in a supportive group setting.",
+        "photoAlt": "Junior level golf students practicing at CRIS",
+        "videoLabel": "Junior Program Introduction Video"
+      },
+      "intermediate": {
+        "label": "Intermediate",
+        "grades": "Grades 6–8",
+        "description": "Building on the Junior foundation, Intermediate students develop consistency across all clubs, begin on-course play, and learn basic course management. Competitive opportunities are introduced at this level for students who are ready.",
+        "photoAlt": "Intermediate level golf students on the course at CRIS",
+        "videoLabel": "Intermediate Program Introduction Video"
+      },
+      "advanced": {
+        "label": "Advanced",
+        "grades": "Grades 9–12",
+        "description": "The Advanced level prepares serious golfers for inter-school competition and beyond. Students refine their full game — driving, iron play, short game, and mental approach — with individualised coaching and regular competitive play.",
+        "photoAlt": "Advanced level golf students competing for CRIS",
+        "videoLabel": "Advanced Program Introduction Video"
+      }
+    },
+    "photoPlaceholder": "Program photos coming soon",
+    "videoPlaceholder": "Introduction video coming soon"
   },
   "admissions": {
     "heading": "Admissions",
-    "description": "Step-by-step admissions process and a Contact Admissions button. Hand-off to golf.cris.ac.th/contact wired in subphase 1E.",
-    "stubNotice": "Placeholder — real content arrives in subphase 1D."
+    "lead": "Joining the CRIS Golf Program is straightforward. Follow the steps below to enquire, and our admissions team will guide you through the process.",
+    "stepsHeading": "How to Apply",
+    "steps": [
+      {
+        "title": "Check Eligibility",
+        "description": "The program is open to currently enrolled CRIS students in grades 4–12. New students may apply for school admission and golf program enrollment simultaneously."
+      },
+      {
+        "title": "Choose a Program Level",
+        "description": "Review the Junior (Grades 4–5), Intermediate (Grades 6–8), and Advanced (Grades 9–12) program descriptions to identify the best fit. Our team is happy to advise if you are unsure."
+      },
+      {
+        "title": "Contact Admissions",
+        "description": "Reach out to the CRIS admissions team using the button below. You will be directed to our enquiry form where you can share details about your child and ask any questions."
+      },
+      {
+        "title": "Assessment & Placement",
+        "description": "New students may be invited for a brief golf assessment so our coaches can confirm the appropriate level placement. This is informal and designed to be a positive experience."
+      },
+      {
+        "title": "Enrollment Confirmation",
+        "description": "Once placement is confirmed and fees are arranged, you will receive a welcome pack with program schedules, required equipment, and all the details you need to get started."
+      }
+    ],
+    "actionsHeading": "Ready to Enquire?",
+    "contactButton": "Contact Admissions / Enquire",
+    "requestInfoButton": "Request Information by Email",
+    "contactButtonNote": "You will be taken to the CRIS enquiry form on the school's website."
   },
   "tuition": {
     "heading": "Tuition & Fees",
-    "description": "Golf-program fee schedule (golf-specific figures from the school). No link-out — native in-app screen. Content arrives in subphase 1D.",
-    "stubNotice": "Placeholder — real content arrives in subphase 1D."
+    "lead": "The CRIS Golf Program has its own fee structure, separate from the school's general tuition. Golf-specific fee figures are provided directly by the school.",
+    "placeholderHeading": "Fee Details Coming Soon",
+    "placeholderBody": "The golf program fee schedule is being finalised by the school. Please contact our admissions team for the most current fee information.",
+    "tableNote": "Fees shown are per academic term. Annual fee is indicative of two full terms. Fees may vary — contact admissions for the current schedule.",
+    "levelColumn": "Program Level",
+    "gradesColumn": "Grades",
+    "termFeeColumn": "Per Term",
+    "annualFeeColumn": "Annual (approx.)",
+    "rows": [
+      {
+        "level": "Junior",
+        "grades": "4–5",
+        "termFee": "Contact Admissions",
+        "annualFee": "Contact Admissions"
+      },
+      {
+        "level": "Intermediate",
+        "grades": "6–8",
+        "termFee": "Contact Admissions",
+        "annualFee": "Contact Admissions"
+      },
+      {
+        "level": "Advanced",
+        "grades": "9–12",
+        "termFee": "Contact Admissions",
+        "annualFee": "Contact Admissions"
+      }
+    ],
+    "feesComingSoon": "Detailed fee figures will be published here once confirmed by the school.",
+    "contactButton": "Contact Admissions for Fee Details",
+    "disclaimer": "Golf program fees are separate from and in addition to standard CRIS school tuition. Equipment and tournament entry fees may apply separately."
   },
   "gallery": {
     "heading": "Gallery",
-    "description": "Curated photos and videos of the CRIS Golf Program. Privacy-enhanced YouTube embeds. Content arrives in subphase 1D.",
-    "stubNotice": "Placeholder — real content arrives in subphase 1D."
+    "lead": "A curated collection of photos and videos from the CRIS Golf Program — training sessions, tournaments, and student achievements.",
+    "photosHeading": "Photos",
+    "videosHeading": "Videos",
+    "photoPlaceholder": "Photo coming soon",
+    "videoPlaceholder": "Video coming soon",
+    "videoNote": "Videos load from YouTube's privacy-enhanced player and only contact external servers when you press play.",
+    "comingSoon": "Gallery content is being curated. Check back soon."
   },
   "faq": {
-    "heading": "FAQ",
-    "description": "Frequently asked questions about the CRIS Golf Program. Content and translations (EN / KO / ZH-Hans / TH) arrive in subphases 1D and 1C.",
-    "stubNotice": "Placeholder — real content arrives in subphase 1D."
+    "heading": "Frequently Asked Questions",
+    "lead": "Common questions about the CRIS Golf Program. Don't see your question? Contact us directly.",
+    "items": [
+      {
+        "question": "What age or grade can my child start the golf program?",
+        "answer": "The program is open to students in Grades 4 through 12 (approximately ages 9–18). The Junior level is designed for Grades 4–5, Intermediate for Grades 6–8, and Advanced for Grades 9–12."
+      },
+      {
+        "question": "Does my child need prior golf experience to join?",
+        "answer": "No prior experience is required for the Junior level — we start from the very basics. For Intermediate and Advanced placement, our coaches will assess your child's current level to ensure they are in the most appropriate group."
+      },
+      {
+        "question": "What equipment does my child need?",
+        "answer": "Beginners can use school equipment for their first sessions. As students progress, having their own clubs is recommended. Our coaching team can advise on appropriate club specifications for your child's age and size."
+      },
+      {
+        "question": "How often does the program run, and how long are sessions?",
+        "answer": "Session frequency and duration vary by level and academic term schedule. Full program schedules are provided upon enrollment. Contact admissions for details on the current academic year timetable."
+      },
+      {
+        "question": "What are the fees for the golf program?",
+        "answer": "Golf program fees are specific to this program and differ from general CRIS school tuition. Fee details are being finalised — please contact the admissions team for current figures."
+      },
+      {
+        "question": "Is the program open to students who are not currently enrolled at CRIS?",
+        "answer": "The golf program is part of the CRIS school curriculum and is primarily for enrolled students. If you are interested in both school enrollment and the golf program, our admissions team can assist with both simultaneously."
+      },
+      {
+        "question": "Are there competition opportunities for students?",
+        "answer": "Yes. Intermediate and Advanced students have opportunities to participate in inter-school competitions and regional tournaments as their skills develop. Junior students focus on foundations before competitive play."
+      },
+      {
+        "question": "How do I contact the admissions team?",
+        "answer": "You can reach the CRIS admissions team by phone at +66 (0) 53 600-900, by email at admin@cris.ac.th, or by using the Contact Admissions button on the Admissions screen."
+      }
+    ],
+    "moreQuestionsNote": "Have a question not listed here?",
+    "contactLink": "Contact us directly"
   },
   "langSwitcher": {
     "en": "English",

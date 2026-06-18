@@ -57,37 +57,107 @@ export interface Dictionary {
   };
   footer: {
     heading: string;
-    placeholder: string;
+    phone: string;
+    email: string;
+    address: string;
+    websiteLabel: string;
+    website: string;
   };
   home: {
     heading: string;
     tagline: string;
-    scaffoldNotice: string;
+    welcomeLine: string;
+    exploreHeading: string;
+    cards: {
+      introduction: { title: string; description: string };
+      admissions: { title: string; description: string };
+      tuition: { title: string; description: string };
+      gallery: { title: string; description: string };
+      faq: { title: string; description: string };
+    };
   };
   introduction: {
     heading: string;
-    description: string;
-    stubNotice: string;
+    lead: string;
+    programOverview: string;
+    levels: {
+      junior: {
+        label: string;
+        grades: string;
+        description: string;
+        photoAlt: string;
+        videoLabel: string;
+      };
+      intermediate: {
+        label: string;
+        grades: string;
+        description: string;
+        photoAlt: string;
+        videoLabel: string;
+      };
+      advanced: {
+        label: string;
+        grades: string;
+        description: string;
+        photoAlt: string;
+        videoLabel: string;
+      };
+    };
+    photoPlaceholder: string;
+    videoPlaceholder: string;
   };
   admissions: {
     heading: string;
-    description: string;
-    stubNotice: string;
+    lead: string;
+    stepsHeading: string;
+    steps: Array<{
+      title: string;
+      description: string;
+    }>;
+    actionsHeading: string;
+    contactButton: string;
+    requestInfoButton: string;
+    contactButtonNote: string;
   };
   tuition: {
     heading: string;
-    description: string;
-    stubNotice: string;
+    lead: string;
+    placeholderHeading: string;
+    placeholderBody: string;
+    tableNote: string;
+    levelColumn: string;
+    gradesColumn: string;
+    termFeeColumn: string;
+    annualFeeColumn: string;
+    rows: Array<{
+      level: string;
+      grades: string;
+      termFee: string;
+      annualFee: string;
+    }>;
+    feesComingSoon: string;
+    contactButton: string;
+    disclaimer: string;
   };
   gallery: {
     heading: string;
-    description: string;
-    stubNotice: string;
+    lead: string;
+    photosHeading: string;
+    videosHeading: string;
+    photoPlaceholder: string;
+    videoPlaceholder: string;
+    videoNote: string;
+    comingSoon: string;
   };
   faq: {
     heading: string;
-    description: string;
-    stubNotice: string;
+    lead: string;
+    items: Array<{
+      question: string;
+      answer: string;
+    }>;
+    moreQuestionsNote: string;
+    contactLink: string;
   };
   langSwitcher: {
     en: string;

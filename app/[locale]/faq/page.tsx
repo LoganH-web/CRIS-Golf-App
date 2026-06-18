@@ -1,13 +1,19 @@
 /**
  * Q&A / FAQ screen — route: /{locale}/faq
  *
- * Common questions and answers about the CRIS Golf Program.
- * Requires translation into EN / KO / ZH-Hans / TH (real translation
- * work the school must supply — see §6 and §10).
- * FAQ content and full i18n wiring arrive in subphases 1D and beyond.
+ * Expandable accordion list of common questions and answers.
+ * A few sensible placeholder Q&A entries are provided in all four locales.
+ * The school supplies the final Q&A content (§10).
+ *
+ * Korean, Chinese, and Thai translations are real for short UI strings;
+ * full Q&A items are properly translated in the dictionary (school provided
+ * the context — real translations supplied for this screen in 1D).
+ *
+ * Uses <FaqAccordion> (client component) for expand/collapse interaction,
+ * keeping the page itself a server component.
  */
 
-import { ScreenStub } from "@/components/ui/ScreenStub";
+import { FaqAccordion } from "@/components/screens/FaqAccordion";
 import { getDictionary } from "@/i18n/getDictionary";
 import { isValidLocale } from "@/i18n/detectLocale";
 import type { Locale } from "@/i18n/types";
@@ -20,12 +26,36 @@ export default async function FaqPage({ params }: FaqPageProps): Promise<React.R
   const { locale } = await params;
   const resolvedLocale: Locale = isValidLocale(locale) ? locale : "en";
   const dict = getDictionary(resolvedLocale);
+  const d = dict.faq;
 
   return (
-    <ScreenStub
-      heading={dict.faq.heading}
-      description={dict.faq.description}
-      stubNotice={dict.faq.stubNotice}
-    />
+    <main className="flex flex-col px-4 py-8 sm:px-6">
+      {/* Page header */}
+      <header className="mb-6">
+        <h1 className="text-2xl font-bold tracking-tight text-sky-900 sm:text-3xl">
+          {d.heading}
+        </h1>
+        <p className="mt-3 text-sm leading-relaxed text-slate-600">
+          {d.lead}
+        </p>
+      </header>
+
+      {/* FAQ accordion */}
+      <FaqAccordion items={d.items} />
+
+      {/* More questions CTA */}
+      <div className="mt-6 rounded-xl border border-slate-100 bg-slate-50 px-4 py-4 text-center">
+        <p className="text-sm text-slate-600">
+          {d.moreQuestionsNote}{" "}
+          {/*
+           * 1E: wire this to open mailto:admin@cris.ac.th or to the admissions
+           * screen contact button flow. For now it is a non-wired span.
+           */}
+          <span className="font-medium text-sky-700 cursor-not-allowed opacity-70">
+            {d.contactLink}
+          </span>
+        </p>
+      </div>
+    </main>
   );
 }

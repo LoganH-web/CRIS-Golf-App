@@ -192,6 +192,22 @@ Gates resolved. Create the GitHub repo. Decide who owns the school's **Apple Dev
 
 **Get school sign-off on the live PWA before wrapping for the stores.**
 
+#### Phase 1 — subphase tracker
+
+Phase 1 is decomposed into seven incremental subphases (1A–1G) to reduce implementation risk, simplify debugging, and ensure each subphase stands on a proven foundation. Ordering rationale: prove deploy before features (1A), land i18n before content so no screen ever hardcodes strings (1C before 1D), and add the service worker last so its caching never masks bugs during earlier work (1F).
+
+**Decisions locked:** Framework = **Next.js (App Router) with static export (`output: "export"`)**, React 19, **Tailwind v4**, TypeScript (strict). Hosting = Vercel (output dir set to `out/`). Repo = `github.com/LoganH-web/CRIS-Golf-App`.
+
+| Sub | Scope | Verify | Status |
+|---|---|---|---|
+| **1A** | Scaffold (Next.js static export + TS + Tailwind) + one placeholder page; prove the build/deploy pipeline. | Local static build passes (`out/` generated); live URL renders on Vercel. | ✅ Done |
+| **1B** | App shell: persistent header (app name + lang-switcher slot), mobile-first **bottom tab nav**, Contact footer; **6 route stubs** (`/`, `/introduction`, `/admissions`, `/tuition`, `/gallery`, `/faq`). | Build exports all 6 routes; nav works, active tab indicated. | ✅ Done |
+| **1C** | i18n: move routes under `app/[locale]/`; four dictionaries (EN / KO / ZH-Hans / TH); working language switcher; device-language default + manual override + persistence. English filled, others stubbed. | Switching language swaps every shell string; no hardcoded UI strings. | ✅ Done |
+| **1D** | Screen content (English-first) for all 6 screens against dictionary keys: real structure + copy/placeholders, mobile-first. | Each screen renders responsively; zero hardcoded strings. | ⬜ Next |
+| **1E** | Interactions + CRIS hand-off: config-driven admissions URL, §8 hand-off disclosure component, Contact Admissions → `golf.cris.ac.th/contact`, Request Info → `mailto:admission@cris.ac.th`, native Tuition screen (placeholder figures + contact button), gallery `youtube-nocookie` / click-to-load embeds. | Every external link shows the disclosure and opens visibly; no third-party tracking added. | ⬜ Pending |
+| **1F** | PWA layer: web manifest, service worker, app icon/splash, installability, basic offline. | Lighthouse PWA pass; installable on Android. | ⬜ Pending |
+| **1G** | Launch polish: privacy policy page (§8), QR code → URL, optional `app.cris.ac.th` subdomain, real translations as they arrive, school sign-off build. | School sign-off on the live PWA. | ⬜ Pending |
+
 ### Phase 2 — Native store release (≈1–2 weeks incl. review) — confirmed required
 1. Wrap the same static build in a thin native shell; test on real devices.
 2. Add deep links (Universal Links / App Links) so the QR opens the installed app; app icon/splash. No camera permission needed (no in-app scanner).

@@ -1,56 +1,86 @@
 /**
  * Defines the six core screens and their routes.
- * Used by the shell navigation so route paths are never duplicated.
- * 1C will wrap these under a /[locale] prefix — changing this file
- * is the only thing needed at that point.
+ * Routes are now locale-prefixed: `/{locale}` for home, `/{locale}/{screen}` for others.
+ *
+ * Updated in subphase 1C to support `app/[locale]/` routing.
+ * Call `getLocaleNavItems(locale)` to get nav items with the correct paths.
  */
 
+import type { Locale } from "@/i18n/types";
+
 export interface NavigationItem {
-  /** Route path (relative to app root). */
+  /** Route path (locale-prefixed). */
   path: string;
-  /** Short label shown in the bottom tab bar. */
-  label: string;
-  /** Accessible name used for aria-label on the nav item. */
-  accessibleLabel: string;
-  /** SVG icon identifier (matched in BottomTabBar). */
+  /** Dictionary key used to look up the label in the active locale. */
+  labelKey: keyof import("@/i18n/types").Dictionary["nav"] & string;
+  /** Dictionary key used to look up the accessible label. */
+  accessibleLabelKey: keyof import("@/i18n/types").Dictionary["nav"] & string;
+  /** SVG icon identifier (matched in NavIcon). */
   iconName: "home" | "introduction" | "admissions" | "tuition" | "gallery" | "faq";
 }
 
-export const NAVIGATION_ITEMS: NavigationItem[] = [
+/** Screen slugs used in the URL path (empty string = home). */
+type ScreenSlug = "" | "introduction" | "admissions" | "tuition" | "gallery" | "faq";
+
+const SCREEN_DEFINITIONS: Array<{
+  slug: ScreenSlug;
+  labelKey: NavigationItem["labelKey"];
+  accessibleLabelKey: NavigationItem["accessibleLabelKey"];
+  iconName: NavigationItem["iconName"];
+}> = [
   {
-    path: "/",
-    label: "Home",
-    accessibleLabel: "Home — CRIS Golf Program landing screen",
+    slug: "",
+    labelKey: "home",
+    accessibleLabelKey: "homeLabel",
     iconName: "home",
   },
   {
-    path: "/introduction",
-    label: "About",
-    accessibleLabel: "School Introduction — about the CRIS Golf Program",
+    slug: "introduction",
+    labelKey: "introduction",
+    accessibleLabelKey: "introductionLabel",
     iconName: "introduction",
   },
   {
-    path: "/admissions",
-    label: "Admissions",
-    accessibleLabel: "Admissions — how to join the program",
+    slug: "admissions",
+    labelKey: "admissions",
+    accessibleLabelKey: "admissionsLabel",
     iconName: "admissions",
   },
   {
-    path: "/tuition",
-    label: "Tuition",
-    accessibleLabel: "Tuition and Fees — golf-program fee schedule",
+    slug: "tuition",
+    labelKey: "tuition",
+    accessibleLabelKey: "tuitionLabel",
     iconName: "tuition",
   },
   {
-    path: "/gallery",
-    label: "Gallery",
-    accessibleLabel: "Gallery — photos and videos",
+    slug: "gallery",
+    labelKey: "gallery",
+    accessibleLabelKey: "galleryLabel",
     iconName: "gallery",
   },
   {
-    path: "/faq",
-    label: "FAQ",
-    accessibleLabel: "Frequently Asked Questions",
+    slug: "faq",
+    labelKey: "faq",
+    accessibleLabelKey: "faqLabel",
     iconName: "faq",
   },
-] as const;
+];
+
+/**
+ * Returns navigation items with locale-prefixed paths for use in the
+ * BottomTabBar and other navigation components.
+ *
+ * Home:  /{locale}
+ * Other: /{locale}/{slug}
+ */
+export function getLocaleNavItems(locale: Locale): NavigationItem[] {
+  return SCREEN_DEFINITIONS.map(({ slug, labelKey, accessibleLabelKey, iconName }) => ({
+    path: slug ? `/${locale}/${slug}` : `/${locale}`,
+    labelKey,
+    accessibleLabelKey,
+    iconName,
+  }));
+}
+
+/** Returns just the screen slugs (used for generateStaticParams). */
+export const SCREEN_SLUGS: ScreenSlug[] = SCREEN_DEFINITIONS.map((d) => d.slug);

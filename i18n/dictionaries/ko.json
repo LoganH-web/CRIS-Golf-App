@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "appName": "CRIS 골프 프로그램",
+    "tagline": "치앙라이 국제학교 – 골프 프로그램",
+    "lang": "ko"
+  },
+  "nav": {
+    "home": "홈",
+    "introduction": "소개",
+    "admissions": "입학",
+    "tuition": "학비",
+    "gallery": "갤러리",
+    "faq": "FAQ",
+    "homeLabel": "홈 — CRIS 골프 프로그램 시작 화면",
+    "introductionLabel": "학교 소개 — CRIS 골프 프로그램 안내",
+    "admissionsLabel": "입학 — 프로그램 참가 방법",
+    "tuitionLabel": "학비 및 비용 — 골프 프로그램 비용표",
+    "galleryLabel": "갤러리 — 사진 및 동영상",
+    "faqLabel": "자주 묻는 질문"
+  },
+  "header": {
+    "appName": "CRIS 골프 프로그램",
+    "langSwitcherLabel": "언어 변경",
+    "currentLang": "KO"
+  },
+  "footer": {
+    "heading": "연락처",
+    "placeholder": "연락처 정보는 1D 단계에서 추가됩니다."
+  },
+  "home": {
+    "heading": "CRIS 골프 프로그램",
+    "tagline": "치앙라이 국제학교 – 골프 프로그램",
+    "scaffoldNotice": "앱 구조 및 라우팅 — 전체 콘텐츠는 1D 단계에서 제공됩니다."
+  },
+  "introduction": {
+    "heading": "학교 소개",
+    "description": "CRIS 골프 프로그램 및 세 가지 학년 수준 소개: 주니어 (4–5학년), 인터미디에트 (6–8학년), 어드밴스드 (9–12학년). 콘텐츠 및 사진은 1D 단계에서 제공됩니다.",
+    "stubNotice": "임시 — 실제 콘텐츠는 1D 단계에서 제공됩니다."
+  },
+  "admissions": {
+    "heading": "입학",
+    "description": "단계별 입학 절차 및 입학 문의 버튼. golf.cris.ac.th/contact로의 연결은 1E 단계에서 구성됩니다.",
+    "stubNotice": "임시 — 실제 콘텐츠는 1D 단계에서 제공됩니다."
+  },
+  "tuition": {
+    "heading": "학비 및 비용",
+    "description": "골프 프로그램 비용표 (학교 제공 골프 전용 수치). 앱 내 화면으로 표시됩니다. 콘텐츠는 1D 단계에서 제공됩니다.",
+    "stubNotice": "임시 — 실제 콘텐츠는 1D 단계에서 제공됩니다."
+  },
+  "gallery": {
+    "heading": "갤러리",
+    "description": "CRIS 골프 프로그램의 선별된 사진 및 동영상. 콘텐츠는 1D 단계에서 제공됩니다.",
+    "stubNotice": "임시 — 실제 콘텐츠는 1D 단계에서 제공됩니다."
+  },
+  "faq": {
+    "heading": "자주 묻는 질문",
+    "description": "CRIS 골프 프로그램에 관한 자주 묻는 질문. 콘텐츠 및 번역 (EN / KO / ZH-Hans / TH)은 1D 및 1C 단계에서 제공됩니다.",
+    "stubNotice": "임시 — 실제 콘텐츠는 1D 단계에서 제공됩니다."
+  },
+  "langSwitcher": {
+    "en": "English",
+    "ko": "한국어",
+    "zh": "简体中文",
+    "th": "ไทย"
+  }
+}

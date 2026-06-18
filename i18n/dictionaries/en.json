@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "appName": "CRIS Golf Program",
+    "tagline": "Chiang Rai International School – Golf Program",
+    "lang": "en"
+  },
+  "nav": {
+    "home": "Home",
+    "introduction": "About",
+    "admissions": "Admissions",
+    "tuition": "Tuition",
+    "gallery": "Gallery",
+    "faq": "FAQ",
+    "homeLabel": "Home — CRIS Golf Program landing screen",
+    "introductionLabel": "School Introduction — about the CRIS Golf Program",
+    "admissionsLabel": "Admissions — how to join the program",
+    "tuitionLabel": "Tuition and Fees — golf-program fee schedule",
+    "galleryLabel": "Gallery — photos and videos",
+    "faqLabel": "Frequently Asked Questions"
+  },
+  "header": {
+    "appName": "CRIS Golf Program",
+    "langSwitcherLabel": "Change language",
+    "currentLang": "EN"
+  },
+  "footer": {
+    "heading": "Contact",
+    "placeholder": "Contact details coming in subphase 1D."
+  },
+  "home": {
+    "heading": "CRIS Golf Program",
+    "tagline": "Chiang Rai International School – Golf Program",
+    "scaffoldNotice": "App shell and routing — full content arrives in subphase 1D."
+  },
+  "introduction": {
+    "heading": "School Introduction",
+    "description": "Introduction to the CRIS Golf Program and its three grade levels: Junior (4–5), Intermediate (6–8), and Advanced (9–12). Content and photos arrive in subphase 1D.",
+    "stubNotice": "Placeholder — real content arrives in subphase 1D."
+  },
+  "admissions": {
+    "heading": "Admissions",
+    "description": "Step-by-step admissions process and a Contact Admissions button. Hand-off to golf.cris.ac.th/contact wired in subphase 1E.",
+    "stubNotice": "Placeholder — real content arrives in subphase 1D."
+  },
+  "tuition": {
+    "heading": "Tuition & Fees",
+    "description": "Golf-program fee schedule (golf-specific figures from the school). No link-out — native in-app screen. Content arrives in subphase 1D.",
+    "stubNotice": "Placeholder — real content arrives in subphase 1D."
+  },
+  "gallery": {
+    "heading": "Gallery",
+    "description": "Curated photos and videos of the CRIS Golf Program. Privacy-enhanced YouTube embeds. Content arrives in subphase 1D.",
+    "stubNotice": "Placeholder — real content arrives in subphase 1D."
+  },
+  "faq": {
+    "heading": "FAQ",
+    "description": "Frequently asked questions about the CRIS Golf Program. Content and translations (EN / KO / ZH-Hans / TH) arrive in subphases 1D and 1C.",
+    "stubNotice": "Placeholder — real content arrives in subphase 1D."
+  },
+  "langSwitcher": {
+    "en": "English",
+    "ko": "한국어",
+    "zh": "简体中文",
+    "th": "ไทย"
+  }
+}

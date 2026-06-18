@@ -1,21 +1,23 @@
 # Program Content — Source of Truth (English)
 
-> Extracted verbatim from the school's three program one-pagers (`golf1.jpg`,
-> `golf2.jpg`, `golf3.jpg`). This is the **English source** for the School
+> Extracted verbatim from the school's three program one-pagers
+> (`source-images/golf1.jpg`, `source-images/golf2.jpg`,
+> `source-images/golf3.jpg`). This is the **English source** for the School
 > Introduction screen (§2 of `mvp_guideline.md`) and the base for the
 > EN / KO / ZH-Hans / TH translation pass.
 >
-> ⚠️ **Items marked `TODO(school)` are inconsistencies in the source documents.
-> Do NOT translate them into four languages until the school confirms the correct
-> value** — otherwise the error propagates into every locale.
+> ✅ The three source-document inconsistencies have been resolved (confirmed
+> 2026-06-17): Junior schedule = **Monday–Saturday**; canonical venue name =
+> **Happy City Golf Resort** (not "Golf Club"); Intermediate "Who" = **Grades 6–8**
+> (the "Grades 4–5" in the source was a copy-paste error). This English text is now
+> ready for the EN / KO / ZH-Hans / TH translation pass at subphase 1D.
 
 ---
 
 ## Shared facts (all three tiers)
 
-- **Location / boarding:** Mandatory boarding at Happy City Golf Club.
-  - `TODO(school)`: the documents use both **"Happy City Golf Club"** and
-    **"Happy City Golf Resort"**. Pick ONE canonical name for the whole app.
+- **Location / boarding:** Mandatory boarding at **Happy City Golf Resort**
+  (confirmed canonical name — the source docs also said "Golf Club"; use "Resort" everywhere).
 - **Daily rhythm:** Mornings = academics at Chiang Rai International School (CRIS);
   afternoons = golf instruction, fitness, mental training, academic support.
 - **Transport:** Daily CRIS drop-off at **7:20 AM (Mon–Fri)**.
@@ -26,9 +28,7 @@
 
 ## 1. Junior Golf Program — Grades 4–5
 
-**Schedule:** Monday–Friday
-- `TODO(school)`: header says **Monday–Friday**, but the "When" line says
-  **Monday to Saturday (residential)**. Confirm which is correct.
+**Schedule:** Monday–Saturday (confirmed; the source header's "Monday–Friday" was an error)
 
 **Overview:**
 The CRIS Junior Golf Program is a residential weekday and Saturday program designed
@@ -43,7 +43,7 @@ competitive skills. This holistic program emphasizes athletic development, acade
 consistency, and life skills — all in a structured, supportive environment.
 
 - **Who:** CRIS students in Grades 4–5
-- **When:** Monday to Saturday (residential)  ← see schedule TODO above
+- **When:** Monday to Saturday (residential)
 - **Where:** Boarding and training at Happy City Golf Resort
 - **Focus:** Full swing, short game, putting, range work, fitness, mental coaching, match play, and academics
 - **Transport:** Daily CRIS drop-off at 7:20 AM (Mon–Fri)
@@ -68,8 +68,8 @@ includes **three focused training sessions daily**, covering all areas of the ga
 plus a weekly **Saturday Competition Match Play** to build competitive confidence.
 
 - **Who:** CRIS students in Grades 6–8
-  - `TODO(school)`: source document erroneously prints "Grades 4–5" here
-    (copy-paste from the Junior sheet). Corrected to 6–8 — please confirm.
+  (source document erroneously printed "Grades 4–5" — a copy-paste slip from the
+  Junior sheet; corrected to 6–8 per the program title.)
 - **When:** Monday to Saturday (residential)
 - **Where:** Boarding and training at Happy City Golf Resort
 - **Focus:** Full swing, short game, putting, range work, fitness, mental coaching, match play, and academics

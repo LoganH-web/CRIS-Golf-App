@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * FaqContactLink — wired "Contact us directly" link on the FAQ screen.
  *
@@ -13,8 +11,8 @@
  * mailto: links do NOT require the §8 hand-off disclosure — no data passes
  * through the app; the user's own mail client handles everything.
  *
- * Kept as a separate client component to avoid making the FaqPage a client
- * component for just this one interactive element.
+ * A plain mailto: anchor needs no client-side JS, so this stays a server
+ * component — extracted only to keep the contact-email decision in one place.
  */
 
 import { generalContactEmail } from "@/config/links";

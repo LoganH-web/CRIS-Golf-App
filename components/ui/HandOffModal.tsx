@@ -17,7 +17,7 @@
  *   - role="dialog" + aria-modal="true" + aria-labelledby / aria-describedby
  *   - Focus is trapped inside the modal while it is open
  *   - ESC key dismisses the modal (calls onClose)
- *   - First focusable element (Cancel) receives focus on open via autoFocus
+ *   - Cancel receives focus on open; focus is restored to the trigger on close
  *
  * Usage:
  *   <HandOffModal
@@ -51,29 +51,36 @@ export function HandOffModal({
   onClose,
 }: HandOffModalProps): React.ReactElement | null {
   const cancelRef = useRef<HTMLButtonElement>(null);
-  const continueRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  // Focus the Cancel button when the modal opens
+  // Move focus into the modal (Cancel) on open, and restore it to whatever
+  // element opened the modal when it closes — otherwise a keyboard/screen-
+  // reader user is dropped back to the top of the document (§11).
   useEffect(() => {
-    if (isOpen) {
-      cancelRef.current?.focus();
-    }
+    if (!isOpen) return;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    cancelRef.current?.focus();
+    return () => previouslyFocused?.focus();
   }, [isOpen]);
 
-  // ESC key dismissal
+  // ESC key dismissal + focus trap
   useEffect(() => {
     if (!isOpen) return;
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose();
+        return;
       }
-      // Focus trap: Tab / Shift+Tab cycles between Cancel and Continue only
+      // Focus trap: query the dialog's focusable descendants at trap time, so
+      // the trap keeps working if the modal's content ever gains more controls.
       if (e.key === "Tab") {
-        const focusable = [cancelRef.current, continueRef.current].filter(
-          Boolean
-        ) as HTMLButtonElement[];
-        if (focusable.length < 2) return;
+        const dialog = dialogRef.current;
+        if (!dialog) return;
+        const focusable = dialog.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
         if (e.shiftKey) {
@@ -120,6 +127,7 @@ export function HandOffModal({
     >
       {/* Dialog card */}
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="handoff-modal-title"
@@ -166,7 +174,6 @@ export function HandOffModal({
         {/* Actions */}
         <div className="flex flex-col gap-3">
           <button
-            ref={continueRef}
             type="button"
             onClick={handleContinue}
             className="flex w-full items-center justify-center gap-2 rounded-xl bg-sky-900 px-5 py-3 text-sm font-semibold text-white"
@@ -194,7 +201,6 @@ export function HandOffModal({
             ref={cancelRef}
             type="button"
             onClick={onClose}
-            autoFocus
             className="flex w-full items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700"
           >
             {dict.cancelButton}

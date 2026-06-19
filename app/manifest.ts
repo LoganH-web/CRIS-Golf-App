@@ -24,6 +24,29 @@ export const dynamic = "force-static";
 import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
+  // Typed against Next's own icon member type so the "any" / "maskable"
+  // purpose literals are checked against the real union — no casts needed.
+  const icons: MetadataRoute.Manifest["icons"] = [
+    {
+      src: "/icons/icon-192.png",
+      sizes: "192x192",
+      type: "image/png",
+      purpose: "any",
+    },
+    {
+      src: "/icons/icon-512.png",
+      sizes: "512x512",
+      type: "image/png",
+      purpose: "any",
+    },
+    {
+      src: "/icons/icon-512-maskable.png",
+      sizes: "512x512",
+      type: "image/png",
+      purpose: "maskable",
+    },
+  ];
+
   return {
     name: "CRIS Golf Program",
     short_name: "CRIS Golf",
@@ -36,28 +59,6 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#0c4a6e",
     background_color: "#ffffff",
     categories: ["education", "sports"],
-    icons: [
-      {
-        src: "/icons/icon-192.png",
-        sizes: "192x192",
-        type: "image/png",
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        purpose: "any" as any,
-      },
-      {
-        src: "/icons/icon-512.png",
-        sizes: "512x512",
-        type: "image/png",
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        purpose: "any" as any,
-      },
-      {
-        src: "/icons/icon-512-maskable.png",
-        sizes: "512x512",
-        type: "image/png",
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        purpose: "maskable" as any,
-      },
-    ],
+    icons,
   };
 }

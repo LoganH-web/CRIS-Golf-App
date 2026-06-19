@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import { HtmlLangSync } from "@/components/HtmlLangSync";
 import { PwaRegister } from "@/components/PwaRegister";
+import { BRAND_NAVY } from "@/config/theme";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,11 +45,11 @@ export const metadata: Metadata = {
 
 /**
  * Viewport export — Next.js 16 requires themeColor here, not in metadata.
- * Sets the browser chrome colour to sky-900 (#0c4a6e) on Android/Chrome,
+ * Sets the browser chrome colour to the CRIS brand navy on Android/Chrome,
  * matching the AppHeader background.
  */
 export const viewport: Viewport = {
-  themeColor: "#0c4a6e",
+  themeColor: BRAND_NAVY,
 };
 
 /**

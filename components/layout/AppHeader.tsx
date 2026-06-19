@@ -19,7 +19,7 @@ export function AppHeader({ dict }: AppHeaderProps): React.ReactElement {
   return (
     <header className="sticky top-0 z-40 flex h-14 items-center justify-between border-b border-slate-200 bg-white px-4 shadow-sm">
       {/* App name / wordmark — logo image replaces this in 1D */}
-      <span className="text-base font-semibold tracking-tight text-sky-900">
+      <span className="text-base font-semibold tracking-tight text-cris-navy">
         {dict.header.appName}
       </span>
 

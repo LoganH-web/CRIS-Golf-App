@@ -17,6 +17,7 @@
 import { getDictionary } from "@/i18n/getDictionary";
 import { isValidLocale } from "@/i18n/detectLocale";
 import { YoutubeNocookieEmbed } from "@/components/ui/YoutubeNocookieEmbed";
+import { Icon } from "@/components/ui/Icon";
 import { introductionVideos } from "@/config/links";
 import type { Locale } from "@/i18n/types";
 
@@ -55,7 +56,7 @@ export default async function IntroductionPage({ params }: IntroductionPageProps
     <main className="flex flex-col px-4 py-8 sm:px-6">
       {/* Page header */}
       <header className="mb-6">
-        <h1 className="text-2xl font-bold tracking-tight text-sky-900 sm:text-3xl">
+        <h1 className="text-2xl font-bold tracking-tight text-cris-navy sm:text-3xl">
           {d.heading}
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-slate-600">
@@ -81,22 +82,7 @@ export default async function IntroductionPage({ params }: IntroductionPageProps
               aria-label={data.photoAlt}
             >
               <div className="flex flex-col items-center gap-2 text-slate-400">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-                  <circle cx="9" cy="9" r="2" />
-                  <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-                </svg>
+                <Icon name="image" size={32} strokeWidth={1.5} />
                 <span className="text-xs">{d.photoPlaceholder}</span>
               </div>
             </div>

@@ -33,7 +33,7 @@ export default async function FaqPage({ params }: FaqPageProps): Promise<React.R
     <main className="flex flex-col px-4 py-8 sm:px-6">
       {/* Page header */}
       <header className="mb-6">
-        <h1 className="text-2xl font-bold tracking-tight text-sky-900 sm:text-3xl">
+        <h1 className="text-2xl font-bold tracking-tight text-cris-navy sm:text-3xl">
           {d.heading}
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-slate-600">

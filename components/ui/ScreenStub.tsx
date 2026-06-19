@@ -18,7 +18,7 @@ interface ScreenStubProps {
 export function ScreenStub({ heading, description, stubNotice }: ScreenStubProps): React.ReactElement {
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-12 text-center">
-      <h1 className="text-2xl font-bold tracking-tight text-sky-900 sm:text-3xl">
+      <h1 className="text-2xl font-bold tracking-tight text-cris-navy sm:text-3xl">
         {heading}
       </h1>
       <p className="mt-3 max-w-sm text-sm text-slate-500">{description}</p>

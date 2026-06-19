@@ -27,6 +27,7 @@
  */
 
 import { useState } from "react";
+import { Icon } from "@/components/ui/Icon";
 
 interface YoutubeNocookieEmbedProps {
   /** YouTube video ID (e.g. "dQw4w9WgXcQ"). Set to null for placeholder mode. */
@@ -89,37 +90,14 @@ export function YoutubeNocookieEmbed({
         <div className="flex flex-col items-center gap-2">
           {/* Play button circle */}
           <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-              className="ml-1 text-white"
-            >
-              <polygon points="5 3 19 12 5 21 5 3" />
-            </svg>
+            <Icon name="play-solid" size={28} className="ml-1 text-white" />
           </div>
           <span className="text-xs font-medium text-white/80">{placeholderText}</span>
         </div>
       ) : (
         // No video yet: same look as 1D placeholder
         <div className="flex flex-col items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <polygon points="5 3 19 12 5 21 5 3" />
-          </svg>
+          <Icon name="play" size={28} strokeWidth={1.5} />
           <span className="text-xs">{placeholderText}</span>
         </div>
       )}

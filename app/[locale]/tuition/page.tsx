@@ -15,6 +15,7 @@
 import { getDictionary } from "@/i18n/getDictionary";
 import { isValidLocale } from "@/i18n/detectLocale";
 import { TuitionContactButton } from "@/components/screens/TuitionContactButton";
+import { Icon } from "@/components/ui/Icon";
 import type { Locale } from "@/i18n/types";
 
 interface TuitionPageProps {
@@ -31,7 +32,7 @@ export default async function TuitionPage({ params }: TuitionPageProps): Promise
     <main className="flex flex-col px-4 py-8 sm:px-6">
       {/* Page header */}
       <header className="mb-6">
-        <h1 className="text-2xl font-bold tracking-tight text-sky-900 sm:text-3xl">
+        <h1 className="text-2xl font-bold tracking-tight text-cris-navy sm:text-3xl">
           {d.heading}
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-slate-600">
@@ -42,23 +43,11 @@ export default async function TuitionPage({ params }: TuitionPageProps): Promise
       {/* Placeholder notice */}
       <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-5 py-4">
         <div className="flex gap-3">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
+          <Icon
+            name="info-circle"
+            size={20}
             className="mt-0.5 shrink-0 text-amber-600"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <line x1="12" x2="12" y1="8" y2="12" />
-            <line x1="12" x2="12.01" y1="16" y2="16" />
-          </svg>
+          />
           <div>
             <p className="font-semibold text-amber-800">{d.placeholderHeading}</p>
             <p className="mt-1 text-sm text-amber-700">{d.placeholderBody}</p>
@@ -80,7 +69,7 @@ export default async function TuitionPage({ params }: TuitionPageProps): Promise
           {/* Table rows */}
           {d.rows.map((row, index) => (
             <div
-              key={index}
+              key={row.level}
               className={`grid grid-cols-4 gap-0 border-b border-slate-100 text-sm last:border-0 ${
                 index % 2 === 0 ? "bg-white" : "bg-slate-50/50"
               }`}

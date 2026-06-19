@@ -14,6 +14,7 @@
 
 import { useState } from "react";
 import { HandOffModal } from "@/components/ui/HandOffModal";
+import { Icon } from "@/components/ui/Icon";
 import { admissionsUrl, requestInfoEmail, admissionsButtonPhase } from "@/config/links";
 import type { Dictionary } from "@/i18n/types";
 
@@ -36,26 +37,10 @@ export function AdmissionsActions({ dict }: AdmissionsActionsProps): React.React
         <button
           type="button"
           onClick={() => setModalOpen(true)}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-sky-900 px-5 py-3.5 text-sm font-semibold text-white active:opacity-80"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-cris-navy px-5 py-3.5 text-sm font-semibold text-white active:opacity-80"
           aria-label={contactButtonLabel}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-            <circle cx="9" cy="7" r="4" />
-            <line x1="19" x2="19" y1="8" y2="14" />
-            <line x1="22" x2="16" y1="11" y2="11" />
-          </svg>
+          <Icon name="user-plus" size={16} />
           {contactButtonLabel}
         </button>
 
@@ -69,21 +54,7 @@ export function AdmissionsActions({ dict }: AdmissionsActionsProps): React.React
           className="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3.5 text-sm font-semibold text-slate-700 active:opacity-80"
           aria-label={d.requestInfoButton}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <rect width="20" height="16" x="2" y="4" rx="2" />
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-          </svg>
+          <Icon name="mail" size={16} />
           {d.requestInfoButton}
         </a>
       </div>

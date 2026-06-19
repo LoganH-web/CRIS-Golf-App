@@ -29,6 +29,7 @@
  */
 
 import { useEffect, useRef } from "react";
+import { Icon } from "@/components/ui/Icon";
 
 export interface HandOffModalDict {
   title: string;
@@ -136,23 +137,7 @@ export function HandOffModal({
       >
         {/* Icon */}
         <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-sky-50">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-sky-700"
-            aria-hidden="true"
-          >
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-            <polyline points="15 3 21 3 21 9" />
-            <line x1="10" x2="21" y1="14" y2="3" />
-          </svg>
+          <Icon name="external-link" size={22} className="text-sky-700" />
         </div>
 
         {/* Title */}
@@ -176,24 +161,9 @@ export function HandOffModal({
           <button
             type="button"
             onClick={handleContinue}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-sky-900 px-5 py-3 text-sm font-semibold text-white"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-cris-navy px-5 py-3 text-sm font-semibold text-white"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" x2="21" y1="14" y2="3" />
-            </svg>
+            <Icon name="external-link" size={14} strokeWidth={2.5} />
             {dict.continueButton}
           </button>
 

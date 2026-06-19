@@ -11,7 +11,7 @@
  * Without it, Next.js 16 throws "export const dynamic not configured" at build.
  *
  * Color choices:
- *   theme_color    = #0c4a6e  (Tailwind sky-900 — matches AppHeader bg)
+ *   theme_color    = BRAND_NAVY (#0c4a6e — matches AppHeader / cris-navy token)
  *   background_color = #ffffff (white — matches body background)
  *
  * Icons reference the placeholder set in /public/icons/ created in this same
@@ -22,6 +22,7 @@
 export const dynamic = "force-static";
 
 import type { MetadataRoute } from "next";
+import { BRAND_NAVY } from "@/config/theme";
 
 export default function manifest(): MetadataRoute.Manifest {
   // Typed against Next's own icon member type so the "any" / "maskable"
@@ -56,7 +57,7 @@ export default function manifest(): MetadataRoute.Manifest {
     display: "standalone",
     orientation: "portrait",
     lang: "en",
-    theme_color: "#0c4a6e",
+    theme_color: BRAND_NAVY,
     background_color: "#ffffff",
     categories: ["education", "sports"],
     icons,

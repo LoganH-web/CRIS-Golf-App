@@ -29,7 +29,7 @@ export default async function AdmissionsPage({ params }: AdmissionsPageProps): P
     <main className="flex flex-col px-4 py-8 sm:px-6">
       {/* Page header */}
       <header className="mb-6">
-        <h1 className="text-2xl font-bold tracking-tight text-sky-900 sm:text-3xl">
+        <h1 className="text-2xl font-bold tracking-tight text-cris-navy sm:text-3xl">
           {d.heading}
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-slate-600">
@@ -48,9 +48,9 @@ export default async function AdmissionsPage({ params }: AdmissionsPageProps): P
 
         <ol className="flex flex-col gap-4">
           {d.steps.map((step, index) => (
-            <li key={index} className="flex gap-4">
+            <li key={step.title} className="flex gap-4">
               {/* Step number bubble */}
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-900 text-sm font-bold text-white">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cris-navy text-sm font-bold text-white">
                 {index + 1}
               </div>
 

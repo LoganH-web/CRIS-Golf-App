@@ -1,0 +1,63 @@
+/**
+ * Web App Manifest — subphase 1F PWA layer.
+ *
+ * Uses Next.js App Router's MetadataRoute.Manifest API so the manifest is
+ * generated at build time as /manifest.webmanifest and referenced automatically
+ * in the exported static HTML.  This is the cleanest approach for static export
+ * (output: "export") + App Router — no manual <link rel="manifest"> needed
+ * in layout.tsx, Next.js wires it automatically.
+ *
+ * "force-static" is required for the manifest route when using output: "export".
+ * Without it, Next.js 16 throws "export const dynamic not configured" at build.
+ *
+ * Color choices:
+ *   theme_color    = #0c4a6e  (Tailwind sky-900 — matches AppHeader bg)
+ *   background_color = #ffffff (white — matches body background)
+ *
+ * Icons reference the placeholder set in /public/icons/ created in this same
+ * subphase.  // 1G/asset: swap placeholder icons with real CRIS Golf logo here.
+ */
+
+// Required for output: "export" — tells Next.js to statically render this route.
+export const dynamic = "force-static";
+
+import type { MetadataRoute } from "next";
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: "CRIS Golf Program",
+    short_name: "CRIS Golf",
+    description: "Chiang Rai International School – Golf Program",
+    start_url: "/",
+    scope: "/",
+    display: "standalone",
+    orientation: "portrait",
+    lang: "en",
+    theme_color: "#0c4a6e",
+    background_color: "#ffffff",
+    categories: ["education", "sports"],
+    icons: [
+      {
+        src: "/icons/icon-192.png",
+        sizes: "192x192",
+        type: "image/png",
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        purpose: "any" as any,
+      },
+      {
+        src: "/icons/icon-512.png",
+        sizes: "512x512",
+        type: "image/png",
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        purpose: "any" as any,
+      },
+      {
+        src: "/icons/icon-512-maskable.png",
+        sizes: "512x512",
+        type: "image/png",
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        purpose: "maskable" as any,
+      },
+    ],
+  };
+}

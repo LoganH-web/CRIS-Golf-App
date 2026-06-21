@@ -30,7 +30,7 @@
 
 // ─── Cache versioning ────────────────────────────────────────────────────────
 // Bump this string on every deploy to invalidate the old cache.
-const CACHE_VERSION = "v1";
+const CACHE_VERSION = "v2";
 const CACHE_NAME = `cris-golf-${CACHE_VERSION}`;
 
 // ─── URLs to precache ────────────────────────────────────────────────────────
@@ -82,12 +82,16 @@ self.addEventListener("install", (event) => {
     caches
       .open(CACHE_NAME)
       .then((cache) => {
-        // addAll fetches and caches every URL atomically.
-        // If any single fetch fails (e.g. during local dev without all routes),
-        // we gracefully fall back rather than blocking install.
-        return cache.addAll(PRECACHE_URLS).catch((err) => {
-          console.warn("[SW] Precache partial failure (non-fatal):", err);
-        });
+        // Cache each URL INDEPENDENTLY (not cache.addAll, which is atomic and
+        // would discard the entire batch if any single URL 404s). This keeps
+        // the precache resilient: one missing route never empties the cache.
+        return Promise.allSettled(
+          PRECACHE_URLS.map((u) =>
+            cache.add(u).catch((err) => {
+              console.warn("[SW] Precache failed for", u, err);
+            })
+          )
+        );
       })
       .then(() => {
         // Skip the waiting phase so the new SW activates immediately.

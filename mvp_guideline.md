@@ -206,7 +206,9 @@ Phase 1 is decomposed into seven incremental subphases (1A–1G) to reduce imple
 | **1D** | Screen content (English-first) for all 6 screens against dictionary keys: real structure + copy/placeholders, mobile-first. | Each screen renders responsively; zero hardcoded strings. | ✅ Done |
 | **1E** | Interactions + CRIS hand-off: config-driven admissions URL, §8 hand-off disclosure component, Contact Admissions → `golf.cris.ac.th/contact`, Request Info → `mailto:admission@cris.ac.th`, native Tuition screen (placeholder figures + contact button), gallery `youtube-nocookie` / click-to-load embeds. | Every external link shows the disclosure and opens visibly; no third-party tracking added. | ✅ Done |
 | **1F** | PWA layer: web manifest, service worker, app icon/splash, installability, basic offline. | Lighthouse PWA pass; installable on Android. | ✅ Done |
-| **1G** | Launch polish: privacy policy page (§8), QR code → URL, optional `app.cris.ac.th` subdomain, real translations as they arrive, school sign-off build. | School sign-off on the live PWA. | ⬜ Next |
+| **1G** | Launch polish: privacy policy page (§8), QR code → URL, optional `app.cris.ac.th` subdomain, real translations as they arrive, school sign-off build. | School sign-off on the live PWA. | ✅ Done |
+
+> **Phase 1 is code-complete (1A–1G all done).** Launch is pending school content (real fees, videos, photos, pro translations) + final school sign-off on the live PWA at https://cris-golf-app.vercel.app. See DEPLOYMENT.md for the full content swap-in checklist and Phase 2 steps.
 
 ### Phase 2 — Native store release (≈1–2 weeks incl. review) — confirmed required
 1. Wrap the same static build in a thin native shell; test on real devices.

@@ -27,7 +27,8 @@
     "phone": "+66 (0) 53 600-900",
     "email": "admin@cris.ac.th",
     "address": "清莱国际学校，清莱，泰国",
-    "website": "golf.cris.ac.th"
+    "website": "golf.cris.ac.th",
+    "privacyPolicyLink": "隐私政策"
   },
   "home": {
     "heading": "CRIS高尔夫课程",
@@ -208,5 +209,32 @@
     ],
     "moreQuestionsNote": "有其他问题？",
     "contactLink": "直接联系我们"
+  },
+  "privacy": {
+    "heading": "隐私政策",
+    "lastUpdated": "最后更新：2026年6月",
+    "intro": "CRIS高尔夫课程应用是一个只读信息资源。它不收集、存储或传输任何个人数据。本页面说明应用如何处理信息，以及当您采取行动时第三方何时收集数据。",
+    "sections": {
+      "noDataCollection": {
+        "heading": "本应用不收集个人数据",
+        "body": "本应用不使用分析、广告、崩溃报告或任何其他第三方跟踪SDK。不使用Cookie、会话标识符或设备指纹识别。应用本身不收集、存储或传输有关您或您设备的任何信息。"
+      },
+      "externalHandOff": {
+        "heading": "招生咨询——由CRIS在CRIS网站上处理",
+        "body": "如果您选择提交招生咨询，您将被引导至golf.cris.ac.th/contact上的咨询表格。该表格及您在其中提供的任何个人信息（姓名、电话号码、电子邮件地址）由清莱国际学校在其自有域名上根据其自身隐私政策进行收集和处理。CRIS高尔夫课程应用不查看、存储或传输这些信息。每次打开外部链接前都会显示确认对话框。"
+      },
+      "videos": {
+        "heading": "图库视频——YouTube隐私增强模式，点击加载",
+        "body": "图库页面中的视频内容使用YouTube隐私增强型播放器（youtube-nocookie.com）。播放器仅按需加载——页面加载时不会连接YouTube服务器。仅在您点击视频磁贴上的播放按钮时才建立连接。"
+      },
+      "minors": {
+        "heading": "儿童隐私",
+        "body": "本应用是关于涉及未成年人的学校课程的信息资源。应用本身不从任何用户（包括儿童）处收集数据。应用中显示的学生照片和视频是在清莱国际学校获得家长媒体同意的情况下发布的。"
+      },
+      "contact": {
+        "heading": "关于本政策的问题",
+        "body": "如果您对本隐私政策或CRIS网站处理个人数据的方式有疑问，请通过admin@cris.ac.th发送电子邮件或拨打+66 (0) 53 600-900直接联系清莱国际学校。"
+      }
+    }
   }
 }

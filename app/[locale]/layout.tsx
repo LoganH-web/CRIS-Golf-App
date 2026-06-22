@@ -68,7 +68,7 @@ export default async function LocaleLayout({
        */}
       <div className="flex flex-1 flex-col pb-16">
         {children}
-        <ContactFooter dict={dict} />
+        <ContactFooter dict={dict} locale={locale} />
       </div>
 
       <BottomTabBar dict={dict} />

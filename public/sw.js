@@ -30,7 +30,7 @@
 
 // ─── Cache versioning ────────────────────────────────────────────────────────
 // Bump this string on every deploy to invalidate the old cache.
-const CACHE_VERSION = "v2";
+const CACHE_VERSION = "v3";
 const CACHE_NAME = `cris-golf-${CACHE_VERSION}`;
 
 // ─── URLs to precache ────────────────────────────────────────────────────────
@@ -46,6 +46,7 @@ const PRECACHE_URLS = [
   "/en/tuition",
   "/en/gallery",
   "/en/faq",
+  "/en/privacy",
   // Korean
   "/ko",
   "/ko/introduction",
@@ -53,6 +54,7 @@ const PRECACHE_URLS = [
   "/ko/tuition",
   "/ko/gallery",
   "/ko/faq",
+  "/ko/privacy",
   // Chinese (Simplified)
   "/zh",
   "/zh/introduction",
@@ -60,6 +62,7 @@ const PRECACHE_URLS = [
   "/zh/tuition",
   "/zh/gallery",
   "/zh/faq",
+  "/zh/privacy",
   // Thai
   "/th",
   "/th/introduction",
@@ -67,6 +70,7 @@ const PRECACHE_URLS = [
   "/th/tuition",
   "/th/gallery",
   "/th/faq",
+  "/th/privacy",
   // App icons (referenced by manifest + apple-touch-icon)
   "/icons/icon-192.png",
   "/icons/icon-512.png",

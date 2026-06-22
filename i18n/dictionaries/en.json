@@ -27,7 +27,8 @@
     "phone": "+66 (0) 53 600-900",
     "email": "admin@cris.ac.th",
     "address": "Chiang Rai International School, Chiang Rai, Thailand",
-    "website": "golf.cris.ac.th"
+    "website": "golf.cris.ac.th",
+    "privacyPolicyLink": "Privacy Policy"
   },
   "home": {
     "heading": "CRIS Golf Program",
@@ -208,5 +209,32 @@
     ],
     "moreQuestionsNote": "Have a question not listed here?",
     "contactLink": "Contact us directly"
+  },
+  "privacy": {
+    "heading": "Privacy Policy",
+    "lastUpdated": "Last updated: June 2026",
+    "intro": "The CRIS Golf Program app is a read-only information resource. It does not collect, store, or transmit any personal data. This page explains how the app handles information and where data is collected by third parties when you take action.",
+    "sections": {
+      "noDataCollection": {
+        "heading": "No personal data is collected by this app",
+        "body": "This app does not use analytics, advertising, crash-reporting, or any other third-party tracking SDK. It does not use cookies, session identifiers, or device fingerprinting. No information about you or your device is collected, stored, or transmitted by the app itself."
+      },
+      "externalHandOff": {
+        "heading": "Admissions enquiry — handled by CRIS on CRIS's website",
+        "body": "If you choose to submit an admissions enquiry, you will be taken to the contact/enquiry form at golf.cris.ac.th/contact. That form — and any personal information you provide there (name, phone number, email address) — is collected and processed by Chiang Rai International School on their own domain under their own privacy policy. The CRIS Golf Program app does not see, store, or transmit that information. The hand-off is made visible each time: a confirmation dialog appears before any external link opens."
+      },
+      "videos": {
+        "heading": "Gallery videos — YouTube Privacy-Enhanced mode, click-to-load",
+        "body": "Video content in the Gallery screen uses YouTube's privacy-enhanced player (youtube-nocookie.com). The player is loaded on demand only — no connection to YouTube's servers is made when a page loads. A connection is established only when you press the play button on a video tile. This limits, but does not eliminate, contact with Google/YouTube servers; if you require zero third-party contact, do not press play."
+      },
+      "minors": {
+        "heading": "Children's privacy",
+        "body": "This app is an information resource about a school program that involves minors. The app itself collects no data from any user, including children. Photos and videos of students displayed in the app are published with parental media consent obtained by Chiang Rai International School."
+      },
+      "contact": {
+        "heading": "Questions about this policy",
+        "body": "If you have questions about this privacy policy or about how CRIS handles personal data on their website, please contact Chiang Rai International School directly at admin@cris.ac.th or by calling +66 (0) 53 600-900."
+      }
+    }
   }
 }

@@ -1,7 +1,22 @@
 /**
  * config/links.ts — External URL and contact configuration for the CRIS Golf Program app.
  *
- * SINGLE SOURCE OF TRUTH for all outbound links.
+ * SINGLE SOURCE OF TRUTH for all outbound links and canonical URLs.
+ *
+ * =========================================================
+ * CANONICAL SITE URL
+ * =========================================================
+ * canonicalSiteUrl is the single place that records the app's live URL.
+ * It is used by:
+ *   - scripts/generate-qr.mjs  (encodes this URL into the printable QR code)
+ *   - Any absolute meta/OG tags that reference the app
+ *
+ * SUBDOMAIN UPGRADE: When the school's IT team sets up app.cris.ac.th:
+ *   1. Change `canonicalSiteUrl` below to "https://app.cris.ac.th"
+ *   2. Re-run:  node scripts/generate-qr.mjs
+ *   3. Reprint/redistribute the QR code.
+ *   No other code changes are needed.
+ * =========================================================
  *
  * =========================================================
  * ONE-LINE UPGRADE PATH: Enquire → Apply
@@ -16,6 +31,17 @@
  * No other code changes required.
  * =========================================================
  */
+
+/**
+ * The canonical public URL of this app.
+ *
+ * Current production URL: https://cris-golf-app.vercel.app
+ * Future custom subdomain: https://app.cris.ac.th  (swap here when DNS is set up)
+ *
+ * This value is used by scripts/generate-qr.mjs — re-run that script and
+ * reprint the QR code whenever this URL changes.
+ */
+export const canonicalSiteUrl = "https://cris-golf-app.vercel.app";
 
 /**
  * The CRIS admissions enquiry form URL.

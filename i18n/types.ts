@@ -60,6 +60,7 @@ export interface Dictionary {
     email: string;
     address: string;
     website: string;
+    privacyPolicyLink: string;
   };
   home: {
     heading: string;
@@ -166,5 +167,34 @@ export interface Dictionary {
     }>;
     moreQuestionsNote: string;
     contactLink: string;
+  };
+  /** §8 — Privacy policy page (route: /{locale}/privacy) */
+  privacy: {
+    heading: string;
+    lastUpdated: string;
+    /** Short lead paragraph */
+    intro: string;
+    sections: {
+      noDataCollection: {
+        heading: string;
+        body: string;
+      };
+      externalHandOff: {
+        heading: string;
+        body: string;
+      };
+      videos: {
+        heading: string;
+        body: string;
+      };
+      minors: {
+        heading: string;
+        body: string;
+      };
+      contact: {
+        heading: string;
+        body: string;
+      };
+    };
   };
 }

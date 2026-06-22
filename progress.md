@@ -1,4 +1,4 @@
-# CRIS Golf Program — Build Progress
+﻿# CRIS Golf Program — Build Progress
 
 **App:** CRIS Golf Program (Chiang Rai International School – Golf Program)
 **Plan:** see [`mvp_guideline.md`](./mvp_guideline.md) — Phase 1 decomposed into subphases 1A–1G
@@ -103,7 +103,7 @@ Phase 1 is a fully multilingual (EN / KO / ZH-Hans / TH), installable, offline-c
 
 **1G follow-up — iOS splash screen:**
 - ☑ Add `apple-touch-startup-image` link tags so the **installed** iOS app shows a
-  branded splash. Done in commit `TBD_REPLACE_WITH_COMMIT` — 34 PNGs generated
+  branded splash. Done in commit `873a68e` — 34 PNGs generated
   (17 device groups × portrait + landscape) by `scripts/generate-splash.mjs` into
   `public/icons/splash/`; 34 `<link rel="apple-touch-startup-image">` tags wired
   into `app/layout.tsx` via raw `<head>`; SW `CACHE_VERSION` bumped v3→v4 with all

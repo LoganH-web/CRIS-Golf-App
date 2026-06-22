@@ -39,9 +39,6 @@ function buildSvg(size, padFraction = 0.1) {
   const pad = Math.round(size * padFraction);
   const inner = size - pad * 2; // usable area after padding
 
-  // Background circle radius (fills the canvas)
-  const bgRadius = size / 2;
-
   // The letter "CG" sits in the upper two-thirds; a small golf ball sits below.
   // All coordinates relative to the centre of the canvas.
   const cx = size / 2;

@@ -9,8 +9,7 @@
  * will be added so the QR opens the *installed native app* directly, with a
  * fallback to the store download page.
  *
- * CURRENTLY ENCODED URL:
- *   https://cris-golf-app.vercel.app
+ * ENCODED URL: read from `canonicalSiteUrl` in config/links.ts (single source).
  *
  * HOW TO REGENERATE (e.g. when the custom subdomain app.cris.ac.th is set up):
  *   1. Update `canonicalSiteUrl` in config/links.ts to the new URL.
@@ -29,19 +28,31 @@
  */
 
 import QRCode from "qrcode";
-import { createWriteStream, mkdirSync } from "fs";
+import { createWriteStream, mkdirSync, readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// ─── Canonical URL (sourced from config/links.ts conceptually; hard-coded here
-//     so this script has zero build-tool dependencies and runs with plain Node) ─
-//
-// SUBDOMAIN UPGRADE: when app.cris.ac.th is set up, change this to:
-//   const ENCODED_URL = "https://app.cris.ac.th";
-// Then re-run this script and reprint the QR materials.
-const ENCODED_URL = "https://cris-golf-app.vercel.app";
+// ─── Canonical URL — single-sourced from config/links.ts ──────────────────────
+// config/links.ts is the single source of truth for the canonical URL (§4).
+// Rather than importing TypeScript (which would need a loader and defeat the
+// "plain Node, zero build deps" goal), we read the file and extract the
+// canonicalSiteUrl string literal. To change the URL, edit ONLY config/links.ts
+// then re-run this script — no second place to update.
+const linksSource = readFileSync(
+  join(__dirname, "..", "config", "links.ts"),
+  "utf8"
+);
+const urlMatch = linksSource.match(
+  /canonicalSiteUrl\s*=\s*["']([^"']+)["']/
+);
+if (!urlMatch) {
+  throw new Error(
+    "Could not find `canonicalSiteUrl` in config/links.ts — check the export."
+  );
+}
+const ENCODED_URL = urlMatch[1];
 
 const outDir = join(__dirname, "..", "public", "qr");
 mkdirSync(outDir, { recursive: true });
@@ -91,6 +102,6 @@ QR code generation complete.
   SVG output  : public/qr/cris-golf-qr.svg  (use for print — crisp at any size)
   PNG output  : public/qr/cris-golf-qr.png  (1024x1024 px — fallback)
 
-To update the URL: edit ENCODED_URL in this file (or canonicalSiteUrl in
-config/links.ts), then re-run:  node scripts/generate-qr.mjs
+To update the URL: edit canonicalSiteUrl in config/links.ts, then re-run:
+  node scripts/generate-qr.mjs
 `);

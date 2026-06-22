@@ -151,15 +151,21 @@ self.addEventListener("fetch", (event) => {
           }
           return networkResponse;
         })
-        .catch(() => {
-          // Offline: serve from cache
-          return caches.match(request).then(
-            (cached) =>
-              cached ||
-              // If the exact page isn't cached, serve the locale root
-              // (e.g. /en for /en/gallery when offline after a partial install)
-              caches.match("/en") ||
-              caches.match("/")
+        .catch(async () => {
+          // Offline: serve the exact cached page if we have it.
+          const cached = await caches.match(request);
+          if (cached) return cached;
+
+          // Otherwise fall back to the requested locale's root so an offline
+          // user keeps their own language (e.g. /th for an uncached /th/gallery),
+          // then English, then the bare root redirect. Each match is awaited
+          // individually because caches.match() returns a Promise (which is
+          // always truthy) — a plain `||` chain would never reach later options.
+          const localeRoot = "/" + (url.pathname.split("/")[1] || "en");
+          return (
+            (await caches.match(localeRoot)) ||
+            (await caches.match("/en")) ||
+            (await caches.match("/"))
           );
         })
     );

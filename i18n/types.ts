@@ -104,6 +104,10 @@ export interface Dictionary {
     };
     photoPlaceholder: string;
     videoPlaceholder: string;
+    /** Caption/accessible label for the general program-intro video at the top */
+    programVideoLabel: string;
+    /** Call-to-action under the play button when a real video is available */
+    videoPlay: string;
   };
   /** §8 hand-off disclosure modal shown before opening the admissions URL */
   handOff: {

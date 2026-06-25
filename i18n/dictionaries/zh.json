@@ -86,7 +86,9 @@
       }
     },
     "photoPlaceholder": "课程照片即将发布",
-    "videoPlaceholder": "介绍视频即将发布"
+    "videoPlaceholder": "介绍视频即将发布",
+    "programVideoLabel": "项目介绍",
+    "videoPlay": "点击播放"
   },
   "handOff": {
     "title": "即将离开 CRIS 高尔夫课程应用",

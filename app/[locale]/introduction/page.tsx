@@ -17,8 +17,7 @@
 import { getDictionary } from "@/i18n/getDictionary";
 import { isValidLocale } from "@/i18n/detectLocale";
 import { YoutubeNocookieEmbed } from "@/components/ui/YoutubeNocookieEmbed";
-import { Icon } from "@/components/ui/Icon";
-import { introductionVideos } from "@/config/links";
+import { introductionVideos, programIntroVideoId } from "@/config/links";
 import type { Locale } from "@/i18n/types";
 
 interface IntroductionPageProps {
@@ -65,6 +64,19 @@ export default async function IntroductionPage({ params }: IntroductionPageProps
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
           {d.programOverview}
         </p>
+
+        {/* General program introduction video — click-to-load youtube-nocookie (§8) */}
+        <div className="mt-5">
+          <h2 className="mb-2 text-sm font-semibold text-cris-navy">
+            {d.programVideoLabel}
+          </h2>
+          <YoutubeNocookieEmbed
+            videoId={programIntroVideoId}
+            label={d.programVideoLabel}
+            placeholderText={d.videoPlaceholder}
+            playLabel={d.videoPlay}
+          />
+        </div>
       </header>
 
       {/* Grade-level cards */}
@@ -74,19 +86,6 @@ export default async function IntroductionPage({ params }: IntroductionPageProps
             key={key}
             className={`overflow-hidden rounded-xl border-2 border-l-[6px] border-slate-200 bg-white shadow-sm ${accentColor}`}
           >
-            {/* Photo placeholder slot */}
-            {/* 1E: replace this placeholder div with a real <Image> component once school supplies photos */}
-            <div
-              className="flex h-40 w-full items-center justify-center bg-slate-100"
-              role="img"
-              aria-label={data.photoAlt}
-            >
-              <div className="flex flex-col items-center gap-2 text-slate-400">
-                <Icon name="image" size={32} strokeWidth={1.5} />
-                <span className="text-xs">{d.photoPlaceholder}</span>
-              </div>
-            </div>
-
             <div className="p-4">
               {/* Level label + grade range */}
               <div className="mb-3 flex items-center gap-2">
@@ -108,6 +107,7 @@ export default async function IntroductionPage({ params }: IntroductionPageProps
                   videoId={introductionVideos.find((v) => v.level === key)?.id ?? null}
                   label={data.videoLabel}
                   placeholderText={d.videoPlaceholder}
+                  playLabel={d.videoPlay}
                 />
               </div>
             </div>

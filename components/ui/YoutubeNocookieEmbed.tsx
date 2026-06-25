@@ -36,12 +36,19 @@ interface YoutubeNocookieEmbedProps {
   label: string;
   /** Text shown below the play icon before the user clicks (from dictionary). */
   placeholderText: string;
+  /**
+   * Call-to-action shown under the play button when a video IS available
+   * (e.g. "Tap to play"). Falls back to placeholderText when omitted — which
+   * is only correct for the null/coming-soon state.
+   */
+  playLabel?: string;
 }
 
 export function YoutubeNocookieEmbed({
   videoId,
   label,
   placeholderText,
+  playLabel,
 }: YoutubeNocookieEmbedProps): React.ReactElement {
   const [playing, setPlaying] = useState(false);
 
@@ -92,7 +99,7 @@ export function YoutubeNocookieEmbed({
           <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
             <Icon name="play-solid" size={28} className="ml-1 text-white" />
           </div>
-          <span className="text-xs font-medium text-white/80">{placeholderText}</span>
+          <span className="text-xs font-medium text-white/80">{playLabel ?? placeholderText}</span>
         </div>
       ) : (
         // No video yet: same look as 1D placeholder

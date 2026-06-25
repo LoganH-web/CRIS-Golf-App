@@ -73,24 +73,35 @@ export const requestInfoEmail = "admission@cris.ac.th";
 export const generalContactEmail = "admin@cris.ac.th";
 
 /**
- * Placeholder YouTube video IDs used until the school supplies real video links.
+ * School-supplied YouTube video IDs for the School Introduction screen.
  *
- * To replace with real videos: update the `id` values below. The component
- * reads these at render time — no other changes needed.
- *
- * Convention: use a recognisable PLACEHOLDER_ prefix so stale placeholder IDs
- * are immediately obvious in a code review.
+ * To change a video: update the `id` value below. The component reads these
+ * at render time — no other changes needed.
  *
  * Set `id: null` to hide a video slot entirely until a real ID is available.
+ */
+
+/**
+ * General program introduction video, shown at the top of the Introduction
+ * screen (above the three grade-level cards).
+ * Source: https://www.youtube.com/watch?v=2H3CuxkoVBg
+ */
+export const programIntroVideoId: string | null = "2H3CuxkoVBg";
+
+/**
+ * Per-grade-level introduction videos.
+ *   junior        → https://www.youtube.com/watch?v=EECSVuMC6FQ
+ *   intermediate  → https://www.youtube.com/watch?v=mcIyZ_QAHHE
+ *   advanced      → https://www.youtube.com/watch?v=QyU_EnL30Vg
  */
 export const introductionVideos: {
   level: "junior" | "intermediate" | "advanced";
   id: string | null;
   titleKey: "junior" | "intermediate" | "advanced";
 }[] = [
-  { level: "junior",       id: null, titleKey: "junior"       },
-  { level: "intermediate", id: null, titleKey: "intermediate" },
-  { level: "advanced",     id: null, titleKey: "advanced"     },
+  { level: "junior",       id: "EECSVuMC6FQ", titleKey: "junior"       },
+  { level: "intermediate", id: "mcIyZ_QAHHE", titleKey: "intermediate" },
+  { level: "advanced",     id: "QyU_EnL30Vg", titleKey: "advanced"     },
 ];
 
 export const galleryVideos: {

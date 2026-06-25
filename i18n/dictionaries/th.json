@@ -86,7 +86,9 @@
       }
     },
     "photoPlaceholder": "ภาพถ่ายโปรแกรมเร็วๆ นี้",
-    "videoPlaceholder": "วิดีโอแนะนำเร็วๆ นี้"
+    "videoPlaceholder": "วิดีโอแนะนำเร็วๆ นี้",
+    "programVideoLabel": "แนะนำโปรแกรม",
+    "videoPlay": "แตะเพื่อเล่น"
   },
   "handOff": {
     "title": "กำลังออกจากแอป CRIS Golf Program",

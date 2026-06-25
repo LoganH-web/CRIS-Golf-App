@@ -86,7 +86,9 @@
       }
     },
     "photoPlaceholder": "Program photos coming soon",
-    "videoPlaceholder": "Introduction video coming soon"
+    "videoPlaceholder": "Introduction video coming soon",
+    "programVideoLabel": "Program Introduction",
+    "videoPlay": "Tap to play"
   },
   "handOff": {
     "title": "Leaving the CRIS Golf Program App",

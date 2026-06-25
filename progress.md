@@ -77,6 +77,7 @@ Phase 1 is a fully multilingual (EN / KO / ZH-Hans / TH), installable, offline-c
 
 **Deploy / sign-off track:**
 - ☑ `git push` to deploy latest — live deploy serves `/sw.js` + `/manifest.webmanifest` (HTTP 200)
+- ☑ **Offline bug fixed** — precache was HTML-only (31 routes + icons, 0 `_next` entries). Installed app failed to launch offline because the hashed `/_next/static/chunks/*.js` and `*.css` bundles were never precached, so the page couldn't hydrate. Fixed in `fix(offline): build-generated complete precache via importScripts`. New approach: `scripts/generate-sw-precache.mjs` runs as a postbuild step (`next build && node scripts/generate-sw-precache.mjs`), walks `out/`, and emits `out/precache-manifest.js` with the complete asset list (97 URLs: 25 `_next` assets including all JS/CSS/woff2 chunks, 32 HTML routes, 38 icons/splashes, manifest, favicon). `public/sw.js` now loads this via `importScripts('/precache-manifest.js')` instead of a hand-maintained array. `CACHE_VERSION` is now the Next.js `BUILD_ID` — auto-changes every deploy, no manual bumps.
 - ☐ Lighthouse PWA audit on the live URL
 - ☐ Android "Add to Home Screen" install test
 - ☐ iOS Safari share-sheet install test (real iPhone + Safari only; Simulator and Chrome/Firefox-iOS don't offer "Add to Home Screen")
@@ -84,22 +85,28 @@ Phase 1 is a fully multilingual (EN / KO / ZH-Hans / TH), installable, offline-c
 - ☐ School sign-off on the live PWA
 - ☐ (Optional) map `app.cris.ac.th` subdomain — DNS steps in `DEPLOYMENT.md`
 
-> **⚠️ Service-worker test sequence (why offline "fails" on a first try).**
+> **⚠️ Service-worker test sequence (iOS standalone — one online launch required).**
 > A service worker does **not** control the page on its very first visit — it
 > installs + precaches in the background and only takes control on the *next*
-> load. Turning on Airplane Mode too early means nothing is cached yet → Safari
-> shows *"server stopped responding."* This is a test-ordering artifact, not a
-> bug (SW logic verified in `public/sw.js`; registration in
-> `components/PwaRegister.tsx`). Correct sequence:
-> 1. Airplane Mode **OFF** → open the live URL in Safari.
-> 2. Wait ~10 s (tap through a couple of screens) so all 31 routes + icons precache.
-> 3. Reload **once while still online** → the SW now controls the page.
-> 4. **Now** turn Airplane Mode **ON**.
-> 5. Reload → cached app shell should render. For the real test, Add to Home
->    Screen first and launch the *installed* app offline (not a Safari tab).
-> If it still fails after this: inspect via Mac + Safari Web Inspector
+> load.  Turning on Airplane Mode too early means nothing is cached yet → Safari
+> shows *"server stopped responding."*  This is a known SW lifecycle constraint,
+> **not** a bug in the precache (the incomplete-precache offline bug is separately
+> fixed — see above).  Correct test sequence:
+> 1. Airplane Mode **OFF** → open the live URL in Safari on a real iPhone.
+> 2. Tap through a couple of screens and wait ~10 s for the SW to precache all 97 assets.
+> 3. Add to Home Screen, then launch the installed PWA from the home screen.
+> 4. Navigate a few screens so the new SW controls the page.
+> 5. **Now** turn Airplane Mode **ON**.
+> 6. Kill and relaunch the installed PWA from the home screen → the full app shell should render offline.
+>
+> **Important caveat (always true for iOS standalone):** The installed app must be
+> launched at least once online before offline works.  iOS Safari does not precache
+> during the "Add to Home Screen" gesture itself — the SW installs on the first
+> in-app load.  This is an iOS constraint, not fixable in the SW.
+>
+> If it still fails: inspect via Mac + Safari Web Inspector
 > (iPhone → Settings → Safari → Advanced → Web Inspector), or sanity-check on
-> Android Chrome first to isolate iOS-only quirks.
+> Android Chrome first (Android caches more aggressively) to isolate iOS-only quirks.
 
 **1G follow-up — iOS splash screen:**
 - ☑ Add `apple-touch-startup-image` link tags so the **installed** iOS app shows a
@@ -125,4 +132,4 @@ Phase 1 is a fully multilingual (EN / KO / ZH-Hans / TH), installable, offline-c
 
 ---
 
-*Last updated: 2026-06-22 · Phase 1 code complete; awaiting school content + sign-off. Device testing in progress: SW/offline verified as code-correct (test-sequence documented above); iOS startup-image splash queued as a 1G follow-up.*
+*Last updated: 2026-06-25 · Phase 1 code complete; offline bug fixed (incomplete precache → build-generated full precache); awaiting school content + sign-off. iOS standalone caveat: installed app must be launched once online before offline works — see test sequence above.*

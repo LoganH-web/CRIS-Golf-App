@@ -170,7 +170,13 @@
     "photoPlaceholder": "照片即将发布",
     "videoPlaceholder": "视频即将发布",
     "videoNote": "视频通过YouTube隐私增强型播放器加载，仅在您点击播放时才会连接外部服务器。",
-    "comingSoon": "图库内容正在整理中，敬请期待。"
+    "comingSoon": "图库内容正在整理中，敬请期待。",
+    "categories": {
+      "junior": "初级课程",
+      "intermediate": "中级课程",
+      "advanced": "高级课程",
+      "general": "高尔夫课堂"
+    }
   },
   "faq": {
     "heading": "常见问题",

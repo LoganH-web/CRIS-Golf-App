@@ -170,7 +170,13 @@
     "photoPlaceholder": "Photo coming soon",
     "videoPlaceholder": "Video coming soon",
     "videoNote": "Videos load from YouTube's privacy-enhanced player and only contact external servers when you press play.",
-    "comingSoon": "Gallery content is being curated. Check back soon."
+    "comingSoon": "Gallery content is being curated. Check back soon.",
+    "categories": {
+      "junior": "Junior Program",
+      "intermediate": "Intermediate Program",
+      "advanced": "Advanced Program",
+      "general": "Golf Classes"
+    }
   },
   "faq": {
     "heading": "Frequently Asked Questions",

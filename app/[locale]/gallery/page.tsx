@@ -16,11 +16,12 @@
  * No tracking or analytics (§8). No autoplay.
  */
 
+import Image from "next/image";
 import { getDictionary } from "@/i18n/getDictionary";
 import { isValidLocale } from "@/i18n/detectLocale";
 import { YoutubeNocookieEmbed } from "@/components/ui/YoutubeNocookieEmbed";
 import { Icon } from "@/components/ui/Icon";
-import { galleryVideos } from "@/config/links";
+import { galleryVideos, galleryPhotos } from "@/config/links";
 import type { Locale } from "@/i18n/types";
 
 interface GalleryPageProps {
@@ -36,6 +37,17 @@ export default async function GalleryPage({ params }: GalleryPageProps): Promise
   const dict = getDictionary(resolvedLocale);
   const d = dict.gallery;
 
+  const hasPhotos = galleryPhotos.length > 0;
+
+  // Group photos by category, in display order, dropping empty groups.
+  const photoGroups = (["junior", "intermediate", "advanced", "general"] as const)
+    .map((category) => ({
+      category,
+      label: d.categories[category],
+      photos: galleryPhotos.filter((p) => p.category === category),
+    }))
+    .filter((group) => group.photos.length > 0);
+
   return (
     <main className="flex flex-col px-4 py-8 sm:px-6">
       {/* Page header */}
@@ -48,39 +60,67 @@ export default async function GalleryPage({ params }: GalleryPageProps): Promise
         </p>
       </header>
 
-      {/* Coming-soon notice */}
-      <div className="mb-6 rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-center">
-        <p className="text-sm text-slate-500">{d.comingSoon}</p>
-      </div>
+      {/* Coming-soon notice — only while no photos are configured yet */}
+      {!hasPhotos && (
+        <div className="mb-6 rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 text-center">
+          <p className="text-sm text-slate-500">{d.comingSoon}</p>
+        </div>
+      )}
 
       {/* Photos section */}
       <section aria-labelledby="photos-heading" className="mb-8">
         <h2
           id="photos-heading"
-          className="mb-3 text-base font-semibold text-slate-800"
+          className="mb-4 text-base font-semibold text-slate-800"
         >
           {d.photosHeading}
         </h2>
 
-        {/*
-         * 1E: replace each placeholder tile below with a real <Image> component.
-         * Grid structure and aspect ratios are intentionally pre-defined here.
-         */}
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-          {Array.from({ length: PHOTO_PLACEHOLDER_COUNT }).map((_, i) => (
-            <div
-              key={i}
-              className="flex aspect-square items-center justify-center rounded-lg bg-slate-100"
-              role="img"
-              aria-label={d.photoPlaceholder}
-            >
-              <div className="flex flex-col items-center gap-1.5 text-slate-300">
-                <Icon name="image" size={24} strokeWidth={1.5} />
-                <span className="text-[10px]">{d.photoPlaceholder}</span>
+        {hasPhotos ? (
+          // Real curated photos (AVIF/JPG/PNG), grouped by program level.
+          <div className="flex flex-col gap-6">
+            {photoGroups.map((group) => (
+              <div key={group.category}>
+                <h3 className="mb-2 text-sm font-semibold text-cris-navy">
+                  {group.label}
+                </h3>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                  {group.photos.map((photo) => (
+                    <div
+                      key={photo.src}
+                      className="relative aspect-square overflow-hidden rounded-lg bg-slate-100"
+                    >
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes="(min-width: 640px) 33vw, 50vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          // No photos configured yet — show placeholder tiles.
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+            {Array.from({ length: PHOTO_PLACEHOLDER_COUNT }).map((_, i) => (
+              <div
+                key={i}
+                className="flex aspect-square items-center justify-center rounded-lg bg-slate-100"
+                role="img"
+                aria-label={d.photoPlaceholder}
+              >
+                <div className="flex flex-col items-center gap-1.5 text-slate-300">
+                  <Icon name="image" size={24} strokeWidth={1.5} />
+                  <span className="text-[10px]">{d.photoPlaceholder}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Videos section */}

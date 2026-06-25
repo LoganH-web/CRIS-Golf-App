@@ -161,6 +161,13 @@ export interface Dictionary {
     videoPlaceholder: string;
     videoNote: string;
     comingSoon: string;
+    /** Section labels for the photo groups */
+    categories: {
+      junior: string;
+      intermediate: string;
+      advanced: string;
+      general: string;
+    };
   };
   faq: {
     heading: string;

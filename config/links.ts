@@ -111,3 +111,55 @@ export const galleryVideos: {
   { id: null, index: 0 },
   { id: null, index: 1 },
 ];
+
+/**
+ * Curated gallery photos, grouped by program level (+ a general "golf classes"
+ * set). The Gallery page renders one labelled section per category, in the
+ * order: junior → intermediate → advanced → general.
+ *
+ * To add photos:
+ *   1. Drop the image files into `public/images/gallery/` (AVIF preferred —
+ *      smallest files; JPG/PNG/WebP also work). Use clean, URL-safe filenames
+ *      (no spaces, parentheses, or ~) so the paths and precache stay valid.
+ *   2. Add an entry below: `src` = public path, `alt` = descriptive English
+ *      alt text (media consent confirmed — §0 Gate C), `category` = the section.
+ *
+ * When this array is empty, the Gallery page falls back to placeholder tiles.
+ * Photos are NOT precached by the service worker (to keep the offline app
+ * shell light); they are cached on first online view via the SW's cache-first
+ * handler, so they remain available offline after being seen once.
+ */
+export const galleryPhotos: {
+  src: string;
+  alt: string;
+  category: "junior" | "intermediate" | "advanced" | "general";
+}[] = [
+  // Junior program (Grades 4–5)
+  { src: "/images/gallery/junior2.avif", alt: "Junior program students during a golf session", category: "junior" },
+  { src: "/images/gallery/junior3.avif", alt: "Junior program students practicing golf", category: "junior" },
+  { src: "/images/gallery/junior4.avif", alt: "Junior program students on the course", category: "junior" },
+
+  // Intermediate program (Grades 6–8)
+  { src: "/images/gallery/Inter1.avif", alt: "Intermediate program students during a golf session", category: "intermediate" },
+  { src: "/images/gallery/inter2.avif", alt: "Intermediate program students practicing golf", category: "intermediate" },
+  { src: "/images/gallery/inter3.avif", alt: "Intermediate program students on the course", category: "intermediate" },
+  { src: "/images/gallery/inter4.avif", alt: "Intermediate program students training", category: "intermediate" },
+
+  // Advanced program (Grades 9–12)
+  { src: "/images/gallery/adv1.avif", alt: "Advanced program students during a golf session", category: "advanced" },
+  { src: "/images/gallery/adv2.avif", alt: "Advanced program students practicing golf", category: "advanced" },
+  { src: "/images/gallery/adv3.avif", alt: "Advanced program students on the course", category: "advanced" },
+  { src: "/images/gallery/adv4.avif", alt: "Advanced program students training", category: "advanced" },
+  { src: "/images/gallery/adv5.avif", alt: "Advanced program (Grades 9–12) students", category: "advanced" },
+
+  // General golf classes
+  { src: "/images/gallery/golf-class-1.avif", alt: "CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-2.avif", alt: "CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-3.avif", alt: "CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-4.avif", alt: "CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-5.avif", alt: "CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-6.avif", alt: "CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-7.avif", alt: "CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-8.avif", alt: "CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-9.avif", alt: "CRIS golf class", category: "general" },
+];

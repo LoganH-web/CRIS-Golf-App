@@ -5,10 +5,11 @@
  * Displays app name, tagline, welcome line, and entry cards linking to the
  * other 5 screens. All strings come from the dictionary (§6 rule).
  *
- * Subphase 1D: real structure and copy. Logo image replaces the CG mark in 1F.
+ * Hero shows the CRIS Golf eagle crest (public/brand/logo.png).
  */
 
 import Link from "next/link";
+import Image from "next/image";
 import { getDictionary } from "@/i18n/getDictionary";
 import { isValidLocale } from "@/i18n/detectLocale";
 import { Icon } from "@/components/ui/Icon";
@@ -67,9 +68,16 @@ export default async function HomePage({ params }: HomePageProps): Promise<React
     <main className="flex flex-col px-4 py-8 sm:px-6">
       {/* Hero / brand mark */}
       <section className="mb-8 flex flex-col items-center text-center">
-        {/* Logo placeholder — replaced with real logo asset in 1F */}
-        <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-cris-navy text-white shadow-md">
-          <span className="text-2xl font-bold" aria-hidden="true">CG</span>
+        {/* CRIS Golf eagle crest */}
+        <div className="mb-5 h-20 w-20 overflow-hidden rounded-full shadow-md">
+          <Image
+            src="/brand/logo.png"
+            alt={dict.header.appName}
+            width={80}
+            height={80}
+            className="h-full w-full object-cover"
+            priority
+          />
         </div>
 
         <h1 className="text-3xl font-bold tracking-tight text-cris-navy sm:text-4xl">

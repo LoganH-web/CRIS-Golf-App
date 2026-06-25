@@ -1,22 +1,30 @@
 /**
- * generate-icons.mjs — subphase 1F placeholder icon generator
+ * generate-icons.mjs — PWA icon generator (real CRIS Golf logo)
  *
- * Creates the CRIS Golf Program PWA icon set from an inline SVG.
- * Run once:  node scripts/generate-icons.mjs
+ * Creates the CRIS Golf Program PWA icon set from the school-approved logo.
+ * Run:  node scripts/generate-icons.mjs
  *
- * // 1G/asset: replace the SVG source below with the real CRIS Golf logo
- *             provided by the school, then re-run this script to regenerate
- *             all icon sizes.  Delete this script comment when the real logo
- *             is in place.
+ * Sources (assets/brand/, NOT served — build inputs only):
+ *   alternativeB.png — minimalist gold "wing + golf ball" mark on a navy
+ *                      rounded square (white surround). Used for the APP ICONS
+ *                      because it stays legible down to ~48px.
+ *   primary.png      — full eagle crest on full-bleed navy. Used for the larger
+ *                      in-app brand logo (home hero) and the iOS splash
+ *                      (see generate-splash.mjs).
  *
  * Output:
- *   public/icons/icon-192.png            — standard 192×192 (manifest "any")
- *   public/icons/icon-512.png            — standard 512×512 (manifest "any")
- *   public/icons/icon-512-maskable.png   — 512×512 with safe-zone padding (manifest "maskable")
- *   public/icons/apple-touch-icon.png    — 180×180 for iOS "Add to Home Screen"
+ *   public/icons/icon-192.png            — 192×192 (manifest "any")
+ *   public/icons/icon-512.png            — 512×512 (manifest "any")
+ *   public/icons/icon-512-maskable.png   — 512×512 with safe-zone padding (maskable)
+ *   public/icons/apple-touch-icon.png    — 180×180 (iOS "Add to Home Screen")
+ *   public/brand/logo.png                — 256×256 crest for the in-app home hero
  *
- * Design: sky-900 (#0c4a6e) background, white "CG" monogram + golf-ball dot.
- * Deliberately a clean professional placeholder — the real logo swaps in at 1G.
+ * How alternativeB is processed: the source has a white margin around a navy
+ * rounded square (the central 616×616 of the 1024 canvas). We mask out
+ * everything outside that rounded square so the white (and the rounded corners)
+ * become transparent, then composite the mark onto a full-bleed navy canvas
+ * whose colour matches the mark's own navy (#063e5c) — giving a seamless,
+ * full-bleed square icon that the OS can mask/round itself.
  */
 
 import sharp from "sharp";
@@ -25,142 +33,87 @@ import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const outDir = join(__dirname, "..", "public", "icons");
+const brandDir = join(__dirname, "..", "assets", "brand");
+const iconsDir = join(__dirname, "..", "public", "icons");
+const brandOutDir = join(__dirname, "..", "public", "brand");
 
-await mkdir(outDir, { recursive: true });
+await mkdir(iconsDir, { recursive: true });
+await mkdir(brandOutDir, { recursive: true });
 
-/**
- * Build the SVG source at a given canvas size.
- * @param {number} size        — total canvas size in px
- * @param {number} padFraction — fraction of size used as padding on each side
- *                              (use 0.1 for standard, 0.2 for maskable safe zone)
- */
-function buildSvg(size, padFraction = 0.1) {
-  const pad = Math.round(size * padFraction);
-  const inner = size - pad * 2; // usable area after padding
+// Navy that matches the alternativeB mark's own background, so the composited
+// canvas is seamless. (Sampled from the source; close to BRAND_NAVY #0c4a6e.)
+const MARK_NAVY = "#063e5c";
 
-  // The letter "CG" sits in the upper two-thirds; a small golf ball sits below.
-  // All coordinates relative to the centre of the canvas.
-  const cx = size / 2;
-  const cy = size / 2;
-
-  // Font metrics — approximate em-square
-  const fontSize = Math.round(inner * 0.42);
-  const letterSpacing = Math.round(fontSize * 0.04);
-
-  // Golf-ball circle — sits below the monogram
-  const ballRadius = Math.round(inner * 0.08);
-  const ballY = cy + Math.round(inner * 0.33);
-
-  // Dimple radius (decorative detail — only visible at 512; omit at 192/180)
-  const dimpleR = Math.max(1, Math.round(ballRadius * 0.18));
-  const dimpleOffset = Math.round(ballRadius * 0.38);
-
-  // Text baseline — centred slightly above the golf ball
-  const textY = cy + Math.round(inner * 0.08);
-
-  // Tagline text — tiny, only legible at 512
-  const tagFontSize = Math.max(6, Math.round(inner * 0.055));
-  const tagY = cy - Math.round(inner * 0.34);
-
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
-  <!-- Background -->
-  <rect width="${size}" height="${size}" fill="#0c4a6e"/>
-
-  <!-- Subtle radial vignette for depth -->
-  <defs>
-    <radialGradient id="vignette" cx="50%" cy="45%" r="55%">
-      <stop offset="0%" stop-color="#1e6a9a" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#0c4a6e" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="${size}" height="${size}" fill="url(#vignette)"/>
-
-  <!-- Thin white rule above monogram -->
-  <rect x="${cx - inner * 0.28}" y="${cy - inner * 0.44}" width="${inner * 0.56}" height="${Math.max(1, Math.round(size * 0.006))}" rx="${Math.max(1, Math.round(size * 0.003))}" fill="rgba(255,255,255,0.4)"/>
-
-  <!-- "CRIS GOLF" tagline — tiny, gives context at large sizes -->
-  <text
-    x="${cx}"
-    y="${tagY}"
-    text-anchor="middle"
-    dominant-baseline="auto"
-    font-family="'Arial', 'Helvetica Neue', sans-serif"
-    font-size="${tagFontSize}"
-    font-weight="600"
-    letter-spacing="${Math.round(tagFontSize * 0.18)}"
-    fill="rgba(255,255,255,0.6)"
-  >CRIS GOLF</text>
-
-  <!-- "CG" monogram — primary brand mark -->
-  <text
-    x="${cx}"
-    y="${textY}"
-    text-anchor="middle"
-    dominant-baseline="middle"
-    font-family="'Arial', 'Helvetica Neue', sans-serif"
-    font-size="${fontSize}"
-    font-weight="700"
-    letter-spacing="${letterSpacing}"
-    fill="#ffffff"
-  >CG</text>
-
-  <!-- Golf ball -->
-  <circle cx="${cx}" cy="${ballY}" r="${ballRadius}" fill="#ffffff"/>
-  <!-- Dimples (decorative, only meaningful at 512) -->
-  <circle cx="${cx - dimpleOffset}" cy="${ballY - dimpleOffset}" r="${dimpleR}" fill="rgba(0,0,0,0.12)"/>
-  <circle cx="${cx + dimpleOffset}" cy="${ballY - dimpleOffset}" r="${dimpleR}" fill="rgba(0,0,0,0.12)"/>
-  <circle cx="${cx}"              cy="${ballY + dimpleOffset}" r="${dimpleR}" fill="rgba(0,0,0,0.12)"/>
-
-  <!-- Thin white rule below golf ball -->
-  <rect x="${cx - inner * 0.28}" y="${ballY + ballRadius + Math.round(size * 0.018)}" width="${inner * 0.56}" height="${Math.max(1, Math.round(size * 0.006))}" rx="${Math.max(1, Math.round(size * 0.003))}" fill="rgba(255,255,255,0.4)"/>
-</svg>`;
-
-  return svg;
-}
+// Geometry of the navy rounded square inside alternativeB.png (1024×1024):
+// it occupies the central 616×616 region. A generous corner radius ensures all
+// white is masked away (over-rounding just reveals more navy — harmless).
+const SRC = join(brandDir, "alternativeB.png");
+const SQUARE = { left: 204, top: 204, size: 616, radius: 140 };
 
 /**
- * Generate a PNG from SVG source at the given output size.
+ * Return the gold mark on a transparent background (white surround + rounded
+ * corners removed), at its native 616×616 size.
  */
-async function generatePng(svgSource, outputPath, size) {
-  await sharp(Buffer.from(svgSource))
-    .resize(size, size)
+async function extractMark() {
+  const square = await sharp(SRC)
+    .extract({ left: SQUARE.left, top: SQUARE.top, width: SQUARE.size, height: SQUARE.size })
     .png()
-    .toFile(outputPath);
-  console.log(`  created: ${outputPath} (${size}x${size})`);
+    .toBuffer();
+
+  const mask = Buffer.from(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${SQUARE.size}" height="${SQUARE.size}">
+       <rect width="${SQUARE.size}" height="${SQUARE.size}" rx="${SQUARE.radius}" ry="${SQUARE.radius}" fill="#fff"/>
+     </svg>`
+  );
+
+  // dest-in: keep the mark only where the rounded-rect mask is opaque.
+  return sharp(square)
+    .composite([{ input: mask, blend: "dest-in" }])
+    .png()
+    .toBuffer();
 }
 
-console.log("Generating CRIS Golf Program placeholder PWA icons...");
-console.log("// 1G/asset: replace SVG source with real CRIS Golf logo before launch.");
+/**
+ * Build a full-bleed navy icon: the mark, scaled to `markFraction` of the
+ * canvas, centered on a MARK_NAVY background, output at `outSize`.
+ */
+async function buildIcon(mark, outSize, markFraction, outPath) {
+  // Build directly at outSize: the mark is resized to markPx (<= outSize) and
+  // composited onto a same-size canvas. (Compositing must never be larger than
+  // the base — and sharp resizes the base before compositing, so we avoid a
+  // post-composite resize entirely.)
+  const markPx = Math.round(outSize * markFraction);
+  const resized = await sharp(mark).resize(markPx, markPx).toBuffer();
 
-// Standard icon — 192x192
-await generatePng(
-  buildSvg(512, 0.1),
-  join(outDir, "icon-192.png"),
-  192
-);
+  await sharp({
+    create: { width: outSize, height: outSize, channels: 4, background: MARK_NAVY },
+  })
+    .composite([{ input: resized, gravity: "center" }])
+    .png()
+    .toFile(outPath);
 
-// Standard icon — 512x512
-await generatePng(
-  buildSvg(512, 0.1),
-  join(outDir, "icon-512.png"),
-  512
-);
+  console.log(`  created: ${outPath} (${outSize}x${outSize})`);
+}
 
-// Maskable icon — 512x512 with extra safe-zone padding (20% each side)
-// Android adaptive icons crop to a circle/squircle; the safe zone ensures
-// the brand mark is never clipped.
-await generatePng(
-  buildSvg(512, 0.20),
-  join(outDir, "icon-512-maskable.png"),
-  512
-);
+console.log("Generating CRIS Golf Program PWA icons from the real logo...");
 
-// Apple touch icon — 180x180
-await generatePng(
-  buildSvg(512, 0.1),
-  join(outDir, "apple-touch-icon.png"),
-  180
-);
+const mark = await extractMark();
 
-console.log("Done. Icons written to public/icons/");
+// Standard icons: mark fills ~86% of the frame (prominent, full-bleed navy).
+await buildIcon(mark, 192, 0.86, join(iconsDir, "icon-192.png"));
+await buildIcon(mark, 512, 0.86, join(iconsDir, "icon-512.png"));
+await buildIcon(mark, 180, 0.86, join(iconsDir, "apple-touch-icon.png"));
+
+// Maskable icon: mark fits within the safe zone (~60%) so adaptive masks
+// (circle/squircle) never clip it.
+await buildIcon(mark, 512, 0.6, join(iconsDir, "icon-512-maskable.png"));
+
+// In-app brand logo for the home hero — the full eagle crest (primary.png),
+// already full-bleed navy and square. 256px is enough for an 80px hero slot @3×.
+await sharp(join(brandDir, "primary.png"))
+  .resize(256, 256)
+  .png()
+  .toFile(join(brandOutDir, "logo.png"));
+console.log(`  created: ${join(brandOutDir, "logo.png")} (256x256)`);
+
+console.log("Done. Icons → public/icons/, in-app logo → public/brand/logo.png");

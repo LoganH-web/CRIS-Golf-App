@@ -132,6 +132,13 @@ function shouldExclude(absPath) {
   if (rel === "404.html" || rel === "_not-found.html") return true;
   if (rel.startsWith("_not-found/")) return true;
 
+  // Gallery photos — deliberately NOT precached, to keep the offline app shell
+  // light (see config/links.ts galleryPhotos). The SW's runtime cache-first
+  // handler caches each photo after its first online view, so the gallery still
+  // works offline once browsed. (Brand/icon/splash assets are NOT excluded —
+  // those belong to the shell and must be available on first offline launch.)
+  if (rel.startsWith("images/gallery/")) return true;
+
   return false;
 }
 

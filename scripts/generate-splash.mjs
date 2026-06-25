@@ -8,22 +8,19 @@
  *
  * Run once:  node scripts/generate-splash.mjs
  *
- * // 1G/asset: this script uses the same SVG source as generate-icons.mjs
- *             (the "CG" placeholder monogram on BRAND_NAVY background).
- *             When the real CRIS Golf logo is delivered, update buildSvg()
- *             in BOTH generate-icons.mjs AND this file, then re-run both
- *             scripts to regenerate all icon + splash assets.  The brand mark
- *             logic is intentionally duplicated (not shared) so each script
- *             remains independently runnable.
+ * Source: assets/brand/primary.png — the full CRIS Golf eagle crest on
+ *         full-bleed navy. Composited centered on a BRAND_NAVY canvas at each
+ *         device resolution. (To change the splash art, replace primary.png
+ *         and re-run.)
  *
  * Output directory: public/icons/splash/
  *
  * Design:
  *   - Background: BRAND_NAVY (#0c4a6e) — matches the app icon and AppHeader.
- *   - Logo: centred "CG" monogram, sized proportionally to the shortest edge.
+ *   - Logo: centred eagle crest, sized to ~50% of the shortest edge.
  *   - The `background_color` in app/manifest.ts is #ffffff (manifest convention),
- *     but for the splash iOS renders the *icon* background, so we use the icon
- *     background colour (#0c4a6e) rather than white to avoid a jarring white flash.
+ *     but for the splash iOS renders the *icon* background, so we use the navy
+ *     background (#0c4a6e) rather than white to avoid a jarring white flash.
  *
  * Media query format (required by iOS Safari):
  *   (device-width: Wpx) and (device-height: Hpx)
@@ -41,6 +38,7 @@ import { dirname, join } from "path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const outDir = join(__dirname, "..", "public", "icons", "splash");
+const SRC = join(__dirname, "..", "assets", "brand", "primary.png");
 
 await mkdir(outDir, { recursive: true });
 
@@ -109,114 +107,57 @@ const DEVICES = [
 ];
 
 /**
- * Build an SVG splash canvas at the given pixel dimensions.
- *
- * // 1G/asset: When the real CRIS logo arrives, replace the inline SVG here.
- *             Keep the outer canvas size parameters — only the inner artwork changes.
- *
- * @param {number} pxW  — canvas pixel width
- * @param {number} pxH  — canvas pixel height
- * @returns {string} SVG source
+ * The crest art (max gold radius ~389 of the 512 half-canvas) carries a navy
+ * vignette background. Compositing that square straight onto the navy canvas
+ * leaves a faint square seam. So we feather a circular alpha mask just outside
+ * the artwork (~r=410): the crest's navy fades to transparent and blends
+ * invisibly into the canvas navy, leaving only the gold crest visible.
+ * Built once and reused for every device.
  */
-function buildSplashSvg(pxW, pxH) {
-  const cx = pxW / 2;
-  const cy = pxH / 2;
-
-  // Logo sizing: base it on the shorter edge so it fits both portrait/landscape.
-  const shorter = Math.min(pxW, pxH);
-  const logoSize = Math.round(shorter * 0.28);   // logo occupies 28% of shorter edge
-  const fontSize = Math.round(logoSize * 0.42);
-  const letterSpacing = Math.round(fontSize * 0.04);
-
-  // Golf ball below the monogram
-  const ballRadius = Math.round(logoSize * 0.08);
-  const ballY = cy + Math.round(logoSize * 0.33);
-
-  // Dimples
-  const dimpleR = Math.max(1, Math.round(ballRadius * 0.18));
-  const dimpleOffset = Math.round(ballRadius * 0.38);
-
-  // Monogram baseline — centred slightly above golf ball
-  const textY = cy + Math.round(logoSize * 0.08);
-
-  // Tagline
-  const tagFontSize = Math.max(10, Math.round(logoSize * 0.12));
-  const tagY = cy - Math.round(logoSize * 0.46);
-
-  // Horizontal rules
-  const ruleW = logoSize * 0.56;
-  const ruleH = Math.max(1, Math.round(shorter * 0.003));
-  const ruleRx = Math.max(1, Math.round(shorter * 0.0015));
-  const ruleTopY = cy - Math.round(logoSize * 0.44);
-  const ruleBotY = ballY + ballRadius + Math.round(shorter * 0.009);
-
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${pxW}" height="${pxH}" viewBox="0 0 ${pxW} ${pxH}">
-  <!-- Full-bleed background — matches BRAND_NAVY (#0c4a6e) from config/theme.ts -->
-  <rect width="${pxW}" height="${pxH}" fill="${BRAND_NAVY}"/>
-
-  <!-- Subtle radial vignette for depth (matches generate-icons.mjs) -->
-  <defs>
-    <radialGradient id="vignette" cx="50%" cy="45%" r="55%">
-      <stop offset="0%" stop-color="#1e6a9a" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="${BRAND_NAVY}" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="${pxW}" height="${pxH}" fill="url(#vignette)"/>
-
-  <!-- Thin white rule above monogram -->
-  <rect x="${cx - ruleW / 2}" y="${ruleTopY}" width="${ruleW}" height="${ruleH}" rx="${ruleRx}" fill="rgba(255,255,255,0.4)"/>
-
-  <!-- "CRIS GOLF" tagline -->
-  <text
-    x="${cx}"
-    y="${tagY}"
-    text-anchor="middle"
-    dominant-baseline="auto"
-    font-family="'Arial', 'Helvetica Neue', sans-serif"
-    font-size="${tagFontSize}"
-    font-weight="600"
-    letter-spacing="${Math.round(tagFontSize * 0.18)}"
-    fill="rgba(255,255,255,0.6)"
-  >CRIS GOLF</text>
-
-  <!-- "CG" monogram — primary brand mark -->
-  <text
-    x="${cx}"
-    y="${textY}"
-    text-anchor="middle"
-    dominant-baseline="middle"
-    font-family="'Arial', 'Helvetica Neue', sans-serif"
-    font-size="${fontSize}"
-    font-weight="700"
-    letter-spacing="${letterSpacing}"
-    fill="#ffffff"
-  >CG</text>
-
-  <!-- Golf ball -->
-  <circle cx="${cx}" cy="${ballY}" r="${ballRadius}" fill="#ffffff"/>
-  <!-- Dimples -->
-  <circle cx="${cx - dimpleOffset}" cy="${ballY - dimpleOffset}" r="${dimpleR}" fill="rgba(0,0,0,0.12)"/>
-  <circle cx="${cx + dimpleOffset}" cy="${ballY - dimpleOffset}" r="${dimpleR}" fill="rgba(0,0,0,0.12)"/>
-  <circle cx="${cx}"              cy="${ballY + dimpleOffset}" r="${dimpleR}" fill="rgba(0,0,0,0.12)"/>
-
-  <!-- Thin white rule below golf ball -->
-  <rect x="${cx - ruleW / 2}" y="${ruleBotY}" width="${ruleW}" height="${ruleH}" rx="${ruleRx}" fill="rgba(255,255,255,0.4)"/>
-</svg>`;
+async function buildCrest() {
+  const src = await sharp(SRC).ensureAlpha().png().toBuffer();
+  const mask = Buffer.from(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024">
+       <defs>
+         <radialGradient id="g" cx="50%" cy="50%" r="50%">
+           <stop offset="0" stop-color="#fff"/>
+           <stop offset="0.78" stop-color="#fff"/>
+           <stop offset="0.83" stop-color="#fff" stop-opacity="0"/>
+         </radialGradient>
+       </defs>
+       <rect width="1024" height="1024" fill="url(#g)"/>
+     </svg>`
+  );
+  return sharp(src).composite([{ input: mask, blend: "dest-in" }]).png().toBuffer();
 }
 
 /**
- * Render SVG → PNG at exact pixel dimensions.
+ * Render a splash PNG: the feathered eagle crest centered on a BRAND_NAVY
+ * canvas at the exact device pixel dimensions. The crest is sized to ~50% of
+ * the shorter edge so it sits comfortably in both portrait and landscape.
+ *
+ * @param {Buffer} crestSrc  — pre-masked crest (from buildCrest)
+ * @param {string} outputPath
+ * @param {number} pxW  — canvas pixel width
+ * @param {number} pxH  — canvas pixel height
  */
-async function generatePng(svgSource, outputPath, pxW, pxH) {
-  await sharp(Buffer.from(svgSource))
-    .resize(pxW, pxH)
+async function generateSplash(crestSrc, outputPath, pxW, pxH) {
+  const crestPx = Math.round(Math.min(pxW, pxH) * 0.5);
+  const crest = await sharp(crestSrc).resize(crestPx, crestPx).toBuffer();
+
+  await sharp({
+    create: { width: pxW, height: pxH, channels: 4, background: BRAND_NAVY },
+  })
+    .composite([{ input: crest, gravity: "center" }])
     .png()
     .toFile(outputPath);
+
   console.log(`  created: ${outputPath} (${pxW}x${pxH})`);
 }
 
-console.log("Generating CRIS Golf Program iOS startup images...");
-console.log("// 1G/asset: replace buildSplashSvg() with real CRIS logo artwork when delivered.");
+console.log("Generating CRIS Golf Program iOS startup images from the real logo...");
+
+const CREST = await buildCrest();
 
 // Collect generated metadata for use in layout.tsx link tags
 const generated = [];
@@ -228,7 +169,7 @@ for (const device of DEVICES) {
   const pW = cssW * dpr;
   const pH = cssH * dpr;
   const portraitFile = `splash-${label}-portrait.png`;
-  await generatePng(buildSplashSvg(pW, pH), join(outDir, portraitFile), pW, pH);
+  await generateSplash(CREST, join(outDir, portraitFile), pW, pH);
   generated.push({
     href: `/icons/splash/${portraitFile}`,
     media: `(device-width: ${cssW}px) and (device-height: ${cssH}px) and (-webkit-device-pixel-ratio: ${dpr}) and (orientation: portrait)`,
@@ -238,7 +179,7 @@ for (const device of DEVICES) {
   const lW = cssH * dpr;
   const lH = cssW * dpr;
   const landscapeFile = `splash-${label}-landscape.png`;
-  await generatePng(buildSplashSvg(lW, lH), join(outDir, landscapeFile), lW, lH);
+  await generateSplash(CREST, join(outDir, landscapeFile), lW, lH);
   generated.push({
     href: `/icons/splash/${landscapeFile}`,
     media: `(device-width: ${cssH}px) and (device-height: ${cssW}px) and (-webkit-device-pixel-ratio: ${dpr}) and (orientation: landscape)`,

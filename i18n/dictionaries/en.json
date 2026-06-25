@@ -171,6 +171,11 @@
     "videoPlaceholder": "Video coming soon",
     "videoNote": "Videos load from YouTube's privacy-enhanced player and only contact external servers when you press play.",
     "comingSoon": "Gallery content is being curated. Check back soon.",
+    "videoPlay": "Tap to play",
+    "videoTitles": {
+      "cris": "About the CRIS Golf Program",
+      "happyCity": "About Happy City Golf Resort"
+    },
     "categories": {
       "junior": "Junior Program",
       "intermediate": "Intermediate Program",

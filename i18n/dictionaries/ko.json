@@ -171,6 +171,11 @@
     "videoPlaceholder": "동영상 준비 중",
     "videoNote": "동영상은 YouTube의 개인정보 보호 강화 플레이어에서 로드되며 재생 버튼을 누를 때만 외부 서버에 연결됩니다.",
     "comingSoon": "갤러리 콘텐츠를 준비 중입니다. 곧 업데이트됩니다.",
+    "videoPlay": "탭하여 재생",
+    "videoTitles": {
+      "cris": "CRIS 골프 프로그램 소개",
+      "happyCity": "해피 시티 골프 리조트 소개"
+    },
     "categories": {
       "junior": "주니어 프로그램",
       "intermediate": "인터미디에이트 프로그램",

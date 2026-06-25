@@ -171,6 +171,11 @@
     "videoPlaceholder": "视频即将发布",
     "videoNote": "视频通过YouTube隐私增强型播放器加载，仅在您点击播放时才会连接外部服务器。",
     "comingSoon": "图库内容正在整理中，敬请期待。",
+    "videoPlay": "点击播放",
+    "videoTitles": {
+      "cris": "CRIS 高尔夫项目介绍",
+      "happyCity": "Happy City 高尔夫度假村介绍"
+    },
     "categories": {
       "junior": "初级课程",
       "intermediate": "中级课程",

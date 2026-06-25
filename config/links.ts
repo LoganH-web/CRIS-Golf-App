@@ -104,12 +104,21 @@ export const introductionVideos: {
   { level: "advanced",     id: "QyU_EnL30Vg", titleKey: "advanced"     },
 ];
 
+/**
+ * Gallery videos (click-to-load youtube-nocookie embeds, §8).
+ *   index 0 → CRIS Golf Program informative video
+ *            (https://www.youtube.com/watch?v=qiGw8xFid4Y)
+ *   index 1 → Happy City Golf Resort intro — the course where the program runs
+ *            (https://www.youtube.com/watch?v=briCLWge9Kk)
+ * titleKey selects the localized caption from dict.gallery.videoTitles.
+ */
 export const galleryVideos: {
   id: string | null;
   index: number;
+  titleKey: "cris" | "happyCity";
 }[] = [
-  { id: null, index: 0 },
-  { id: null, index: 1 },
+  { id: "qiGw8xFid4Y", index: 0, titleKey: "cris"      },
+  { id: "briCLWge9Kk", index: 1, titleKey: "happyCity" },
 ];
 
 /**

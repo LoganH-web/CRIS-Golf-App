@@ -137,14 +137,19 @@ export default async function GalleryPage({ params }: GalleryPageProps): Promise
 
         {/* Click-to-load youtube-nocookie.com embeds (§8 privacy requirement) */}
         {/* Zero third-party contact until the user explicitly presses play */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5">
           {galleryVideos.map((video) => (
-            <YoutubeNocookieEmbed
-              key={video.index}
-              videoId={video.id}
-              label={d.videoPlaceholder}
-              placeholderText={d.videoPlaceholder}
-            />
+            <div key={video.index}>
+              <h3 className="mb-2 text-sm font-semibold text-cris-navy">
+                {d.videoTitles[video.titleKey]}
+              </h3>
+              <YoutubeNocookieEmbed
+                videoId={video.id}
+                label={d.videoTitles[video.titleKey]}
+                placeholderText={d.videoPlaceholder}
+                playLabel={d.videoPlay}
+              />
+            </div>
           ))}
         </div>
       </section>

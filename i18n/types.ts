@@ -161,6 +161,13 @@ export interface Dictionary {
     videoPlaceholder: string;
     videoNote: string;
     comingSoon: string;
+    /** Call-to-action under the play button when a real video is available */
+    videoPlay: string;
+    /** Captions / accessible titles for the gallery videos */
+    videoTitles: {
+      cris: string;
+      happyCity: string;
+    };
     /** Section labels for the photo groups */
     categories: {
       junior: string;

@@ -67,21 +67,18 @@
         "label": "주니어",
         "grades": "4–5학년",
         "description": "An introduction to golf for younger students. The Junior level focuses on fundamentals: grip, stance, swing basics, and etiquette. Sessions are short, fun, and designed to build a lasting love for the game in a supportive group setting.",
-        "photoAlt": "CRIS 주니어 레벨 골프 학생들 연습 장면",
         "videoLabel": "주니어 프로그램 소개 영상"
       },
       "intermediate": {
         "label": "인터미디에이트",
         "grades": "6–8학년",
         "description": "Building on the Junior foundation, Intermediate students develop consistency across all clubs, begin on-course play, and learn basic course management. Competitive opportunities are introduced at this level for students who are ready.",
-        "photoAlt": "CRIS 인터미디에이트 레벨 골프 학생들 코스 장면",
         "videoLabel": "인터미디에이트 프로그램 소개 영상"
       },
       "advanced": {
         "label": "어드밴스드",
         "grades": "9–12학년",
         "description": "The Advanced level prepares serious golfers for inter-school competition and beyond. Students refine their full game — driving, iron play, short game, and mental approach — with individualised coaching and regular competitive play.",
-        "photoAlt": "CRIS 어드밴스드 레벨 골프 학생들 경기 장면",
         "videoLabel": "어드밴스드 프로그램 소개 영상"
       }
     },

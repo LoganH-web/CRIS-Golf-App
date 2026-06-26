@@ -139,7 +139,7 @@ export default async function GalleryPage({ params }: GalleryPageProps): Promise
         {/* Zero third-party contact until the user explicitly presses play */}
         <div className="flex flex-col gap-5">
           {galleryVideos.map((video) => (
-            <div key={video.index}>
+            <div key={video.titleKey}>
               <h3 className="mb-2 text-sm font-semibold text-cris-navy">
                 {d.videoTitles[video.titleKey]}
               </h3>

@@ -84,21 +84,18 @@ export interface Dictionary {
         label: string;
         grades: string;
         description: string;
-        photoAlt: string;
         videoLabel: string;
       };
       intermediate: {
         label: string;
         grades: string;
         description: string;
-        photoAlt: string;
         videoLabel: string;
       };
       advanced: {
         label: string;
         grades: string;
         description: string;
-        photoAlt: string;
         videoLabel: string;
       };
     };

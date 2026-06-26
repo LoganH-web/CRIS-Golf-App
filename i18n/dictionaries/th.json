@@ -67,21 +67,18 @@
         "label": "จูเนียร์",
         "grades": "ป.4–5",
         "description": "An introduction to golf for younger students. The Junior level focuses on fundamentals: grip, stance, swing basics, and etiquette. Sessions are short, fun, and designed to build a lasting love for the game in a supportive group setting.",
-        "photoAlt": "นักเรียนระดับจูเนียร์ฝึกซ้อมกอล์ฟที่ CRIS",
         "videoLabel": "วิดีโอแนะนำโปรแกรมจูเนียร์"
       },
       "intermediate": {
         "label": "อินเตอร์มีเดียต",
         "grades": "ม.1–3",
         "description": "Building on the Junior foundation, Intermediate students develop consistency across all clubs, begin on-course play, and learn basic course management. Competitive opportunities are introduced at this level for students who are ready.",
-        "photoAlt": "นักเรียนระดับอินเตอร์มีเดียตในสนามกอล์ฟที่ CRIS",
         "videoLabel": "วิดีโอแนะนำโปรแกรมอินเตอร์มีเดียต"
       },
       "advanced": {
         "label": "แอดวานซ์",
         "grades": "ม.4–6",
         "description": "The Advanced level prepares serious golfers for inter-school competition and beyond. Students refine their full game — driving, iron play, short game, and mental approach — with individualised coaching and regular competitive play.",
-        "photoAlt": "นักเรียนระดับแอดวานซ์แข่งขันเพื่อ CRIS",
         "videoLabel": "วิดีโอแนะนำโปรแกรมแอดวานซ์"
       }
     },

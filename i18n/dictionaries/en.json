@@ -67,21 +67,18 @@
         "label": "Junior",
         "grades": "Grades 4–5",
         "description": "An introduction to golf for younger students. The Junior level focuses on fundamentals: grip, stance, swing basics, and etiquette. Sessions are short, fun, and designed to build a lasting love for the game in a supportive group setting.",
-        "photoAlt": "Junior level golf students practicing at CRIS",
         "videoLabel": "Junior Program Introduction Video"
       },
       "intermediate": {
         "label": "Intermediate",
         "grades": "Grades 6–8",
         "description": "Building on the Junior foundation, Intermediate students develop consistency across all clubs, begin on-course play, and learn basic course management. Competitive opportunities are introduced at this level for students who are ready.",
-        "photoAlt": "Intermediate level golf students on the course at CRIS",
         "videoLabel": "Intermediate Program Introduction Video"
       },
       "advanced": {
         "label": "Advanced",
         "grades": "Grades 9–12",
         "description": "The Advanced level prepares serious golfers for inter-school competition and beyond. Students refine their full game — driving, iron play, short game, and mental approach — with individualised coaching and regular competitive play.",
-        "photoAlt": "Advanced level golf students competing for CRIS",
         "videoLabel": "Advanced Program Introduction Video"
       }
     },

@@ -97,28 +97,26 @@ export const programIntroVideoId: string | null = "2H3CuxkoVBg";
 export const introductionVideos: {
   level: "junior" | "intermediate" | "advanced";
   id: string | null;
-  titleKey: "junior" | "intermediate" | "advanced";
 }[] = [
-  { level: "junior",       id: "EECSVuMC6FQ", titleKey: "junior"       },
-  { level: "intermediate", id: "mcIyZ_QAHHE", titleKey: "intermediate" },
-  { level: "advanced",     id: "QyU_EnL30Vg", titleKey: "advanced"     },
+  { level: "junior",       id: "EECSVuMC6FQ" },
+  { level: "intermediate", id: "mcIyZ_QAHHE" },
+  { level: "advanced",     id: "QyU_EnL30Vg" },
 ];
 
 /**
  * Gallery videos (click-to-load youtube-nocookie embeds, §8).
- *   index 0 → CRIS Golf Program informative video
- *            (https://www.youtube.com/watch?v=qiGw8xFid4Y)
- *   index 1 → Happy City Golf Resort intro — the course where the program runs
- *            (https://www.youtube.com/watch?v=briCLWge9Kk)
+ *   cris      → CRIS Golf Program informative video
+ *              (https://www.youtube.com/watch?v=qiGw8xFid4Y)
+ *   happyCity → Happy City Golf Resort intro — the course where the program runs
+ *              (https://www.youtube.com/watch?v=briCLWge9Kk)
  * titleKey selects the localized caption from dict.gallery.videoTitles.
  */
 export const galleryVideos: {
   id: string | null;
-  index: number;
   titleKey: "cris" | "happyCity";
 }[] = [
-  { id: "qiGw8xFid4Y", index: 0, titleKey: "cris"      },
-  { id: "briCLWge9Kk", index: 1, titleKey: "happyCity" },
+  { id: "qiGw8xFid4Y", titleKey: "cris"      },
+  { id: "briCLWge9Kk", titleKey: "happyCity" },
 ];
 
 /**
@@ -149,7 +147,7 @@ export const galleryPhotos: {
   { src: "/images/gallery/junior4.avif", alt: "Junior program students on the course", category: "junior" },
 
   // Intermediate program (Grades 6–8)
-  { src: "/images/gallery/Inter1.avif", alt: "Intermediate program students during a golf session", category: "intermediate" },
+  { src: "/images/gallery/inter1.avif", alt: "Intermediate program students during a golf session", category: "intermediate" },
   { src: "/images/gallery/inter2.avif", alt: "Intermediate program students practicing golf", category: "intermediate" },
   { src: "/images/gallery/inter3.avif", alt: "Intermediate program students on the course", category: "intermediate" },
   { src: "/images/gallery/inter4.avif", alt: "Intermediate program students training", category: "intermediate" },
@@ -162,13 +160,13 @@ export const galleryPhotos: {
   { src: "/images/gallery/adv5.avif", alt: "Advanced program (Grades 9–12) students", category: "advanced" },
 
   // General golf classes
-  { src: "/images/gallery/golf-class-1.avif", alt: "CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-2.avif", alt: "CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-3.avif", alt: "CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-4.avif", alt: "CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-5.avif", alt: "CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-6.avif", alt: "CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-7.avif", alt: "CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-8.avif", alt: "CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-9.avif", alt: "CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-1.avif", alt: "Students lining up a putt during a CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-2.avif", alt: "A coach guiding a student's swing at a CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-3.avif", alt: "Students practicing on the driving range at a CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-4.avif", alt: "A student teeing off during a CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-5.avif", alt: "Students walking the fairway at a CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-6.avif", alt: "A group of students at a CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-7.avif", alt: "Short-game chipping practice at a CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-8.avif", alt: "Students on the putting green at a CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-9.avif", alt: "A coaching session at a CRIS golf class", category: "general" },
 ];

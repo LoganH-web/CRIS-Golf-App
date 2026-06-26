@@ -67,13 +67,14 @@ Phase 1 is a fully multilingual (EN / KO / ZH-Hans / TH), installable, offline-c
 ## Outstanding before true launch (not code)
 
 **School content track** (the real schedule risk — §10/§12; each has a documented one-file swap-in in [`DEPLOYMENT.md`](./DEPLOYMENT.md)):
-- ☐ Golf program fee figures → `tuition.rows` in the 4 dictionaries
+- ☑ Golf program fee figures → now in `config/fees.ts` as a matrix (categories × G4–6/G7–9/G10–12). USD + KRW are the school's official figures; CNY + THB are indicative conversions (fixed rate + disclaimer). Currency defaults to the language and is user-switchable (`FeeTable`).
 - ☐ Final FAQ Q&A → `faq.items` in the 4 dictionaries
-- ☐ Gallery photos → `public/images/` + `gallery/page.tsx`
-- ☐ Intro/gallery video IDs → `config/links.ts`
-- ☐ Real logo → `scripts/generate-icons.mjs`, then re-run
-- ☐ Professional KO / ZH / TH translations for long-form body text → the 4 dictionary JSONs
+- ☑ Gallery photos → `public/images/gallery/` (21 AVIF, grouped by level) + `config/links.ts` `galleryPhotos`
+- ☑ Intro/gallery video IDs → `config/links.ts` (4 intro videos + 2 gallery videos)
+- ☑ Real logo → `assets/brand/` sources; `generate-icons.mjs`/`generate-splash.mjs` regenerate icons, splash, and `public/brand/logo.png`
+- ☐ Professional KO / ZH / TH translations for long-form body text → the 4 dictionary JSONs (intro/admissions descriptions still fall back to English)
 - ☐ Real online application form URL (when built) → `config/links.ts` (flip Enquire → Apply)
+- ☐ **Confirm fee figures + the CNY/THB reference rates** (`config/fees.ts` — currently CNY 7.2, THB 33) with the school before launch.
 
 **Deploy / sign-off track:**
 - ☑ `git push` to deploy latest — live deploy serves `/sw.js` + `/manifest.webmanifest` (HTTP 200)

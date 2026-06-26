@@ -132,20 +132,27 @@ export interface Dictionary {
   tuition: {
     heading: string;
     lead: string;
-    placeholderHeading: string;
-    placeholderBody: string;
-    tableNote: string;
-    levelColumn: string;
-    gradesColumn: string;
-    termFeeColumn: string;
-    annualFeeColumn: string;
-    rows: Array<{
-      level: string;
-      grades: string;
-      termFee: string;
-      annualFee: string;
-    }>;
-    feesComingSoon: string;
+    /** Left-column header for the fee matrix */
+    itemizedHeader: string;
+    /** Label preceding the currency toggle */
+    currencyLabel: string;
+    /** Note under the table (annual, per student) */
+    annualNote: string;
+    /** Shown when an indicative (converted) currency is selected (CNY/THB) */
+    indicativeNote: string;
+    /** Itemized fee row labels + the total-row label */
+    categories: {
+      tuition: string;
+      golfProgram: string;
+      golfLesson: string;
+      dormitory: string;
+      total: string;
+    };
+    /** Sub-notes shown under specific fee rows */
+    notes: {
+      golfProgram: string;
+      dormitory: string;
+    };
     contactButton: string;
     disclaimer: string;
   };

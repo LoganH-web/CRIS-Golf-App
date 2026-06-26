@@ -128,34 +128,21 @@
   "tuition": {
     "heading": "学费及费用",
     "lead": "CRIS高尔夫课程拥有独立的收费体系，与学校一般学费不同。高尔夫专项费用由学校直接提供。",
-    "placeholderHeading": "费用详情即将公布",
-    "placeholderBody": "高尔夫课程收费表正在由学校最终确认中。请联系招生团队获取最新费用信息。",
-    "tableNote": "所示费用为每学期金额。年费为两个完整学期的参考值。费用可能有变动，请联系招生处获取当前收费标准。",
-    "levelColumn": "课程级别",
-    "gradesColumn": "年级",
-    "termFeeColumn": "每学期",
-    "annualFeeColumn": "年费（约）",
-    "rows": [
-      {
-        "level": "初级",
-        "grades": "4–5",
-        "termFee": "请咨询招生处",
-        "annualFee": "请咨询招生处"
-      },
-      {
-        "level": "中级",
-        "grades": "6–8",
-        "termFee": "请咨询招生处",
-        "annualFee": "请咨询招生处"
-      },
-      {
-        "level": "高级",
-        "grades": "9–12",
-        "termFee": "请咨询招生处",
-        "annualFee": "请咨询招生处"
-      }
-    ],
-    "feesComingSoon": "详细费用信息经学校确认后将在此处公布。",
+    "itemizedHeader": "年度费用明细",
+    "currencyLabel": "货币",
+    "annualNote": "所有金额均为每名学生的年度费用，以所选货币显示。",
+    "indicativeNote": "CNY 和 THB 金额为按固定参考汇率从美元换算的参考值，可能随汇率变动。准确金额请联系招生处。",
+    "categories": {
+      "tuition": "学费及相关学术费用",
+      "golfProgram": "高尔夫项目费用",
+      "golfLesson": "高尔夫课程费用",
+      "dormitory": "宿舍费用",
+      "total": "总费用"
+    },
+    "notes": {
+      "golfProgram": "含每周5次下场及球车费",
+      "dormitory": "含餐饮、洗衣及清洁服务"
+    },
     "contactButton": "联系招生处了解费用详情",
     "disclaimer": "Golf program fees are separate from and in addition to standard CRIS school tuition. Equipment and tournament entry fees may apply separately."
   },

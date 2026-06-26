@@ -128,34 +128,21 @@
   "tuition": {
     "heading": "학비 및 비용",
     "lead": "CRIS 골프 프로그램은 학교의 일반 학비와 별도의 독자적인 비용 체계를 가지고 있습니다. 골프 전용 비용은 학교에서 직접 제공합니다.",
-    "placeholderHeading": "비용 정보 준비 중",
-    "placeholderBody": "골프 프로그램 비용표는 학교에서 확정 중입니다. 최신 비용 정보는 입학 담당 팀에 문의해 주세요.",
-    "tableNote": "표시된 비용은 학기당 기준입니다. 연간 비용은 두 학기 기준의 참고치입니다. 비용은 변동될 수 있으니 입학처에 현재 일정을 문의하세요.",
-    "levelColumn": "프로그램 수준",
-    "gradesColumn": "학년",
-    "termFeeColumn": "학기당",
-    "annualFeeColumn": "연간 (참고)",
-    "rows": [
-      {
-        "level": "주니어",
-        "grades": "4–5",
-        "termFee": "입학처 문의",
-        "annualFee": "입학처 문의"
-      },
-      {
-        "level": "인터미디에이트",
-        "grades": "6–8",
-        "termFee": "입학처 문의",
-        "annualFee": "입학처 문의"
-      },
-      {
-        "level": "어드밴스드",
-        "grades": "9–12",
-        "termFee": "입학처 문의",
-        "annualFee": "입학처 문의"
-      }
-    ],
-    "feesComingSoon": "상세 비용 정보는 학교 확인 후 이곳에 게시됩니다.",
+    "itemizedHeader": "항목별 연간 비용",
+    "currencyLabel": "통화",
+    "annualNote": "모든 금액은 학생 1인당 연간 비용이며 선택한 통화로 표시됩니다.",
+    "indicativeNote": "CNY 및 THB 금액은 USD를 고정 환율로 환산한 참고용이며 환율에 따라 달라질 수 있습니다. 정확한 금액은 입학처에 문의하세요.",
+    "categories": {
+      "tuition": "학비 및 관련비용",
+      "golfProgram": "골프 프로그램 비용",
+      "golfLesson": "골프 레슨비",
+      "dormitory": "기숙사 비용",
+      "total": "총비용"
+    },
+    "notes": {
+      "golfProgram": "주 5회 라운딩 및 카트비 포함",
+      "dormitory": "식비, 세탁, 청소 포함"
+    },
     "contactButton": "비용 정보 입학처 문의",
     "disclaimer": "Golf program fees are separate from and in addition to standard CRIS school tuition. Equipment and tournament entry fees may apply separately."
   },

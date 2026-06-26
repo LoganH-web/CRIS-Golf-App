@@ -1,21 +1,20 @@
 /**
  * Tuition & Fees screen — route: /{locale}/tuition
  *
- * A native in-app screen (no link-out). Golf-specific fee figures come from
- * the school. Until figures are provided, shows a clear placeholder with a
- * fee table structure ready to receive real data.
+ * A native in-app screen (no link-out, no payment — §2 Gate B). Shows the
+ * school's annual fee matrix (categories × grade bands) with a currency toggle.
  *
- * No payment, no external link (§2 Gate B). The "Contact Admissions" button
- * is visually complete but non-wired in 1D.
- *
- * Subphase 1D: layout + placeholder copy fully driven by dictionary keys.
- * Dropping in real fee figures = updating the dictionary "rows" array.
+ * Figures live in config/fees.ts: USD/KRW are official; CNY/THB are indicative
+ * conversions. The currency defaults to the language's currency but the user
+ * can switch (FeeTable, client component). The Contact Admissions button opens
+ * the §8 hand-off; no data is collected here.
  */
 
 import { getDictionary } from "@/i18n/getDictionary";
 import { isValidLocale } from "@/i18n/detectLocale";
 import { TuitionContactButton } from "@/components/screens/TuitionContactButton";
-import { Icon } from "@/components/ui/Icon";
+import { FeeTable } from "@/components/screens/FeeTable";
+import { localeDefaultCurrency } from "@/config/fees";
 import type { Locale } from "@/i18n/types";
 
 interface TuitionPageProps {
@@ -40,56 +39,23 @@ export default async function TuitionPage({ params }: TuitionPageProps): Promise
         </p>
       </header>
 
-      {/* Placeholder notice */}
-      <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-5 py-4">
-        <div className="flex gap-3">
-          <Icon
-            name="info-circle"
-            size={20}
-            className="mt-0.5 shrink-0 text-amber-600"
-          />
-          <div>
-            <p className="font-semibold text-amber-800">{d.placeholderHeading}</p>
-            <p className="mt-1 text-sm text-amber-700">{d.placeholderBody}</p>
-          </div>
-        </div>
+      {/* Fee matrix + currency toggle */}
+      <div className="mb-6">
+        <FeeTable
+          locale={resolvedLocale}
+          defaultCurrency={localeDefaultCurrency[resolvedLocale]}
+          labels={{
+            currencyLabel: d.currencyLabel,
+            itemizedHeader: d.itemizedHeader,
+            categories: d.categories,
+            notes: d.notes,
+            annualNote: d.annualNote,
+            indicativeNote: d.indicativeNote,
+          }}
+        />
       </div>
 
-      {/* Fee table — structure ready for real figures */}
-      <section aria-label={d.heading} className="mb-6">
-        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-          {/* Table header */}
-          <div className="grid grid-cols-4 gap-0 border-b border-slate-200 bg-slate-50 text-xs font-semibold text-slate-600">
-            <div className="px-3 py-3">{d.levelColumn}</div>
-            <div className="px-3 py-3">{d.gradesColumn}</div>
-            <div className="px-3 py-3">{d.termFeeColumn}</div>
-            <div className="px-3 py-3">{d.annualFeeColumn}</div>
-          </div>
-
-          {/* Table rows */}
-          {d.rows.map((row, index) => (
-            <div
-              key={row.level}
-              className={`grid grid-cols-4 gap-0 border-b border-slate-100 text-sm last:border-0 ${
-                index % 2 === 0 ? "bg-white" : "bg-slate-50/50"
-              }`}
-            >
-              <div className="px-3 py-3.5 font-medium text-slate-800">{row.level}</div>
-              <div className="px-3 py-3.5 text-slate-600">{row.grades}</div>
-              <div className="px-3 py-3.5 text-slate-500 italic">{row.termFee}</div>
-              <div className="px-3 py-3.5 text-slate-500 italic">{row.annualFee}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Table footnote */}
-        <p className="mt-2 text-xs text-slate-400">{d.tableNote}</p>
-      </section>
-
-      {/* Coming soon note */}
-      <p className="mb-6 text-center text-sm text-slate-500">{d.feesComingSoon}</p>
-
-      {/* Contact Admissions — wired in 1E via TuitionContactButton (client component) */}
+      {/* Contact Admissions — §8 hand-off (client component) */}
       <TuitionContactButton dict={dict} />
 
       {/* Disclaimer */}

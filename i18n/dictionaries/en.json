@@ -128,34 +128,21 @@
   "tuition": {
     "heading": "Tuition & Fees",
     "lead": "The CRIS Golf Program has its own fee structure, separate from the school's general tuition. Golf-specific fee figures are provided directly by the school.",
-    "placeholderHeading": "Fee Details Coming Soon",
-    "placeholderBody": "The golf program fee schedule is being finalised by the school. Please contact our admissions team for the most current fee information.",
-    "tableNote": "Fees shown are per academic term. Annual fee is indicative of two full terms. Fees may vary — contact admissions for the current schedule.",
-    "levelColumn": "Program Level",
-    "gradesColumn": "Grades",
-    "termFeeColumn": "Per Term",
-    "annualFeeColumn": "Annual (approx.)",
-    "rows": [
-      {
-        "level": "Junior",
-        "grades": "4–5",
-        "termFee": "Contact Admissions",
-        "annualFee": "Contact Admissions"
-      },
-      {
-        "level": "Intermediate",
-        "grades": "6–8",
-        "termFee": "Contact Admissions",
-        "annualFee": "Contact Admissions"
-      },
-      {
-        "level": "Advanced",
-        "grades": "9–12",
-        "termFee": "Contact Admissions",
-        "annualFee": "Contact Admissions"
-      }
-    ],
-    "feesComingSoon": "Detailed fee figures will be published here once confirmed by the school.",
+    "itemizedHeader": "Itemized Annual Fees",
+    "currencyLabel": "Currency",
+    "annualNote": "All figures are annual, per student, shown in the selected currency.",
+    "indicativeNote": "CNY and THB amounts are indicative — converted from USD at a fixed reference rate and may vary with exchange rates. Contact admissions for exact figures.",
+    "categories": {
+      "tuition": "Tuition & Related Academic Fees",
+      "golfProgram": "Golf Program Fees",
+      "golfLesson": "Golf Lesson Fees",
+      "dormitory": "Dormitory Fees",
+      "total": "Total Cost"
+    },
+    "notes": {
+      "golfProgram": "Includes 5 rounds per week & cart fee",
+      "dormitory": "Includes meals, laundry, and cleaning"
+    },
     "contactButton": "Contact Admissions for Fee Details",
     "disclaimer": "Golf program fees are separate from and in addition to standard CRIS school tuition. Equipment and tournament entry fees may apply separately."
   },

@@ -74,7 +74,7 @@ export function FaqAccordion({ items }: FaqAccordionProps): React.ReactElement {
                 aria-labelledby={itemId}
                 className="px-4 pb-4"
               >
-                <p className="text-sm leading-relaxed text-slate-600">
+                <p className="whitespace-pre-line text-sm leading-relaxed text-slate-600">
                   {item.answer}
                 </p>
               </div>

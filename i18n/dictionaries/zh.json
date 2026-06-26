@@ -172,36 +172,56 @@
     "lead": "关于CRIS高尔夫课程的常见问题。没有找到您的问题？请直接联系我们。",
     "items": [
       {
-        "question": "我的孩子可以从几年级开始参加高尔夫课程？",
-        "answer": "该课程面向4至12年级学生（约9至18岁）。初级适合4–5年级，中级适合6–8年级，高级适合9–12年级。"
+        "question": "Is it possible to enroll even if my English skills are not strong?",
+        "answer": "Yes. After enrollment, students will receive support through English courses to help develop basic communication skills."
       },
       {
-        "question": "孩子没有高尔夫经验可以报名吗？",
-        "answer": "初级课程不需要任何先前经验，我们从最基础的内容开始。中级和高级分班时，我们的教练会评估孩子的当前水平，确保分入最合适的小组。"
+        "question": "Can I enroll even if my golf skills are not advanced?",
+        "answer": "Yes. After taking a golf level test, students will receive personalized training from top tour professionals in the world."
       },
       {
-        "question": "需要哪些器材？",
-        "answer": "初学者在最初几节课可以使用学校的器材。随着水平提升，建议拥有自己的球杆。我们的教练团队可以根据孩子的年龄和身材推荐合适的球杆规格。"
+        "question": "What can you tell me about the student dormitories?",
+        "answer": "The dormitory accommodates male students (2 students per room) and female students (2 students per room), with a capacity of 500 students each."
       },
       {
-        "question": "课程多久进行一次，每次持续多长时间？",
-        "answer": "课程频率和时长因级别和学期安排而异。注册后将提供完整的课程时间表。有关当前学年时间表的详情，请联系招生处。"
+        "question": "What are the selection criteria for students?",
+        "answer": "Our school selects students based on an interview and academic records."
       },
       {
-        "question": "高尔夫课程的费用是多少？",
-        "answer": "高尔夫课程费用为本课程专项费用，与CRIS一般学费不同。费用详情正在最终确认中，请联系招生团队了解当前数据。"
+        "question": "When are the admission and transfer periods?",
+        "answer": "The first semester begins in early August, and the second semester starts in early January. Rolling admissions and transfers are possible."
       },
       {
-        "question": "目前未在CRIS就读的学生可以参加课程吗？",
-        "answer": "高尔夫课程是CRIS学校课程的一部分，主要面向在校学生。如果您对学校入学和高尔夫课程都感兴趣，我们的招生团队可以同时为您提供帮助。"
+        "question": "Can students go home on weekends or during holidays?",
+        "answer": "Students at CRIS (Golf Program) are allowed to go home during extended holidays or special occasions, with prior approval from the Student Affairs Team."
       },
       {
-        "question": "学生有参加比赛的机会吗？",
-        "answer": "有。中级和高级学生随着技能的提升，有机会参加校际比赛和地区锦标赛。初级学生在参与竞技前专注于基础训练。"
+        "question": "How intense is the golf training schedule?",
+        "answer": "The CRIS (Golf Program) golf training schedule is designed to match each student's skill level. Students train daily, focusing on technical skills, strength, and mental resilience. Coaches tailor training intensity based on individual goals and progress."
       },
       {
-        "question": "如何联系招生团队？",
-        "answer": "您可以拨打+66 (0) 53 600-900，发送电子邮件至admin@cris.ac.th，或使用招生页面上的《联系招生处/咨询》按钮与我们联系。"
+        "question": "What kind of support is available for students dealing with emotional stress or anxiety?",
+        "answer": "CRIS (Golf Program) provides emotional and mental support programs, including Mental Golf Training & Counseling Sessions, helping students manage stress and maintain a healthy mindset for both academics and sports."
+      },
+      {
+        "question": "What special activities and recreational programs are available for students?",
+        "answer": "Beyond academics and golf training, students can join:\n✅ Clubs & Sports Activities\n✅ Art & Music Programs\n✅ Recreational Events (Movie Nights, Cultural Exchanges, and Game Nights)"
+      },
+      {
+        "question": "How is the safety of dormitories and the school ensured?",
+        "answer": "At CRIS (Golf Program), student safety is our top priority. We provide:\n✅ 24/7 security with on-site staff at the dormitories\n✅ Controlled entry system with strict access policies\n✅ CCTV surveillance throughout the campus\n✅ Faculty monitoring to ensure a safe and supportive environment"
+      },
+      {
+        "question": "What are the meal and nutrition options for students?",
+        "answer": "CRIS (Golf Program) provides well-balanced, high-protein, and energy-boosting meals tailored for student-athletes. We offer:\n✅ A variety of menu options, including vegetarian and allergy-friendly meals\n✅ Nutritionally optimized meals to support optimal performance and recovery"
+      },
+      {
+        "question": "How can students stay in touch with their families?",
+        "answer": "Students can stay in touch with their families via:\n📱 Mobile phones\n📹 Video calls\n✉️ Email\nCRIS (Golf Program) also provides:\n✅ Designated contact hours\n✅ Scheduled meetings with the Student Support Team for any concerns or updates"
+      },
+      {
+        "question": "How does CRIS (Golf Program) provide healthcare and medical support for students?",
+        "answer": "CRIS (Golf Program) has an on-campus health center with medical staff and nurses available for student care. In case of illness or injury, students receive immediate medical attention. We also have:\n✅ A physiotherapist specializing in golf injuries\n✅ Support for recovery and injury prevention"
       }
     ],
     "moreQuestionsNote": "有其他问题？",

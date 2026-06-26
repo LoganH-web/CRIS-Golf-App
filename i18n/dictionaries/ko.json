@@ -172,36 +172,56 @@
     "lead": "CRIS 골프 프로그램에 관한 자주 묻는 질문입니다. 원하는 질문이 없으신가요? 직접 문의해 주세요.",
     "items": [
       {
-        "question": "자녀가 몇 학년부터 골프 프로그램을 시작할 수 있나요?",
-        "answer": "프로그램은 4~12학년(약 9~18세) 학생을 대상으로 합니다. 주니어 레벨은 4~5학년, 인터미디에이트는 6~8학년, 어드밴스드는 9~12학년을 위해 설계되었습니다."
+        "question": "Is it possible to enroll even if my English skills are not strong?",
+        "answer": "Yes. After enrollment, students will receive support through English courses to help develop basic communication skills."
       },
       {
-        "question": "골프 경험이 없어도 입학할 수 있나요?",
-        "answer": "주니어 레벨은 사전 경험이 필요하지 않습니다. 처음부터 기초부터 시작합니다. 인터미디에이트 및 어드밴스드 배치를 위해서는 코치가 자녀의 현재 수준을 평가하여 가장 적합한 그룹을 배정합니다."
+        "question": "Can I enroll even if my golf skills are not advanced?",
+        "answer": "Yes. After taking a golf level test, students will receive personalized training from top tour professionals in the world."
       },
       {
-        "question": "어떤 장비가 필요한가요?",
-        "answer": "초보자는 첫 세션에 학교 장비를 사용할 수 있습니다. 실력이 향상될수록 개인 클럽 보유를 권장합니다. 코칭 팀이 자녀의 나이와 체형에 맞는 클럽 사양을 안내해 드립니다."
+        "question": "What can you tell me about the student dormitories?",
+        "answer": "The dormitory accommodates male students (2 students per room) and female students (2 students per room), with a capacity of 500 students each."
       },
       {
-        "question": "프로그램은 얼마나 자주, 얼마나 오래 진행되나요?",
-        "answer": "세션 빈도 및 시간은 수준과 학사 일정에 따라 다릅니다. 등록 시 전체 프로그램 일정을 제공합니다. 현재 학년도 시간표에 대한 자세한 내용은 입학처에 문의해 주세요."
+        "question": "What are the selection criteria for students?",
+        "answer": "Our school selects students based on an interview and academic records."
       },
       {
-        "question": "골프 프로그램 비용은 얼마인가요?",
-        "answer": "골프 프로그램 비용은 이 프로그램 전용으로 일반 CRIS 학비와 다릅니다. 비용 세부 사항은 확정 중이니 현재 수치는 입학 팀에 문의해 주세요."
+        "question": "When are the admission and transfer periods?",
+        "answer": "The first semester begins in early August, and the second semester starts in early January. Rolling admissions and transfers are possible."
       },
       {
-        "question": "CRIS에 재학 중이지 않은 학생도 프로그램에 참여할 수 있나요?",
-        "answer": "골프 프로그램은 CRIS 학교 교육과정의 일부로 주로 재학생을 대상으로 합니다. 학교 입학과 골프 프로그램 모두에 관심이 있으시면 입학 팀이 동시에 도와드릴 수 있습니다."
+        "question": "Can students go home on weekends or during holidays?",
+        "answer": "Students at CRIS (Golf Program) are allowed to go home during extended holidays or special occasions, with prior approval from the Student Affairs Team."
       },
       {
-        "question": "학생들에게 대회 참가 기회가 있나요?",
-        "answer": "네. 인터미디에이트 및 어드밴스드 학생들은 실력이 발전함에 따라 학교 간 대회 및 지역 토너먼트에 참가할 기회가 있습니다. 주니어 학생들은 경쟁 전 기초에 집중합니다."
+        "question": "How intense is the golf training schedule?",
+        "answer": "The CRIS (Golf Program) golf training schedule is designed to match each student's skill level. Students train daily, focusing on technical skills, strength, and mental resilience. Coaches tailor training intensity based on individual goals and progress."
       },
       {
-        "question": "입학 팀에 어떻게 연락할 수 있나요?",
-        "answer": "+66 (0) 53 600-900으로 전화하거나, admin@cris.ac.th로 이메일을 보내거나, 입학 화면의 '입학처 문의하기' 버튼을 이용할 수 있습니다."
+        "question": "What kind of support is available for students dealing with emotional stress or anxiety?",
+        "answer": "CRIS (Golf Program) provides emotional and mental support programs, including Mental Golf Training & Counseling Sessions, helping students manage stress and maintain a healthy mindset for both academics and sports."
+      },
+      {
+        "question": "What special activities and recreational programs are available for students?",
+        "answer": "Beyond academics and golf training, students can join:\n✅ Clubs & Sports Activities\n✅ Art & Music Programs\n✅ Recreational Events (Movie Nights, Cultural Exchanges, and Game Nights)"
+      },
+      {
+        "question": "How is the safety of dormitories and the school ensured?",
+        "answer": "At CRIS (Golf Program), student safety is our top priority. We provide:\n✅ 24/7 security with on-site staff at the dormitories\n✅ Controlled entry system with strict access policies\n✅ CCTV surveillance throughout the campus\n✅ Faculty monitoring to ensure a safe and supportive environment"
+      },
+      {
+        "question": "What are the meal and nutrition options for students?",
+        "answer": "CRIS (Golf Program) provides well-balanced, high-protein, and energy-boosting meals tailored for student-athletes. We offer:\n✅ A variety of menu options, including vegetarian and allergy-friendly meals\n✅ Nutritionally optimized meals to support optimal performance and recovery"
+      },
+      {
+        "question": "How can students stay in touch with their families?",
+        "answer": "Students can stay in touch with their families via:\n📱 Mobile phones\n📹 Video calls\n✉️ Email\nCRIS (Golf Program) also provides:\n✅ Designated contact hours\n✅ Scheduled meetings with the Student Support Team for any concerns or updates"
+      },
+      {
+        "question": "How does CRIS (Golf Program) provide healthcare and medical support for students?",
+        "answer": "CRIS (Golf Program) has an on-campus health center with medical staff and nurses available for student care. In case of illness or injury, students receive immediate medical attention. We also have:\n✅ A physiotherapist specializing in golf injuries\n✅ Support for recovery and injury prevention"
       }
     ],
     "moreQuestionsNote": "목록에 없는 질문이 있으신가요?",

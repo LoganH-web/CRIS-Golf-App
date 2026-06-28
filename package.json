@@ -6,14 +6,20 @@
     "dev": "next dev",
     "build": "next build && node scripts/generate-sw-precache.mjs",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "cap:assets": "capacitor-assets generate --ios",
+    "cap:sync": "npm run build && cap sync ios"
   },
   "dependencies": {
+    "@capacitor/cli": "^8.4.1",
+    "@capacitor/core": "^8.4.1",
+    "@capacitor/ios": "^8.4.1",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

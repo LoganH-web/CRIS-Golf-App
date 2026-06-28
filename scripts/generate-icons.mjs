@@ -92,4 +92,25 @@ await sharp({ create: { width: 256, height: 256, channels: 4, background: ICON_B
   .toFile(join(brandOutDir, "logo.png"));
 console.log(`  created: ${join(brandOutDir, "logo.png")} (256x256)`);
 
-console.log("Done. Icons → public/icons/, in-app logo → public/brand/logo.png");
+// ─── Capacitor native source images (Phase 2) ────────────────────────────────
+// Consumed by `npx capacitor-assets generate --ios` to build the iOS AppIcon
+// set + launch images. icon.png is flattened (no alpha — App Store requirement).
+const resourcesDir = join(__dirname, "..", "resources");
+await mkdir(resourcesDir, { recursive: true });
+
+const iconMark = await sharp(crest).resize(Math.round(1024 * 0.84), Math.round(1024 * 0.84)).toBuffer();
+await sharp({ create: { width: 1024, height: 1024, channels: 4, background: ICON_BG } })
+  .composite([{ input: iconMark, gravity: "center" }])
+  .flatten({ background: ICON_BG })
+  .png()
+  .toFile(join(resourcesDir, "icon.png"));
+
+const splashMark = await sharp(crest).resize(Math.round(2732 * 0.36), Math.round(2732 * 0.36)).toBuffer();
+await sharp({ create: { width: 2732, height: 2732, channels: 4, background: ICON_BG } })
+  .composite([{ input: splashMark, gravity: "center" }])
+  .flatten({ background: ICON_BG })
+  .png()
+  .toFile(join(resourcesDir, "splash.png"));
+console.log("  created: resources/icon.png (1024), resources/splash.png (2732)");
+
+console.log("Done. Icons → public/icons/, in-app logo → public/brand/logo.png, native → resources/");

@@ -32,6 +32,13 @@ export function PwaRegister(): null {
     if (typeof window === "undefined") return;
     if (!("serviceWorker" in navigator)) return;
 
+    // Skip SW registration inside the native Capacitor shell (Phase 2): the
+    // app's assets are already bundled locally, so the service worker is
+    // redundant there and a stale cache could mask a fresh native build. The
+    // Capacitor runtime injects window.Capacitor; on the web build it's absent.
+    const cap = (window as unknown as { Capacitor?: { isNativePlatform?: () => boolean } }).Capacitor;
+    if (cap?.isNativePlatform?.()) return;
+
     // Register after the page has loaded so SW registration doesn't compete
     // with page resources during the critical render path.
     window.addEventListener("load", () => {

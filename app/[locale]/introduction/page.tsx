@@ -93,14 +93,14 @@ export default async function IntroductionPage({ params }: IntroductionPageProps
               key={key}
               className={`overflow-hidden rounded-xl border-2 border-l-[6px] border-slate-200 bg-white shadow-sm ${accentColor}`}
             >
-              {/* Photo banner */}
-              <div className="relative h-44 w-full bg-slate-100">
+              {/* Photo — object-contain so the full image is always visible (never cropped) */}
+              <div className="relative h-72 w-full bg-slate-100">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
                   sizes="(min-width: 640px) 600px, 100vw"
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
 

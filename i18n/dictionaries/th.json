@@ -172,56 +172,56 @@
     "lead": "คำถามที่พบบ่อยเกี่ยวกับ CRIS Golf Program ไม่พบคำถามของคุณ? ติดต่อเราโดยตรง",
     "items": [
       {
-        "question": "Is it possible to enroll even if my English skills are not strong?",
-        "answer": "Yes. After enrollment, students will receive support through English courses to help develop basic communication skills."
+        "question": "หากภาษาอังกฤษของฉันยังไม่แข็งแรง สามารถสมัครเข้าเรียนได้หรือไม่?",
+        "answer": "ได้ หลังจากเข้าเรียน นักเรียนจะได้รับการสนับสนุนผ่านหลักสูตรภาษาอังกฤษ เพื่อพัฒนาทักษะการสื่อสารพื้นฐาน"
       },
       {
-        "question": "Can I enroll even if my golf skills are not advanced?",
-        "answer": "Yes. After taking a golf level test, students will receive personalized training from top tour professionals in the world."
+        "question": "หากทักษะกอล์ฟของฉันยังไม่อยู่ในระดับสูง สามารถสมัครเข้าเรียนได้หรือไม่?",
+        "answer": "ได้ หลังจากทำการทดสอบระดับทักษะกอล์ฟ นักเรียนจะได้รับการฝึกสอนเฉพาะบุคคลจากโค้ชระดับทัวร์ชั้นนำของโลก"
       },
       {
-        "question": "What can you tell me about the student dormitories?",
-        "answer": "The dormitory accommodates male students (2 students per room) and female students (2 students per room), with a capacity of 500 students each."
+        "question": "หอพักนักเรียนเป็นอย่างไร?",
+        "answer": "หอพักแบ่งเป็นหอพักชาย (ห้องละ 2 คน) และหอพักหญิง (ห้องละ 2 คน) โดยแต่ละหอสามารถรองรับนักเรียนได้สูงสุด 500 คน"
       },
       {
-        "question": "What are the selection criteria for students?",
-        "answer": "Our school selects students based on an interview and academic records."
+        "question": "เกณฑ์การคัดเลือกนักเรียนคืออะไร?",
+        "answer": "โรงเรียนคัดเลือกนักเรียนจากการสัมภาษณ์และผลการเรียน"
       },
       {
-        "question": "When are the admission and transfer periods?",
-        "answer": "The first semester begins in early August, and the second semester starts in early January. Rolling admissions and transfers are possible."
+        "question": "ช่วงเวลาการรับสมัครและการโอนย้ายคือเมื่อใด?",
+        "answer": "ภาคการศึกษาที่ 1 เริ่มต้นในช่วงต้นเดือนสิงหาคม และภาคการศึกษาที่ 2 เริ่มต้นในช่วงต้นเดือนมกราคม นอกจากนี้ยังเปิดรับสมัครและรับโอนย้ายตลอดทั้งปี"
       },
       {
-        "question": "Can students go home on weekends or during holidays?",
-        "answer": "Students at CRIS (Golf Program) are allowed to go home during extended holidays or special occasions, with prior approval from the Student Affairs Team."
+        "question": "นักเรียนสามารถกลับบ้านในช่วงวันหยุดสุดสัปดาห์หรือวันหยุดนักขัตฤกษ์ได้หรือไม่?",
+        "answer": "ได้ นักเรียนของ CRIS (Golf Program) สามารถกลับบ้านในช่วงวันหยุดยาวหรือโอกาสพิเศษได้ โดยต้องได้รับการอนุมัติล่วงหน้าจากฝ่ายกิจการนักเรียน"
       },
       {
-        "question": "How intense is the golf training schedule?",
-        "answer": "The CRIS (Golf Program) golf training schedule is designed to match each student's skill level. Students train daily, focusing on technical skills, strength, and mental resilience. Coaches tailor training intensity based on individual goals and progress."
+        "question": "ตารางการฝึกกอล์ฟมีความเข้มข้นมากแค่ไหน?",
+        "answer": "ตารางการฝึกกอล์ฟของ CRIS (Golf Program) ได้รับการออกแบบให้เหมาะสมกับระดับทักษะของนักเรียนแต่ละคน นักเรียนจะได้รับการฝึกฝนทุกวัน ทั้งด้านเทคนิค ความแข็งแรงของร่างกาย และการเสริมสร้างสภาพจิตใจ โดยโค้ชจะปรับความเข้มข้นของการฝึกตามเป้าหมายและพัฒนาการของแต่ละคน"
       },
       {
-        "question": "What kind of support is available for students dealing with emotional stress or anxiety?",
-        "answer": "CRIS (Golf Program) provides emotional and mental support programs, including Mental Golf Training & Counseling Sessions, helping students manage stress and maintain a healthy mindset for both academics and sports."
+        "question": "โรงเรียนมีการสนับสนุนนักเรียนที่มีความเครียดหรือความวิตกกังวลอย่างไร?",
+        "answer": "CRIS (Golf Program) มีโปรแกรมดูแลด้านอารมณ์และสุขภาพจิต รวมถึงการฝึก Mental Golf Training และการให้คำปรึกษา (Counseling Sessions) เพื่อช่วยให้นักเรียนสามารถจัดการความเครียด และรักษาสมดุลทั้งด้านการเรียนและกีฬา"
       },
       {
-        "question": "What special activities and recreational programs are available for students?",
-        "answer": "Beyond academics and golf training, students can join:\n✅ Clubs & Sports Activities\n✅ Art & Music Programs\n✅ Recreational Events (Movie Nights, Cultural Exchanges, and Game Nights)"
+        "question": "โรงเรียนมีกิจกรรมพิเศษและกิจกรรมสันทนาการอะไรบ้าง?",
+        "answer": "นอกจากการเรียนและการฝึกกอล์ฟแล้ว นักเรียนยังสามารถเข้าร่วมกิจกรรมต่าง ๆ ได้แก่\n✅ ชมรมและกิจกรรมกีฬา\n✅ โปรแกรมศิลปะและดนตรี\n✅ กิจกรรมสันทนาการ เช่น Movie Night, กิจกรรมแลกเปลี่ยนวัฒนธรรม และ Game Night"
       },
       {
-        "question": "How is the safety of dormitories and the school ensured?",
-        "answer": "At CRIS (Golf Program), student safety is our top priority. We provide:\n✅ 24/7 security with on-site staff at the dormitories\n✅ Controlled entry system with strict access policies\n✅ CCTV surveillance throughout the campus\n✅ Faculty monitoring to ensure a safe and supportive environment"
+        "question": "โรงเรียนและหอพักมีมาตรการด้านความปลอดภัยอย่างไร?",
+        "answer": "CRIS (Golf Program) ให้ความสำคัญกับความปลอดภัยของนักเรียนเป็นอันดับแรก โดยมีมาตรการดังนี้\n✅ เจ้าหน้าที่รักษาความปลอดภัยประจำหอพักตลอด 24 ชั่วโมง\n✅ ระบบควบคุมการเข้าออกอย่างเข้มงวด\n✅ ระบบกล้องวงจรปิด (CCTV) ครอบคลุมทั่วทั้งวิทยาเขต\n✅ การดูแลและติดตามนักเรียนอย่างใกล้ชิดโดยคณาจารย์"
       },
       {
-        "question": "What are the meal and nutrition options for students?",
-        "answer": "CRIS (Golf Program) provides well-balanced, high-protein, and energy-boosting meals tailored for student-athletes. We offer:\n✅ A variety of menu options, including vegetarian and allergy-friendly meals\n✅ Nutritionally optimized meals to support optimal performance and recovery"
+        "question": "โรงเรียนมีบริการด้านอาหารและโภชนาการสำหรับนักเรียนอย่างไร?",
+        "answer": "CRIS (Golf Program) จัดเตรียมอาหารที่มีความสมดุล โปรตีนสูง และให้พลังงานเพียงพอ เพื่อรองรับนักกีฬานักเรียน โดยมี:\n✅ เมนูอาหารหลากหลาย รวมถึงอาหารมังสวิรัติและอาหารสำหรับผู้ที่มีอาการแพ้อาหาร\n✅ อาหารที่ได้รับการออกแบบด้านโภชนาการ เพื่อช่วยเพิ่มประสิทธิภาพในการฝึกซ้อมและการฟื้นฟูร่างกาย"
       },
       {
-        "question": "How can students stay in touch with their families?",
-        "answer": "Students can stay in touch with their families via:\n📱 Mobile phones\n📹 Video calls\n✉️ Email\nCRIS (Golf Program) also provides:\n✅ Designated contact hours\n✅ Scheduled meetings with the Student Support Team for any concerns or updates"
+        "question": "นักเรียนสามารถติดต่อกับครอบครัวได้อย่างไร?",
+        "answer": "นักเรียนสามารถติดต่อกับครอบครัวผ่านช่องทางต่าง ๆ ได้แก่\n📱 โทรศัพท์มือถือ\n📹 วิดีโอคอล\n✉️ อีเมล\nนอกจากนี้ CRIS (Golf Program) ยังมี:\n✅ ช่วงเวลาที่กำหนดสำหรับการติดต่อกับครอบครัว\n✅ การพบปะกับทีม Student Support เพื่อให้คำปรึกษาและอัปเดตข้อมูลเมื่อจำเป็น"
       },
       {
-        "question": "How does CRIS (Golf Program) provide healthcare and medical support for students?",
-        "answer": "CRIS (Golf Program) has an on-campus health center with medical staff and nurses available for student care. In case of illness or injury, students receive immediate medical attention. We also have:\n✅ A physiotherapist specializing in golf injuries\n✅ Support for recovery and injury prevention"
+        "question": "CRIS(Golf Program) มีบริการด้านสุขภาพและการดูแลทางการแพทย์สำหรับนักเรียนอย่างไร?",
+        "answer": "CRIS (Golf Program) มีศูนย์สุขภาพภายในวิทยาเขต พร้อมทีมแพทย์และพยาบาลคอยดูแลนักเรียน หากเกิดการเจ็บป่วยหรือได้รับบาดเจ็บ นักเรียนจะได้รับการรักษาอย่างทันท่วงที\nนอกจากนี้ยังมี:\n✅ นักกายภาพบำบัดผู้เชี่ยวชาญด้านการบาดเจ็บจากกีฬากอล์ฟ\n✅ โปรแกรมฟื้นฟูร่างกายและการป้องกันการบาดเจ็บ"
       }
     ],
     "moreQuestionsNote": "มีคำถามอื่นที่ไม่อยู่ในรายการ?",

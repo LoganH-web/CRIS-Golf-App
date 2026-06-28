@@ -68,7 +68,7 @@ Phase 1 is a fully multilingual (EN / KO / ZH-Hans / TH), installable, offline-c
 
 **School content track** (the real schedule risk — §10/§12; each has a documented one-file swap-in in [`DEPLOYMENT.md`](./DEPLOYMENT.md)):
 - ☑ Golf program fee figures → now in `config/fees.ts` as a matrix (categories × G4–6/G7–9/G10–12). USD + KRW are the school's official figures; CNY + THB are indicative conversions (fixed rate + disclaimer). Currency defaults to the language and is user-switchable (`FeeTable`).
-- ◑ FAQ Q&A → real CRIS Golf FAQ (13 items) wired into `faq.items` in all 4 locales (English). KO/ZH/TH still show the English text pending professional translation (see translations item below).
+- ☑ FAQ Q&A → real CRIS Golf FAQ (13 items) in `faq.items`, fully translated EN / KO / ZH / TH (school-provided, parsed from `FAQ.md`).
 - ☑ Gallery photos → `public/images/gallery/` (21 AVIF, grouped by level) + `config/links.ts` `galleryPhotos`
 - ☑ Intro/gallery video IDs → `config/links.ts` (4 intro videos + 2 gallery videos)
 - ☑ Real logo → `assets/brand/` sources; `generate-icons.mjs`/`generate-splash.mjs` regenerate icons, splash, and `public/brand/logo.png`

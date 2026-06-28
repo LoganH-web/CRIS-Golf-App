@@ -66,26 +66,25 @@
       "junior": {
         "label": "初级",
         "grades": "4–5年级",
-        "description": "An introduction to golf for younger students. The Junior level focuses on fundamentals: grip, stance, swing basics, and etiquette. Sessions are short, fun, and designed to build a lasting love for the game in a supportive group setting.",
-        "videoLabel": "初级课程介绍视频"
+        "description": "An introduction to golf for younger students. The Junior level focuses on fundamentals: grip, stance, swing basics, and etiquette. Sessions are short, fun, and designed to build a lasting love for the game in a supportive group setting."
       },
       "intermediate": {
         "label": "中级",
         "grades": "6–8年级",
-        "description": "Building on the Junior foundation, Intermediate students develop consistency across all clubs, begin on-course play, and learn basic course management. Competitive opportunities are introduced at this level for students who are ready.",
-        "videoLabel": "中级课程介绍视频"
+        "description": "Building on the Junior foundation, Intermediate students develop consistency across all clubs, begin on-course play, and learn basic course management. Competitive opportunities are introduced at this level for students who are ready."
       },
       "advanced": {
         "label": "高级",
         "grades": "9–12年级",
-        "description": "The Advanced level prepares serious golfers for inter-school competition and beyond. Students refine their full game — driving, iron play, short game, and mental approach — with individualised coaching and regular competitive play.",
-        "videoLabel": "高级课程介绍视频"
+        "description": "The Advanced level prepares serious golfers for inter-school competition and beyond. Students refine their full game — driving, iron play, short game, and mental approach — with individualised coaching and regular competitive play."
       }
     },
-    "photoPlaceholder": "课程照片即将发布",
     "videoPlaceholder": "介绍视频即将发布",
-    "programVideoLabel": "项目介绍",
-    "videoPlay": "点击播放"
+    "videoPlay": "点击播放",
+    "videoTitles": {
+      "programIntro": "CRIS 高尔夫项目介绍",
+      "coachIntro": "高尔夫项目教练介绍"
+    }
   },
   "handOff": {
     "title": "即将离开 CRIS 高尔夫课程应用",

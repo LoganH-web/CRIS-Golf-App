@@ -66,26 +66,25 @@
       "junior": {
         "label": "Junior",
         "grades": "Grades 4–5",
-        "description": "An introduction to golf for younger students. The Junior level focuses on fundamentals: grip, stance, swing basics, and etiquette. Sessions are short, fun, and designed to build a lasting love for the game in a supportive group setting.",
-        "videoLabel": "Junior Program Introduction Video"
+        "description": "An introduction to golf for younger students. The Junior level focuses on fundamentals: grip, stance, swing basics, and etiquette. Sessions are short, fun, and designed to build a lasting love for the game in a supportive group setting."
       },
       "intermediate": {
         "label": "Intermediate",
         "grades": "Grades 6–8",
-        "description": "Building on the Junior foundation, Intermediate students develop consistency across all clubs, begin on-course play, and learn basic course management. Competitive opportunities are introduced at this level for students who are ready.",
-        "videoLabel": "Intermediate Program Introduction Video"
+        "description": "Building on the Junior foundation, Intermediate students develop consistency across all clubs, begin on-course play, and learn basic course management. Competitive opportunities are introduced at this level for students who are ready."
       },
       "advanced": {
         "label": "Advanced",
         "grades": "Grades 9–12",
-        "description": "The Advanced level prepares serious golfers for inter-school competition and beyond. Students refine their full game — driving, iron play, short game, and mental approach — with individualised coaching and regular competitive play.",
-        "videoLabel": "Advanced Program Introduction Video"
+        "description": "The Advanced level prepares serious golfers for inter-school competition and beyond. Students refine their full game — driving, iron play, short game, and mental approach — with individualised coaching and regular competitive play."
       }
     },
-    "photoPlaceholder": "Program photos coming soon",
     "videoPlaceholder": "Introduction video coming soon",
-    "programVideoLabel": "Program Introduction",
-    "videoPlay": "Tap to play"
+    "videoPlay": "Tap to play",
+    "videoTitles": {
+      "programIntro": "CRIS Golf Program Introduction",
+      "coachIntro": "Golf Program Coach Introduction"
+    }
   },
   "handOff": {
     "title": "Leaving the CRIS Golf Program App",

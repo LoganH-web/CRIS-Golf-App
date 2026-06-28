@@ -80,31 +80,19 @@ export interface Dictionary {
     lead: string;
     programOverview: string;
     levels: {
-      junior: {
-        label: string;
-        grades: string;
-        description: string;
-        videoLabel: string;
-      };
-      intermediate: {
-        label: string;
-        grades: string;
-        description: string;
-        videoLabel: string;
-      };
-      advanced: {
-        label: string;
-        grades: string;
-        description: string;
-        videoLabel: string;
-      };
+      junior: { label: string; grades: string; description: string };
+      intermediate: { label: string; grades: string; description: string };
+      advanced: { label: string; grades: string; description: string };
     };
-    photoPlaceholder: string;
+    /** Fallback text for a video embed with no id (embed requires it) */
     videoPlaceholder: string;
-    /** Caption/accessible label for the general program-intro video at the top */
-    programVideoLabel: string;
     /** Call-to-action under the play button when a real video is available */
     videoPlay: string;
+    /** Captions / accessible titles for the two top-of-page videos */
+    videoTitles: {
+      programIntro: string;
+      coachIntro: string;
+    };
   };
   /** §8 hand-off disclosure modal shown before opening the admissions URL */
   handOff: {

@@ -66,26 +66,25 @@
       "junior": {
         "label": "주니어",
         "grades": "4–5학년",
-        "description": "An introduction to golf for younger students. The Junior level focuses on fundamentals: grip, stance, swing basics, and etiquette. Sessions are short, fun, and designed to build a lasting love for the game in a supportive group setting.",
-        "videoLabel": "주니어 프로그램 소개 영상"
+        "description": "An introduction to golf for younger students. The Junior level focuses on fundamentals: grip, stance, swing basics, and etiquette. Sessions are short, fun, and designed to build a lasting love for the game in a supportive group setting."
       },
       "intermediate": {
         "label": "인터미디에이트",
         "grades": "6–8학년",
-        "description": "Building on the Junior foundation, Intermediate students develop consistency across all clubs, begin on-course play, and learn basic course management. Competitive opportunities are introduced at this level for students who are ready.",
-        "videoLabel": "인터미디에이트 프로그램 소개 영상"
+        "description": "Building on the Junior foundation, Intermediate students develop consistency across all clubs, begin on-course play, and learn basic course management. Competitive opportunities are introduced at this level for students who are ready."
       },
       "advanced": {
         "label": "어드밴스드",
         "grades": "9–12학년",
-        "description": "The Advanced level prepares serious golfers for inter-school competition and beyond. Students refine their full game — driving, iron play, short game, and mental approach — with individualised coaching and regular competitive play.",
-        "videoLabel": "어드밴스드 프로그램 소개 영상"
+        "description": "The Advanced level prepares serious golfers for inter-school competition and beyond. Students refine their full game — driving, iron play, short game, and mental approach — with individualised coaching and regular competitive play."
       }
     },
-    "photoPlaceholder": "프로그램 사진 준비 중",
     "videoPlaceholder": "소개 영상 준비 중",
-    "programVideoLabel": "프로그램 소개",
-    "videoPlay": "탭하여 재생"
+    "videoPlay": "탭하여 재생",
+    "videoTitles": {
+      "programIntro": "CRIS 골프 프로그램 소개",
+      "coachIntro": "골프 프로그램 코치 소개"
+    }
   },
   "handOff": {
     "title": "CRIS 골프 프로그램 앱을 떠납니다",

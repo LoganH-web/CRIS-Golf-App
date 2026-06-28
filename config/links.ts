@@ -82,26 +82,31 @@ export const generalContactEmail = "admin@cris.ac.th";
  */
 
 /**
- * General program introduction video, shown at the top of the Introduction
- * screen (above the three grade-level cards).
- * Source: https://www.youtube.com/watch?v=2H3CuxkoVBg
+ * Videos shown at the top of the About (Introduction) screen.
+ *   programIntro → CRIS Golf Program overview (youtube.com/watch?v=2H3CuxkoVBg)
+ *   coachIntro   → Golf Program coach introduction (youtube.com/watch?v=EECSVuMC6FQ)
+ * titleKey selects the localized caption from dict.introduction.videoTitles.
  */
-export const programIntroVideoId: string | null = "2H3CuxkoVBg";
+export const aboutVideos: {
+  id: string | null;
+  titleKey: "programIntro" | "coachIntro";
+}[] = [
+  { id: "2H3CuxkoVBg", titleKey: "programIntro" },
+  { id: "EECSVuMC6FQ", titleKey: "coachIntro" },
+];
 
 /**
- * Per-grade-level introduction videos.
- *   junior        → https://www.youtube.com/watch?v=EECSVuMC6FQ
- *   intermediate  → https://www.youtube.com/watch?v=mcIyZ_QAHHE
- *   advanced      → https://www.youtube.com/watch?v=QyU_EnL30Vg
+ * Photo shown on each grade-level card on the About screen (one per level,
+ * drawn from the gallery set). English alt text, consistent with galleryPhotos.
  */
-export const introductionVideos: {
-  level: "junior" | "intermediate" | "advanced";
-  id: string | null;
-}[] = [
-  { level: "junior",       id: "EECSVuMC6FQ" },
-  { level: "intermediate", id: "mcIyZ_QAHHE" },
-  { level: "advanced",     id: "QyU_EnL30Vg" },
-];
+export const introductionLevelPhotos: Record<
+  "junior" | "intermediate" | "advanced",
+  { src: string; alt: string }
+> = {
+  junior: { src: "/images/gallery/junior2.avif", alt: "Junior program students during a golf session" },
+  intermediate: { src: "/images/gallery/inter1.avif", alt: "Intermediate program students during a golf session" },
+  advanced: { src: "/images/gallery/adv1.avif", alt: "Advanced program students during a golf session" },
+};
 
 /**
  * Gallery videos (click-to-load youtube-nocookie embeds, §8).

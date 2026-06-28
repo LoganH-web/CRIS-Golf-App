@@ -1,23 +1,24 @@
 /**
- * School Introduction screen — route: /{locale}/introduction
+ * School Introduction ("About") screen — route: /{locale}/introduction
  *
- * Describes the CRIS Golf Program and its three grade levels:
+ * Top of page: two intro videos (Program Introduction + Coach Introduction),
+ * click-to-load youtube-nocookie embeds (§8).
+ *
+ * Then the three grade levels, each as a card with a photo banner, label,
+ * grade range, and description:
  *   - Junior (Grades 4–5)
  *   - Intermediate (Grades 6–8)
  *   - Advanced (Grades 9–12)
  *
- * Each level renders as a card with heading, grade range, description, and
- * placeholder slots for photos and intro videos.
- *
- * Subphase 1D: real structure and English copy; ko/zh/th level descriptions
- * fall back to English (school supplies translations — §6 / §10).
- * Photo and video slots are styled placeholders — real media wired in 1E.
+ * Videos and level photos come from config/links.ts (aboutVideos,
+ * introductionLevelPhotos). Level descriptions are localized per dictionary.
  */
 
+import Image from "next/image";
 import { getDictionary } from "@/i18n/getDictionary";
 import { isValidLocale } from "@/i18n/detectLocale";
 import { YoutubeNocookieEmbed } from "@/components/ui/YoutubeNocookieEmbed";
-import { introductionVideos, programIntroVideoId } from "@/config/links";
+import { aboutVideos, introductionLevelPhotos } from "@/config/links";
 import type { Locale } from "@/i18n/types";
 
 interface IntroductionPageProps {
@@ -64,55 +65,62 @@ export default async function IntroductionPage({ params }: IntroductionPageProps
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
           {d.programOverview}
         </p>
-
-        {/* General program introduction video — click-to-load youtube-nocookie (§8) */}
-        <div className="mt-5">
-          <h2 className="mb-2 text-sm font-semibold text-cris-navy">
-            {d.programVideoLabel}
-          </h2>
-          <YoutubeNocookieEmbed
-            videoId={programIntroVideoId}
-            label={d.programVideoLabel}
-            placeholderText={d.videoPlaceholder}
-            playLabel={d.videoPlay}
-          />
-        </div>
       </header>
+
+      {/* Intro videos — click-to-load youtube-nocookie (§8) */}
+      <div className="mb-8 flex flex-col gap-5">
+        {aboutVideos.map((video) => (
+          <div key={video.titleKey}>
+            <h2 className="mb-2 text-sm font-semibold text-cris-navy">
+              {d.videoTitles[video.titleKey]}
+            </h2>
+            <YoutubeNocookieEmbed
+              videoId={video.id}
+              label={d.videoTitles[video.titleKey]}
+              placeholderText={d.videoPlaceholder}
+              playLabel={d.videoPlay}
+            />
+          </div>
+        ))}
+      </div>
 
       {/* Grade-level cards */}
       <div className="flex flex-col gap-6">
-        {levels.map(({ key, data, accentColor, labelBg }) => (
-          <article
-            key={key}
-            className={`overflow-hidden rounded-xl border-2 border-l-[6px] border-slate-200 bg-white shadow-sm ${accentColor}`}
-          >
-            <div className="p-4">
-              {/* Level label + grade range */}
-              <div className="mb-3 flex items-center gap-2">
-                <span className={`inline-block rounded-full px-3 py-0.5 text-xs font-semibold ${labelBg}`}>
-                  {data.label}
-                </span>
-                <span className="text-xs text-slate-500">{data.grades}</span>
-              </div>
-
-              {/* Description */}
-              <p className="text-sm leading-relaxed text-slate-600">
-                {data.description}
-              </p>
-
-              {/* Video slot — click-to-load youtube-nocookie.com embed (§8) */}
-              {/* Zero third-party contact until the user explicitly presses play */}
-              <div className="mt-4">
-                <YoutubeNocookieEmbed
-                  videoId={introductionVideos.find((v) => v.level === key)?.id ?? null}
-                  label={data.videoLabel}
-                  placeholderText={d.videoPlaceholder}
-                  playLabel={d.videoPlay}
+        {levels.map(({ key, data, accentColor, labelBg }) => {
+          const photo = introductionLevelPhotos[key];
+          return (
+            <article
+              key={key}
+              className={`overflow-hidden rounded-xl border-2 border-l-[6px] border-slate-200 bg-white shadow-sm ${accentColor}`}
+            >
+              {/* Photo banner */}
+              <div className="relative h-44 w-full bg-slate-100">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(min-width: 640px) 600px, 100vw"
+                  className="object-cover"
                 />
               </div>
-            </div>
-          </article>
-        ))}
+
+              <div className="p-4">
+                {/* Level label + grade range */}
+                <div className="mb-3 flex items-center gap-2">
+                  <span className={`inline-block rounded-full px-3 py-0.5 text-xs font-semibold ${labelBg}`}>
+                    {data.label}
+                  </span>
+                  <span className="text-xs text-slate-500">{data.grades}</span>
+                </div>
+
+                {/* Description */}
+                <p className="text-sm leading-relaxed text-slate-600">
+                  {data.description}
+                </p>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </main>
   );

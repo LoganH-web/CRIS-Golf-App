@@ -8,19 +8,16 @@
  *
  * Run once:  node scripts/generate-splash.mjs
  *
- * Source: assets/brand/primary.png — the full CRIS Golf eagle crest on
- *         full-bleed navy. Composited centered on a BRAND_NAVY canvas at each
- *         device resolution. (To change the splash art, replace primary.png
- *         and re-run.)
+ * Source: assets/brand/app-logo.jpg — the circular CRIS Golf crest. We isolate
+ *         the crest circle and centre it on a WHITE canvas at each device
+ *         resolution. (To change the splash art, replace app-logo.jpg and re-run.)
  *
  * Output directory: public/icons/splash/
  *
  * Design:
- *   - Background: BRAND_NAVY (#0c4a6e) — matches the app icon and AppHeader.
- *   - Logo: centred eagle crest, sized to ~50% of the shortest edge.
- *   - The `background_color` in app/manifest.ts is #ffffff (manifest convention),
- *     but for the splash iOS renders the *icon* background, so we use the navy
- *     background (#0c4a6e) rather than white to avoid a jarring white flash.
+ *   - Background: WHITE (#ffffff) — matches the app-logo background and the
+ *     manifest background_color, so there is no jarring colour flash on launch.
+ *   - Logo: centred crest, sized to ~50% of the shortest edge.
  *
  * Media query format (required by iOS Safari):
  *   (device-width: Wpx) and (device-height: Hpx)
@@ -38,12 +35,15 @@ import { dirname, join } from "path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const outDir = join(__dirname, "..", "public", "icons", "splash");
-const SRC = join(__dirname, "..", "assets", "brand", "primary.png");
+const SRC = join(__dirname, "..", "assets", "brand", "app-logo.jpg");
 
 await mkdir(outDir, { recursive: true });
 
-// Brand navy — must stay in sync with config/theme.ts and generate-icons.mjs
-const BRAND_NAVY = "#0c4a6e";
+// Splash background — white, matching the app-logo background and the manifest.
+const SPLASH_BG = "#ffffff";
+
+// Crest circle geometry in the 2048² source (measured): centered, radius ~745.
+const CIRCLE = { size: 2048, cx: 1024, cy: 1024, r: 748 };
 
 /**
  * iOS device table.
@@ -107,36 +107,33 @@ const DEVICES = [
 ];
 
 /**
- * The crest art (max gold radius ~389 of the 512 half-canvas) carries a navy
- * vignette background. Compositing that square straight onto the navy canvas
- * leaves a faint square seam. So we feather a circular alpha mask just outside
- * the artwork (~r=410): the crest's navy fades to transparent and blends
- * invisibly into the canvas navy, leaving only the gold crest visible.
- * Built once and reused for every device.
+ * Isolate the crest circle from the source (transparent outside the gold ring),
+ * returned as a square PNG. Built once and reused for every device.
  */
 async function buildCrest() {
-  const src = await sharp(SRC).ensureAlpha().png().toBuffer();
   const mask = Buffer.from(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024">
-       <defs>
-         <radialGradient id="g" cx="50%" cy="50%" r="50%">
-           <stop offset="0" stop-color="#fff"/>
-           <stop offset="0.78" stop-color="#fff"/>
-           <stop offset="0.83" stop-color="#fff" stop-opacity="0"/>
-         </radialGradient>
-       </defs>
-       <rect width="1024" height="1024" fill="url(#g)"/>
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${CIRCLE.size}" height="${CIRCLE.size}">
+       <circle cx="${CIRCLE.cx}" cy="${CIRCLE.cy}" r="${CIRCLE.r}" fill="#fff"/>
      </svg>`
   );
-  return sharp(src).composite([{ input: mask, blend: "dest-in" }]).png().toBuffer();
+  const masked = await sharp(SRC)
+    .ensureAlpha()
+    .composite([{ input: mask, blend: "dest-in" }])
+    .png()
+    .toBuffer();
+
+  const left = CIRCLE.cx - CIRCLE.r;
+  const top = CIRCLE.cy - CIRCLE.r;
+  const side = CIRCLE.r * 2;
+  return sharp(masked).extract({ left, top, width: side, height: side }).png().toBuffer();
 }
 
 /**
- * Render a splash PNG: the feathered eagle crest centered on a BRAND_NAVY
- * canvas at the exact device pixel dimensions. The crest is sized to ~50% of
- * the shorter edge so it sits comfortably in both portrait and landscape.
+ * Render a splash PNG: the crest centered on a WHITE canvas at the exact device
+ * pixel dimensions. The crest is sized to ~50% of the shorter edge so it sits
+ * comfortably in both portrait and landscape.
  *
- * @param {Buffer} crestSrc  — pre-masked crest (from buildCrest)
+ * @param {Buffer} crestSrc  — extracted crest (from buildCrest)
  * @param {string} outputPath
  * @param {number} pxW  — canvas pixel width
  * @param {number} pxH  — canvas pixel height
@@ -146,7 +143,7 @@ async function generateSplash(crestSrc, outputPath, pxW, pxH) {
   const crest = await sharp(crestSrc).resize(crestPx, crestPx).toBuffer();
 
   await sharp({
-    create: { width: pxW, height: pxH, channels: 4, background: BRAND_NAVY },
+    create: { width: pxW, height: pxH, channels: 4, background: SPLASH_BG },
   })
     .composite([{ input: crest, gravity: "center" }])
     .png()

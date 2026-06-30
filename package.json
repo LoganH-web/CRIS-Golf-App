@@ -7,10 +7,11 @@
     "build": "next build && node scripts/generate-sw-precache.mjs",
     "start": "next start",
     "lint": "eslint",
-    "cap:assets": "capacitor-assets generate --ios",
-    "cap:sync": "npm run build && cap sync ios"
+    "cap:assets": "capacitor-assets generate",
+    "cap:sync": "npm run build && cap sync"
   },
   "dependencies": {
+    "@capacitor/android": "^8.4.1",
     "@capacitor/cli": "^8.4.1",
     "@capacitor/core": "^8.4.1",
     "@capacitor/ios": "^8.4.1",

@@ -7,7 +7,7 @@
     "build": "next build && node scripts/generate-sw-precache.mjs",
     "start": "next start",
     "lint": "eslint",
-    "cap:assets": "capacitor-assets generate",
+    "cap:assets": "capacitor-assets generate --assetPath resources",
     "cap:sync": "npm run build && cap sync"
   },
   "dependencies": {

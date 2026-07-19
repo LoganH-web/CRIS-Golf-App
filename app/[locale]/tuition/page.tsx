@@ -39,6 +39,16 @@ export default async function TuitionPage({ params }: TuitionPageProps): Promise
         </p>
       </header>
 
+      {/*
+       * Exchange-rate caveat. Skipped for th: the fees are set in baht, so
+       * Thai families have no conversion to account for.
+       */}
+      {resolvedLocale !== "th" && (
+        <p className="mb-3 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-700">
+          {d.exchangeRateNote}
+        </p>
+      )}
+
       {/* Fee matrix + currency toggle */}
       <div className="mb-6">
         <FeeTable

@@ -60,23 +60,23 @@
   },
   "introduction": {
     "heading": "学校介绍",
-    "lead": "The CRIS Golf Program at Chiang Rai International School develops young golfers through structured, age-appropriate training across three program levels. Our coaching team combines international golf instruction standards with a nurturing school environment.",
-    "programOverview": "Students train on-site and at partner facilities in Chiang Rai, with a curriculum that balances technical skill development, course management, and character building. The program is open to students in grades 4 through 12.",
+    "lead": "清莱国际学校（CRIS）高尔夫课程通过三个级别的系统化、适龄训练培养年轻高尔夫球手。我们的教练团队将国际高尔夫教学标准与温馨的校园环境相结合。",
+    "programOverview": "学生在校内及清莱的合作场地进行训练，课程兼顾技术能力培养、球场策略管理与品格塑造。本课程面向4至12年级的学生开放。",
     "levels": {
       "junior": {
         "label": "初级",
         "grades": "4–5年级",
-        "description": "An introduction to golf for younger students. The Junior level focuses on fundamentals: grip, stance, swing basics, and etiquette. Sessions are short, fun, and designed to build a lasting love for the game in a supportive group setting."
+        "description": "这是为低年级学生开设的高尔夫入门课程。少儿级别着重于基本功：握杆、站姿、挥杆基础与球场礼仪。课程时间短、趣味性强，旨在于互相支持的小组氛围中培养对这项运动的长久热爱。"
       },
       "intermediate": {
         "label": "中级",
         "grades": "6–8年级",
-        "description": "Building on the Junior foundation, Intermediate students develop consistency across all clubs, begin on-course play, and learn basic course management. Competitive opportunities are introduced at this level for students who are ready."
+        "description": "在少儿级别的基础上，中级学生将提升各号球杆的稳定性，开始下场打球，并学习基本的球场策略管理。对于已具备条件的学生，此级别开始提供参赛机会。"
       },
       "advanced": {
         "label": "高级",
         "grades": "9–12年级",
-        "description": "The Advanced level prepares serious golfers for inter-school competition and beyond. Students refine their full game — driving, iron play, short game, and mental approach — with individualised coaching and regular competitive play."
+        "description": "高级级别为有志于高尔夫的学生备战校际比赛及更高层次的赛事。学生在个性化指导与定期实战比赛中，全面打磨开球、铁杆击球、短杆技术与心理素质。"
       }
     },
     "videoPlaceholder": "介绍视频即将发布",
@@ -84,6 +84,36 @@
     "videoTitles": {
       "programIntro": "CRIS 高尔夫项目介绍",
       "coachIntro": "高尔夫项目教练介绍"
+    },
+    "affiliations": {
+      "heading": "认证与合作机构",
+      "lead": "清莱国际学校已获得以下机构的认证，并与其保持合作关系。",
+      "items": {
+        "wasc": {
+          "name": "Western Association of Schools and Colleges (ACS WASC)",
+          "description": "该认证确保学校拥有清晰明确的教育目标，并通过定期评估与院校自我评鉴达到既定的教育质量标准。"
+        },
+        "asean": {
+          "name": "Association of Southeast Asian Nations (ASEAN)",
+          "description": "致力于和平、稳定与繁荣的区域性伙伴组织，在充满活力的发展进程中携手共建互助关爱的社群。"
+        },
+        "isat": {
+          "name": "International Schools Association of Thailand (ISAT)",
+          "description": "作为泰国国际教育的统一发声机构，倡导高水准的教育质量与职业道德规范。"
+        },
+        "opec": {
+          "name": "Office of the Private Education Commission (OPEC)",
+          "description": "通过体制改革与质量提升推动私立教育发展，为泰国各地的教育机构提供支持。"
+        },
+        "onesqa": {
+          "name": "Office for National Education Standards and Quality Assessment",
+          "description": "制定国家教育标准，并每五年开展一次强制性的外部质量评估。"
+        },
+        "wida": {
+          "name": "WIDA International",
+          "description": "为具有多元文化与语言背景的儿童及青少年提供学术语言发展与学业成就方面的支持。"
+        }
+      }
     }
   },
   "handOff": {
@@ -99,26 +129,27 @@
     "steps": [
       {
         "title": "确认资格",
-        "description": "The program is open to currently enrolled CRIS students in grades 4–12. New students may apply for school admission and golf program enrollment simultaneously."
+        "description": "本课程面向目前就读于CRIS的4至12年级学生开放。新生可同时申请入学与高尔夫课程注册。"
       },
       {
         "title": "选择课程级别",
-        "description": "Review the Junior (Grades 4–5), Intermediate (Grades 6–8), and Advanced (Grades 9–12) program descriptions to identify the best fit. Our team is happy to advise if you are unsure."
+        "description": "请查阅少儿（4–5年级）、中级（6–8年级）与高级（9–12年级）课程说明，以确定最合适的级别。如有疑问，我们的团队乐意为您提供建议。"
       },
       {
         "title": "联系招生处",
-        "description": "Reach out to the CRIS admissions team using the button below. You will be directed to our enquiry form where you can share details about your child and ask any questions."
+        "description": "请通过下方按钮联系CRIS招生团队。您将被引导至咨询表单，可在其中提供孩子的相关信息并提出任何疑问。"
       },
       {
         "title": "评估与分班",
-        "description": "New students may be invited for a brief golf assessment so our coaches can confirm the appropriate level placement. This is informal and designed to be a positive experience."
+        "description": "新生可能会受邀参加一次简短的高尔夫水平评估，以便教练确认合适的级别安排。评估形式轻松，旨在带来愉快的体验。"
       },
       {
         "title": "确认注册",
-        "description": "Once placement is confirmed and fees are arranged, you will receive a welcome pack with program schedules, required equipment, and all the details you need to get started."
+        "description": "级别确认并完成费用安排后，您将收到迎新资料包，内含课程时间表、所需装备以及入门所需的全部信息。"
       }
     ],
     "actionsHeading": "准备好咨询了吗？",
+    "applyOnlineButton": "在线填写申请表",
     "contactButton": "联系招生处/咨询",
     "applyButton": "立即申请",
     "requestInfoButton": "通过邮件申请资料",
@@ -131,6 +162,7 @@
     "currencyLabel": "货币",
     "annualNote": "所有金额均为每名学生的年度费用，以所选货币显示。",
     "indicativeNote": "CNY 和 THB 金额为按固定参考汇率从美元换算的参考值，可能随汇率变动。准确金额请联系招生处。",
+    "exchangeRateNote": "以下金额可能因泰铢汇率而有所变动。",
     "categories": {
       "tuition": "学费及相关学术费用",
       "golfProgram": "高尔夫项目费用",
@@ -143,7 +175,7 @@
       "dormitory": "含餐饮、洗衣及清洁服务"
     },
     "contactButton": "联系招生处了解费用详情",
-    "disclaimer": "Golf program fees are separate from and in addition to standard CRIS school tuition. Equipment and tournament entry fees may apply separately."
+    "disclaimer": "高尔夫课程费用独立于CRIS常规学费之外，需另行缴纳。装备费与赛事报名费可能另计。"
   },
   "gallery": {
     "heading": "图库",

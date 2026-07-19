@@ -93,6 +93,24 @@ export interface Dictionary {
       programIntro: string;
       coachIntro: string;
     };
+    /**
+     * School affiliations & accreditations.
+     * Source: https://www.cris.ac.th/affiliations
+     * Organisation `name`s stay in English in every locale (official proper
+     * names); only the descriptions are localized.
+     */
+    affiliations: {
+      heading: string;
+      lead: string;
+      items: {
+        wasc: { name: string; description: string };
+        asean: { name: string; description: string };
+        isat: { name: string; description: string };
+        opec: { name: string; description: string };
+        onesqa: { name: string; description: string };
+        wida: { name: string; description: string };
+      };
+    };
   };
   /** §8 hand-off disclosure modal shown before opening the admissions URL */
   handOff: {
@@ -110,6 +128,8 @@ export interface Dictionary {
       description: string;
     }>;
     actionsHeading: string;
+    /** Opens the CRIS golf online application form directly (admissionsFormUrl) */
+    applyOnlineButton: string;
     /** Current button label (Enquire phase) */
     contactButton: string;
     /** Future button label — swaps in when real Apply form is live (admissionsButtonPhase = "apply") */
@@ -128,6 +148,12 @@ export interface Dictionary {
     annualNote: string;
     /** Shown when an indicative (converted) currency is selected (CNY/THB) */
     indicativeNote: string;
+    /**
+     * Shown above the fee table: amounts move with the baht exchange rate.
+     * Not rendered for th — Thai families pay in baht, so there is no
+     * conversion for them to account for.
+     */
+    exchangeRateNote: string;
     /** Itemized fee row labels + the total-row label */
     categories: {
       tuition: string;

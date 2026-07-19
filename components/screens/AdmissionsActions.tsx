@@ -5,6 +5,7 @@
  * Admissions screen.
  *
  * Wires:
+ *   - "Online Application" button        → §8 HandOffModal → admissionsFormUrl
  *   - "Contact Admissions / Enquire" button → §8 HandOffModal → admissionsUrl
  *   - "Request Information by Email" button → mailto:admission@cris.ac.th
  *
@@ -15,7 +16,12 @@
 import { useState } from "react";
 import { HandOffModal } from "@/components/ui/HandOffModal";
 import { Icon } from "@/components/ui/Icon";
-import { admissionsUrl, requestInfoEmail, admissionsButtonPhase } from "@/config/links";
+import {
+  admissionsUrl,
+  admissionsFormUrl,
+  requestInfoEmail,
+  admissionsButtonPhase,
+} from "@/config/links";
 import type { Dictionary } from "@/i18n/types";
 
 interface AdmissionsActionsProps {
@@ -23,7 +29,8 @@ interface AdmissionsActionsProps {
 }
 
 export function AdmissionsActions({ dict }: AdmissionsActionsProps): React.ReactElement {
-  const [modalOpen, setModalOpen] = useState(false);
+  /** Target URL for the §8 hand-off modal; null while the modal is closed. */
+  const [handOffUrl, setHandOffUrl] = useState<string | null>(null);
   const d = dict.admissions;
 
   // Label switches based on admissionsButtonPhase in config/links.ts
@@ -33,11 +40,26 @@ export function AdmissionsActions({ dict }: AdmissionsActionsProps): React.React
   return (
     <>
       <div className="flex flex-col gap-3">
+        {/*
+         * Online Application → §8 disclosure → the final Google Form.
+         * Primary action: it is the shortest route to actually applying, so it
+         * leads; the enquiry button below is the softer alternative.
+         */}
+        <button
+          type="button"
+          onClick={() => setHandOffUrl(admissionsFormUrl)}
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-cris-navy px-5 py-3.5 text-sm font-semibold text-white active:opacity-80"
+          aria-label={d.applyOnlineButton}
+        >
+          <Icon name="external-link" size={16} />
+          {d.applyOnlineButton}
+        </button>
+
         {/* Contact Admissions / Enquire → §8 disclosure → golf.cris.ac.th/contact */}
         <button
           type="button"
-          onClick={() => setModalOpen(true)}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-cris-navy px-5 py-3.5 text-sm font-semibold text-white active:opacity-80"
+          onClick={() => setHandOffUrl(admissionsUrl)}
+          className="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3.5 text-sm font-semibold text-slate-700 active:opacity-80"
           aria-label={contactButtonLabel}
         >
           <Icon name="user-plus" size={16} />
@@ -59,12 +81,12 @@ export function AdmissionsActions({ dict }: AdmissionsActionsProps): React.React
         </a>
       </div>
 
-      {/* §8 hand-off disclosure modal */}
+      {/* §8 hand-off disclosure modal — shared by both outbound buttons */}
       <HandOffModal
-        isOpen={modalOpen}
-        url={admissionsUrl}
+        isOpen={handOffUrl !== null}
+        url={handOffUrl ?? admissionsUrl}
         dict={dict.handOff}
-        onClose={() => setModalOpen(false)}
+        onClose={() => setHandOffUrl(null)}
       />
     </>
   );

@@ -25,6 +25,9 @@ interface IntroductionPageProps {
   params: Promise<{ locale: string }>;
 }
 
+/** Display order for the affiliations list (matches the CRIS website). */
+const affiliationKeys = ["wasc", "asean", "isat", "opec", "onesqa", "wida"] as const;
+
 export default async function IntroductionPage({ params }: IntroductionPageProps): Promise<React.ReactElement> {
   const { locale } = await params;
   const resolvedLocale: Locale = isValidLocale(locale) ? locale : "en";
@@ -122,6 +125,38 @@ export default async function IntroductionPage({ params }: IntroductionPageProps
           );
         })}
       </div>
+
+      {/* Affiliations & accreditations — source: cris.ac.th/affiliations */}
+      <section aria-labelledby="affiliations-heading" className="mt-10">
+        <h2
+          id="affiliations-heading"
+          className="text-lg font-bold tracking-tight text-cris-navy"
+        >
+          {d.affiliations.heading}
+        </h2>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+          {d.affiliations.lead}
+        </p>
+
+        <ul className="mt-4 flex flex-col gap-3">
+          {affiliationKeys.map((key) => {
+            const item = d.affiliations.items[key];
+            return (
+              <li
+                key={key}
+                className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+              >
+                <h3 className="text-sm font-semibold text-cris-navy">
+                  {item.name}
+                </h3>
+                <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                  {item.description}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
     </main>
   );
 }

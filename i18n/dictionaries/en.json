@@ -84,6 +84,36 @@
     "videoTitles": {
       "programIntro": "CRIS Golf Program Introduction",
       "coachIntro": "Golf Program Coach Introduction"
+    },
+    "affiliations": {
+      "heading": "Affiliations & Accreditations",
+      "lead": "Chiang Rai International School is accredited by and affiliated with the following organisations.",
+      "items": {
+        "wasc": {
+          "name": "Western Association of Schools and Colleges (ACS WASC)",
+          "description": "Accreditation assuring that the school has clearly defined educational objectives and meets established quality standards through regular evaluation and institutional self-assessment."
+        },
+        "asean": {
+          "name": "Association of Southeast Asian Nations (ASEAN)",
+          "description": "A regional partnership working towards peace, stability and prosperity, bonded together in dynamic development and a community of caring societies."
+        },
+        "isat": {
+          "name": "International Schools Association of Thailand (ISAT)",
+          "description": "The unified voice for international education in Thailand, promoting high standards of educational quality and ethical practice."
+        },
+        "opec": {
+          "name": "Office of the Private Education Commission (OPEC)",
+          "description": "Advances private education through system reform and quality improvement, supporting institutions across Thailand."
+        },
+        "onesqa": {
+          "name": "Office for National Education Standards and Quality Assessment",
+          "description": "Develops national education standards and conducts mandatory external quality assessments every five years."
+        },
+        "wida": {
+          "name": "WIDA International",
+          "description": "Supports academic language development and academic achievement for children and youth who are culturally and linguistically diverse."
+        }
+      }
     }
   },
   "handOff": {
@@ -119,6 +149,7 @@
       }
     ],
     "actionsHeading": "Ready to Enquire?",
+    "applyOnlineButton": "Online Application",
     "contactButton": "Contact Admissions / Enquire",
     "applyButton": "Apply Now",
     "requestInfoButton": "Request Information by Email",
@@ -131,6 +162,7 @@
     "currencyLabel": "Currency",
     "annualNote": "All figures are annual, per student, shown in the selected currency.",
     "indicativeNote": "CNY and THB amounts are indicative — converted from USD at a fixed reference rate and may vary with exchange rates. Contact admissions for exact figures.",
+    "exchangeRateNote": "The amounts below may vary depending on the Thai baht exchange rate.",
     "categories": {
       "tuition": "Tuition & Related Academic Fees",
       "golfProgram": "Golf Program Fees",

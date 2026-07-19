@@ -81,7 +81,18 @@ export function FeeTable({ locale, defaultCurrency, labels }: FeeTableProps): Re
         <table className="w-full border-collapse text-sm">
           <thead>
             <tr className="bg-cris-navy text-white">
-              <th scope="col" className="px-3 py-2.5 text-left text-xs font-semibold">
+              {/*
+               * min-w pins the label column. Without it the table's auto layout
+               * gives this column its min-content width — and because CJK text
+               * may break between any two glyphs, that collapsed to roughly one
+               * character per line in ko/zh/th. The grade columns are
+               * whitespace-nowrap, so the overflow-x-auto wrapper absorbs the
+               * extra width instead of squeezing this one.
+               */}
+              <th
+                scope="col"
+                className="w-[38%] min-w-[7.5rem] px-3 py-2.5 text-left text-xs font-semibold"
+              >
                 {labels.itemizedHeader}
               </th>
               {feeGradeBands.map((band) => (

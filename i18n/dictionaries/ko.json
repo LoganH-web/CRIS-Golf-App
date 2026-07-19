@@ -60,23 +60,23 @@
   },
   "introduction": {
     "heading": "학교 소개",
-    "lead": "The CRIS Golf Program at Chiang Rai International School develops young golfers through structured, age-appropriate training across three program levels. Our coaching team combines international golf instruction standards with a nurturing school environment.",
-    "programOverview": "Students train on-site and at partner facilities in Chiang Rai, with a curriculum that balances technical skill development, course management, and character building. The program is open to students in grades 4 through 12.",
+    "lead": "치앙라이 국제학교(CRIS)의 골프 프로그램은 세 가지 레벨에 걸친 체계적이고 연령에 맞는 훈련을 통해 어린 골퍼를 육성합니다. 저희 코칭 팀은 국제 골프 지도 기준과 따뜻한 학교 환경을 결합합니다.",
+    "programOverview": "학생들은 교내와 치앙라이 지역 제휴 시설에서 훈련하며, 기술 향상과 코스 운영 능력, 인성 함양의 균형을 맞춘 커리큘럼을 따릅니다. 이 프로그램은 4학년부터 12학년까지의 학생이 참여할 수 있습니다.",
     "levels": {
       "junior": {
         "label": "주니어",
         "grades": "4–5학년",
-        "description": "An introduction to golf for younger students. The Junior level focuses on fundamentals: grip, stance, swing basics, and etiquette. Sessions are short, fun, and designed to build a lasting love for the game in a supportive group setting."
+        "description": "어린 학생들을 위한 골프 입문 과정입니다. 주니어 레벨은 그립, 스탠스, 스윙 기초, 에티켓 등 기본기에 중점을 둡니다. 수업은 짧고 즐겁게 구성되어, 서로를 격려하는 그룹 환경에서 골프에 대한 오랜 애정을 키울 수 있도록 설계되었습니다."
       },
       "intermediate": {
         "label": "인터미디에이트",
         "grades": "6–8학년",
-        "description": "Building on the Junior foundation, Intermediate students develop consistency across all clubs, begin on-course play, and learn basic course management. Competitive opportunities are introduced at this level for students who are ready."
+        "description": "주니어 과정에서 쌓은 기초를 바탕으로, 인터미디어트 레벨에서는 모든 클럽에 걸쳐 일관성을 기르고, 실제 코스 라운드를 시작하며, 기본적인 코스 운영을 배웁니다. 준비가 된 학생에게는 이 단계에서 대회 출전 기회가 주어집니다."
       },
       "advanced": {
         "label": "어드밴스드",
         "grades": "9–12학년",
-        "description": "The Advanced level prepares serious golfers for inter-school competition and beyond. Students refine their full game — driving, iron play, short game, and mental approach — with individualised coaching and regular competitive play."
+        "description": "어드밴스드 레벨은 진지하게 골프에 임하는 학생들이 교내외 대회와 그 이상을 준비할 수 있도록 돕습니다. 학생들은 드라이빙, 아이언 플레이, 숏게임, 멘탈 관리까지 경기 전반을 다듬으며, 개인별 맞춤 코칭과 정기적인 실전 경기를 병행합니다."
       }
     },
     "videoPlaceholder": "소개 영상 준비 중",
@@ -84,6 +84,36 @@
     "videoTitles": {
       "programIntro": "CRIS 골프 프로그램 소개",
       "coachIntro": "골프 프로그램 코치 소개"
+    },
+    "affiliations": {
+      "heading": "가입 및 인증 기관",
+      "lead": "치앙라이 국제학교는 다음 기관들로부터 인증을 받았으며, 해당 기관들과 협력하고 있습니다.",
+      "items": {
+        "wasc": {
+          "name": "Western Association of Schools and Colleges (ACS WASC)",
+          "description": "학교가 명확한 교육 목표를 갖추고, 정기적인 평가와 자체 진단을 통해 정해진 교육 품질 기준을 충족하고 있음을 보증하는 인증입니다."
+        },
+        "asean": {
+          "name": "Association of Southeast Asian Nations (ASEAN)",
+          "description": "평화와 안정, 번영을 지향하며 역동적인 발전과 서로를 배려하는 공동체를 위해 협력하는 동남아시아 지역 연합입니다."
+        },
+        "isat": {
+          "name": "International Schools Association of Thailand (ISAT)",
+          "description": "태국 국제 교육을 대표하는 단일 창구로서, 높은 교육 품질과 윤리적 운영 기준을 장려합니다."
+        },
+        "opec": {
+          "name": "Office of the Private Education Commission (OPEC)",
+          "description": "제도 개혁과 품질 개선을 통해 사립 교육을 발전시키며, 태국 전역의 교육 기관을 지원합니다."
+        },
+        "onesqa": {
+          "name": "Office for National Education Standards and Quality Assessment",
+          "description": "국가 교육 표준을 수립하고, 5년마다 의무적인 외부 품질 평가를 실시합니다."
+        },
+        "wida": {
+          "name": "WIDA International",
+          "description": "문화적·언어적으로 다양한 배경을 가진 아동과 청소년의 학문적 언어 발달과 학업 성취를 지원합니다."
+        }
+      }
     }
   },
   "handOff": {
@@ -99,26 +129,27 @@
     "steps": [
       {
         "title": "자격 확인",
-        "description": "The program is open to currently enrolled CRIS students in grades 4–12. New students may apply for school admission and golf program enrollment simultaneously."
+        "description": "이 프로그램은 현재 CRIS에 재학 중인 4~12학년 학생에게 열려 있습니다. 신입생은 학교 입학과 골프 프로그램 등록을 동시에 신청할 수 있습니다."
       },
       {
         "title": "프로그램 수준 선택",
-        "description": "Review the Junior (Grades 4–5), Intermediate (Grades 6–8), and Advanced (Grades 9–12) program descriptions to identify the best fit. Our team is happy to advise if you are unsure."
+        "description": "주니어(4~5학년), 인터미디어트(6~8학년), 어드밴스드(9~12학년) 프로그램 설명을 살펴보고 가장 알맞은 레벨을 확인하세요. 결정이 어려우시면 저희 팀이 기꺼이 상담해 드립니다."
       },
       {
         "title": "입학처 문의",
-        "description": "Reach out to the CRIS admissions team using the button below. You will be directed to our enquiry form where you can share details about your child and ask any questions."
+        "description": "아래 버튼을 통해 CRIS 입학 담당 팀에 문의하세요. 문의 양식으로 연결되며, 자녀에 대한 정보를 알려주시고 궁금한 점을 문의하실 수 있습니다."
       },
       {
         "title": "평가 및 배치",
-        "description": "New students may be invited for a brief golf assessment so our coaches can confirm the appropriate level placement. This is informal and designed to be a positive experience."
+        "description": "신입생은 코치진이 적합한 레벨을 확인할 수 있도록 간단한 골프 평가에 초대될 수 있습니다. 평가는 격식 없이 편안하게 진행되며, 긍정적인 경험이 되도록 준비되어 있습니다."
       },
       {
         "title": "등록 확인",
-        "description": "Once placement is confirmed and fees are arranged, you will receive a welcome pack with program schedules, required equipment, and all the details you need to get started."
+        "description": "레벨 배정이 확정되고 비용 납부가 완료되면, 프로그램 일정과 필요한 장비, 시작에 필요한 모든 안내가 담긴 웰컴 패키지를 받으시게 됩니다."
       }
     ],
     "actionsHeading": "문의할 준비가 되셨나요?",
+    "applyOnlineButton": "온라인 지원서 작성",
     "contactButton": "입학처 문의하기",
     "applyButton": "지금 지원하기",
     "requestInfoButton": "이메일로 정보 요청",
@@ -131,6 +162,7 @@
     "currencyLabel": "통화",
     "annualNote": "모든 금액은 학생 1인당 연간 비용이며 선택한 통화로 표시됩니다.",
     "indicativeNote": "CNY 및 THB 금액은 USD를 고정 환율로 환산한 참고용이며 환율에 따라 달라질 수 있습니다. 정확한 금액은 입학처에 문의하세요.",
+    "exchangeRateNote": "아래 금액은 바트화 환율에 따라 변동될 수 있습니다.",
     "categories": {
       "tuition": "학비 및 관련비용",
       "golfProgram": "골프 프로그램 비용",
@@ -143,7 +175,7 @@
       "dormitory": "식비, 세탁, 청소 포함"
     },
     "contactButton": "비용 정보 입학처 문의",
-    "disclaimer": "Golf program fees are separate from and in addition to standard CRIS school tuition. Equipment and tournament entry fees may apply separately."
+    "disclaimer": "골프 프로그램 비용은 CRIS 정규 학비와 별도로 추가 부과됩니다. 장비 및 대회 참가비는 별도로 발생할 수 있습니다."
   },
   "gallery": {
     "heading": "갤러리",

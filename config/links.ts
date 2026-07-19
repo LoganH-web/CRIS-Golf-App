@@ -53,6 +53,17 @@ export const canonicalSiteUrl = "https://cris-golf-app.vercel.app";
 export const admissionsUrl = "https://golf.cris.ac.th/contact";
 
 /**
+ * Direct link to the CRIS Golf School online application form.
+ *
+ * On the school website this form is three clicks deep:
+ *   cris.ac.th/admissions-procedure → "Application Form" → the golf-school
+ *   link inside that first Google Form → this form.
+ * The app links straight to the final form so families skip that chain.
+ */
+export const admissionsFormUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeIDgSOYVscDb8Uan6d9HOPKbKZs2t8BJuai-E_PMWmoHxgYQ/viewform";
+
+/**
  * Controls which button label variant is shown on the Contact Admissions button.
  *   "enquire" → current phase: "Contact Admissions / Enquire"
  *   "apply"   → future phase:  "Apply Now" (when real application form is live)

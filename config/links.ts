@@ -103,8 +103,8 @@ export const aboutVideos: {
   titleKey: "programIntro" | "coachIntro";
   poster?: string;
 }[] = [
-  { id: "2H3CuxkoVBg", titleKey: "programIntro", poster: "/images/gallery/golf-class-1.avif" },
-  { id: "EECSVuMC6FQ", titleKey: "coachIntro",   poster: "/images/gallery/golf-class-2.avif" },
+  { id: "2H3CuxkoVBg", titleKey: "programIntro", poster: "/images/video-posters/program-intro.avif" },
+  { id: "EECSVuMC6FQ", titleKey: "coachIntro",   poster: "/images/video-posters/coach-intro.avif" },
 ];
 
 /**
@@ -133,8 +133,8 @@ export const galleryVideos: {
   titleKey: "cris" | "happyCity";
   poster?: string;
 }[] = [
-  { id: "qiGw8xFid4Y", titleKey: "cris",      poster: "/images/gallery/golf-class-7.avif" },
-  { id: "briCLWge9Kk", titleKey: "happyCity", poster: "/images/gallery/golf-class-5.avif" },
+  { id: "qiGw8xFid4Y", titleKey: "cris",      poster: "/images/video-posters/gallery-cris.avif" },
+  { id: "briCLWge9Kk", titleKey: "happyCity", poster: "/images/video-posters/gallery-happy-city.avif" },
 ];
 
 /**

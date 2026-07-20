@@ -104,7 +104,13 @@ export function YoutubeNocookieEmbed({
         .join(" ")}
       style={{ aspectRatio: "16/9" }}
     >
-      {/* Poster (local asset — no network) + scrim to keep the button legible */}
+      {/*
+       * Poster (local asset — no network) + scrim to keep the button legible.
+       * object-contain, not cover: these are video title cards with text laid
+       * over them, and cover would shave the edges — enough to clip the coach
+       * card's name plate. Letterboxing against the dark tile reads as a
+       * normal video player anyway.
+       */}
       {videoId && poster && (
         <>
           <Image
@@ -113,9 +119,9 @@ export function YoutubeNocookieEmbed({
             aria-hidden
             fill
             sizes="(min-width: 640px) 600px, 100vw"
-            className="object-cover"
+            className="object-contain"
           />
-          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-0 bg-black/40" />
         </>
       )}
 

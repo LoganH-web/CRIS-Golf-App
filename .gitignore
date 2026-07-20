@@ -53,3 +53,8 @@ play-store-assets/
 # Local markdown docs (guides, prep sheets) — keep out of the repo going forward.
 # Already-tracked .md files remain tracked; this only ignores new ones.
 *.md
+
+# Full-size source masters. Keep these locally; the repo carries only the
+# optimized derivatives under public/images/ (a single PNG master outweighs
+# every poster we ship). The already-tracked golf*.jpg are unaffected.
+content/source-images/*.png

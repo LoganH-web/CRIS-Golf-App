@@ -82,6 +82,7 @@ export default async function IntroductionPage({ params }: IntroductionPageProps
               label={d.videoTitles[video.titleKey]}
               placeholderText={d.videoPlaceholder}
               playLabel={d.videoPlay}
+              poster={video.poster}
             />
           </div>
         ))}

@@ -88,14 +88,23 @@ export default async function GalleryPage({ params }: GalleryPageProps): Promise
                   {group.photos.map((photo) => (
                     <div
                       key={photo.src}
-                      className="relative aspect-square overflow-hidden rounded-lg bg-slate-100"
+                      className="relative aspect-[3/4] overflow-hidden rounded-lg bg-slate-100"
                     >
+                      {/*
+                       * object-contain, matching the level cards on the About
+                       * screen: these are photos of students, and object-cover
+                       * on a square tile center-cropped the tall portraits
+                       * (junior3 is 0.47:1 — over half its height was cut),
+                       * beheading the subject. Contain never crops; the 3:4
+                       * tile keeps the letterboxing small for the portraits
+                       * that make up most of the set.
+                       */}
                       <Image
                         src={photo.src}
                         alt={photo.alt}
                         fill
                         sizes="(min-width: 640px) 33vw, 50vw"
-                        className="object-cover"
+                        className="object-contain"
                       />
                     </div>
                   ))}
@@ -148,6 +157,7 @@ export default async function GalleryPage({ params }: GalleryPageProps): Promise
                 label={d.videoTitles[video.titleKey]}
                 placeholderText={d.videoPlaceholder}
                 playLabel={d.videoPlay}
+                poster={video.poster}
               />
             </div>
           ))}

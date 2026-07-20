@@ -101,9 +101,10 @@ export const generalContactEmail = "admin@cris.ac.th";
 export const aboutVideos: {
   id: string | null;
   titleKey: "programIntro" | "coachIntro";
+  poster?: string;
 }[] = [
-  { id: "2H3CuxkoVBg", titleKey: "programIntro" },
-  { id: "EECSVuMC6FQ", titleKey: "coachIntro" },
+  { id: "2H3CuxkoVBg", titleKey: "programIntro", poster: "/images/gallery/golf-class-1.avif" },
+  { id: "EECSVuMC6FQ", titleKey: "coachIntro",   poster: "/images/gallery/golf-class-2.avif" },
 ];
 
 /**
@@ -130,9 +131,10 @@ export const introductionLevelPhotos: Record<
 export const galleryVideos: {
   id: string | null;
   titleKey: "cris" | "happyCity";
+  poster?: string;
 }[] = [
-  { id: "qiGw8xFid4Y", titleKey: "cris"      },
-  { id: "briCLWge9Kk", titleKey: "happyCity" },
+  { id: "qiGw8xFid4Y", titleKey: "cris",      poster: "/images/gallery/golf-class-7.avif" },
+  { id: "briCLWge9Kk", titleKey: "happyCity", poster: "/images/gallery/golf-class-5.avif" },
 ];
 
 /**

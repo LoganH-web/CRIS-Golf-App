@@ -27,6 +27,7 @@
  */
 
 import { useState } from "react";
+import Image from "next/image";
 import { Icon } from "@/components/ui/Icon";
 
 interface YoutubeNocookieEmbedProps {
@@ -42,6 +43,16 @@ interface YoutubeNocookieEmbedProps {
    * is only correct for the null/coming-soon state.
    */
   playLabel?: string;
+  /**
+   * Local poster image shown behind the play button (a path under /public,
+   * e.g. "/images/gallery/golf-class-1.avif").
+   *
+   * Deliberately NOT YouTube's img.youtube.com thumbnail: that would fire a
+   * request to Google before the user has clicked anything, which is exactly
+   * what the §8 posture above rules out — and it would leave the tile blank
+   * offline. A bundled image keeps both promises.
+   */
+  poster?: string;
 }
 
 export function YoutubeNocookieEmbed({
@@ -49,6 +60,7 @@ export function YoutubeNocookieEmbed({
   label,
   placeholderText,
   playLabel,
+  poster,
 }: YoutubeNocookieEmbedProps): React.ReactElement {
   const [playing, setPlaying] = useState(false);
 
@@ -82,24 +94,39 @@ export function YoutubeNocookieEmbed({
       aria-label={label}
       disabled={!videoId}
       className={[
-        "relative flex w-full items-center justify-center overflow-hidden rounded-xl border border-dashed",
+        "relative flex w-full items-center justify-center overflow-hidden rounded-xl border",
         "bg-slate-900 text-white",
         videoId
           ? "border-slate-600 cursor-pointer"
-          : "border-slate-300 bg-slate-50 text-slate-400 cursor-not-allowed",
+          : "border-dashed border-slate-300 bg-slate-50 text-slate-400 cursor-not-allowed",
       ]
         .filter(Boolean)
         .join(" ")}
       style={{ aspectRatio: "16/9" }}
     >
+      {/* Poster (local asset — no network) + scrim to keep the button legible */}
+      {videoId && poster && (
+        <>
+          <Image
+            src={poster}
+            alt=""
+            aria-hidden
+            fill
+            sizes="(min-width: 640px) 600px, 100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/45" />
+        </>
+      )}
+
       {videoId ? (
-        // Ready-to-play state: dark background with play chevron
-        <div className="flex flex-col items-center gap-2">
+        // Ready-to-play state: play chevron over the poster (or plain dark tile)
+        <div className="relative flex flex-col items-center gap-2">
           {/* Play button circle */}
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/25 backdrop-blur-sm">
             <Icon name="play-solid" size={28} className="ml-1 text-white" />
           </div>
-          <span className="text-xs font-medium text-white/80">{playLabel ?? placeholderText}</span>
+          <span className="text-xs font-medium text-white/90">{playLabel ?? placeholderText}</span>
         </div>
       ) : (
         // No video yet: same look as 1D placeholder

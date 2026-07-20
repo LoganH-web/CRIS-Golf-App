@@ -188,7 +188,21 @@ export default function RootLayout({
           />
         ))}
       </head>
-      <body className="flex min-h-full flex-col bg-white text-slate-900">
+      {/*
+       * suppressHydrationWarning: browser extensions (Grammarly is the usual
+       * culprit — data-gr-ext-installed, data-new-gr-c-s-check-loaded) stamp
+       * attributes onto <body> before React hydrates, so the client tree never
+       * matches the server tree. Nothing we render causes it and it cannot
+       * occur in the Capacitor webview, which has no extensions.
+       *
+       * The flag applies to this element's own attributes only — it does not
+       * cascade to children, so genuine hydration mismatches inside the app
+       * still surface.
+       */}
+      <body
+        className="flex min-h-full flex-col bg-white text-slate-900"
+        suppressHydrationWarning
+      >
         {/* Syncs <html lang> to the active locale from the URL */}
         <HtmlLangSync />
         {/* Registers the service worker for PWA installability + offline (1F) */}

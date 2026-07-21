@@ -23,7 +23,7 @@ workflows:
         bundle_identifier: th.ac.cris.golf
       vars:
         BUNDLE_ID: "th.ac.cris.golf"
-        APP_STORE_APP_ID: 0000000000           # <-- replace with the app's numeric Apple ID
+        APP_STORE_APP_ID: 6793028047           # numeric Apple ID of the App Store Connect record
         XCODE_WORKSPACE: "ios/App/App.xcworkspace"
         XCODE_SCHEME: "App"
       node: 20

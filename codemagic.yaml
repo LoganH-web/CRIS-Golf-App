@@ -56,9 +56,23 @@ workflows:
           agvtool new-version -all $((LATEST + 1))
       - name: Build .ipa
         script: |
-          xcode-project build-ipa \
-            --workspace "$XCODE_WORKSPACE" \
-            --scheme "$XCODE_SCHEME"
+          # Capacitor 8 generates an SPM-based project (no CocoaPods), so there
+          # is no .xcworkspace — only App.xcodeproj. Older/CocoaPods layouts do
+          # have a workspace. Detect whichever exists and build that.
+          echo "--- iOS project layout ---"
+          ls -la ios/App || true
+          WS=$(find ios -maxdepth 3 -name "*.xcworkspace" | head -1)
+          PROJ=$(find ios -maxdepth 3 -name "*.xcodeproj" | head -1)
+          if [ -n "$WS" ]; then
+            echo "Building workspace: $WS"
+            xcode-project build-ipa --workspace "$WS" --scheme "$XCODE_SCHEME"
+          elif [ -n "$PROJ" ]; then
+            echo "No workspace; building project: $PROJ"
+            xcode-project build-ipa --project "$PROJ" --scheme "$XCODE_SCHEME"
+          else
+            echo "ERROR: no .xcworkspace or .xcodeproj found under ios/"
+            exit 1
+          fi
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log

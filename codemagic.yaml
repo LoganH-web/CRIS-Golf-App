@@ -3,7 +3,7 @@
 #
 # ONE-TIME SETUP (in the Codemagic UI) — see TESTFLIGHT.md for details:
 #   1. Connect this Git repo to a new Codemagic app.
-#   2. Add an App Store Connect API key integration named exactly "CRIS Golf ASC"
+#   2. Add an App Store Connect API key integration named exactly "Codemagic CI"
 #      (Teams → Integrations → App Store Connect). This handles signing + upload.
 #   3. Create the app record in App Store Connect (bundle id th.ac.cris.golf),
 #      then put its numeric Apple ID into APP_STORE_APP_ID below.
@@ -16,7 +16,7 @@ workflows:
     instance_type: mac_mini_m2
     max_build_duration: 60
     integrations:
-      app_store_connect: CRIS Golf ASC        # name of your ASC API key in Codemagic
+      app_store_connect: Codemagic CI         # must match the integration name in Codemagic exactly
     environment:
       # NOTE: no `ios_signing:` block here on purpose. That block only *fetches*
       # an existing provisioning profile during machine setup, which fails for a

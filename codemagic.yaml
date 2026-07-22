@@ -18,9 +18,10 @@ workflows:
     integrations:
       app_store_connect: CRIS Golf ASC        # name of your ASC API key in Codemagic
     environment:
-      ios_signing:
-        distribution_type: app_store           # TestFlight / App Store distribution
-        bundle_identifier: th.ac.cris.golf
+      # NOTE: no `ios_signing:` block here on purpose. That block only *fetches*
+      # an existing provisioning profile during machine setup, which fails for a
+      # brand-new app ("No matching profiles found"). Instead the signing script
+      # below fetches **or creates** the certificate + profile via the API key.
       vars:
         BUNDLE_ID: "th.ac.cris.golf"
         APP_STORE_APP_ID: 6793028047           # numeric Apple ID of the App Store Connect record
@@ -40,8 +41,14 @@ workflows:
         script: npx capacitor-assets generate --ios
       - name: Sync web assets into the iOS project
         script: npx cap sync ios
-      - name: Set up code signing
-        script: xcode-project use-profiles
+      - name: Set up code signing (creates cert + profile if missing)
+        script: |
+          keychain initialize
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
+          xcode-project use-profiles
       - name: Set build number (latest TestFlight build + 1)
         script: |
           LATEST=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID" 2>/dev/null || echo 0)

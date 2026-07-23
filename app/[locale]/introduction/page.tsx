@@ -101,7 +101,9 @@ export default async function IntroductionPage({ params }: IntroductionPageProps
               <div className="relative h-72 w-full bg-slate-100">
                 <Image
                   src={photo.src}
-                  alt={photo.alt}
+                  // Level photos are drawn from the gallery set, so their alt
+                  // text lives under gallery.photoAlt (§5).
+                  alt={dict.gallery.photoAlt[photo.altKey]}
                   fill
                   sizes="(min-width: 640px) 600px, 100vw"
                   className="object-contain"

@@ -25,7 +25,7 @@ import type { Locale } from "@/i18n/types";
 export type Currency = "USD" | "KRW" | "CNY" | "THB";
 
 /** All selectable currencies, in toggle order. */
-export const FEE_CURRENCIES: Currency[] = ["USD", "KRW", "CNY", "THB"];
+export const feeCurrencies: Currency[] = ["USD", "KRW", "CNY", "THB"];
 
 /** Currency shown by default for each language (user can switch manually). */
 export const localeDefaultCurrency: Record<Locale, Currency> = {
@@ -49,25 +49,25 @@ export const feeGradeBands = ["G4–6", "G7–9", "G10–12"] as const;
 export type FeeCategoryKey = "tuition" | "golfProgram" | "golfLesson" | "dormitory";
 
 /** Display order of the itemized fee rows. */
-export const FEE_CATEGORY_ORDER: FeeCategoryKey[] = [
+export const feeCategoryOrder: FeeCategoryKey[] = [
   "tuition",
   "golfProgram",
   "golfLesson",
   "dormitory",
 ];
 
-/** Per-grade figures: tuple is [G4–6, G7–9, G10–12]. */
-type Triple = readonly [number, number, number];
+/** Per-grade figures, one amount per grade band: [G4–6, G7–9, G10–12]. */
+type GradeBandAmounts = readonly [number, number, number];
 interface OfficialRow {
-  usd: Triple;
-  krw: Triple;
+  usd: GradeBandAmounts;
+  krw: GradeBandAmounts;
 }
 
 /**
  * Official figures, verbatim from the school's USD and KRW fee tables.
  * (KRW columns sum exactly to the official totals below.)
  */
-const ROWS: Record<FeeCategoryKey, OfficialRow> = {
+const officialFeeRows: Record<FeeCategoryKey, OfficialRow> = {
   tuition: { usd: [8066, 9184, 10053], krw: [12130700, 13813300, 15119900] },
   golfProgram: { usd: [14676, 16877, 19408], krw: [22072610, 25382350, 29189880] },
   golfLesson: { usd: [4688, 5313, 6250], krw: [7050000, 7990000, 9400000] },
@@ -75,7 +75,7 @@ const ROWS: Record<FeeCategoryKey, OfficialRow> = {
 };
 
 /** Official totals, verbatim (do not sum the rows — USD has ±1 rounding). */
-const TOTAL: OfficialRow = {
+const officialFeeTotals: OfficialRow = {
   usd: [37376, 42908, 48399],
   krw: [56213410, 64534290, 72792720],
 };
@@ -104,14 +104,14 @@ export function feeAmount(
   gradeIndex: number,
   currency: Currency,
 ): number {
-  const row = categoryOrTotal === "total" ? TOTAL : ROWS[categoryOrTotal];
+  const row = categoryOrTotal === "total" ? officialFeeTotals : officialFeeRows[categoryOrTotal];
   if (currency === "USD") return row.usd[gradeIndex];
   if (currency === "KRW") return row.krw[gradeIndex];
   return Math.round(row.usd[gradeIndex] * indicativeRates[currency]);
 }
 
 /** BCP-47 tag for Intl number formatting per app locale. */
-const INTL_LOCALE: Record<Locale, string> = {
+const intlLocaleTags: Record<Locale, string> = {
   en: "en",
   ko: "ko",
   zh: "zh-CN",
@@ -120,7 +120,7 @@ const INTL_LOCALE: Record<Locale, string> = {
 
 /** Format a whole-number fee amount as a localized currency string. */
 export function formatFee(amount: number, currency: Currency, locale: Locale): string {
-  return new Intl.NumberFormat(INTL_LOCALE[locale], {
+  return new Intl.NumberFormat(intlLocaleTags[locale], {
     style: "currency",
     currency,
     maximumFractionDigits: 0,

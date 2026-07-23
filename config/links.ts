@@ -32,6 +32,16 @@
  * =========================================================
  */
 
+import type { Dictionary } from "@/i18n/types";
+
+/**
+ * Stable i18n key identifying a photo's alt text (gallery.photoAlt.*).
+ * Every image's description lives in the four translation files, never inline
+ * as an English literal here (§5 / §11) — the components resolve the key to the
+ * active locale's text at render time.
+ */
+type PhotoAltKey = keyof Dictionary["gallery"]["photoAlt"];
+
 /**
  * The canonical public URL of this app.
  *
@@ -109,15 +119,16 @@ export const aboutVideos: {
 
 /**
  * Photo shown on each grade-level card on the About screen (one per level,
- * drawn from the gallery set). English alt text, consistent with galleryPhotos.
+ * drawn from the gallery set). `altKey` points at a gallery.photoAlt entry so
+ * the description is localized, consistent with galleryPhotos.
  */
 export const introductionLevelPhotos: Record<
   "junior" | "intermediate" | "advanced",
-  { src: string; alt: string }
+  { src: string; altKey: PhotoAltKey }
 > = {
-  junior: { src: "/images/gallery/junior2.avif", alt: "Junior program students during a golf session" },
-  intermediate: { src: "/images/gallery/inter1.avif", alt: "Intermediate program students during a golf session" },
-  advanced: { src: "/images/gallery/adv1.avif", alt: "Advanced program students during a golf session" },
+  junior: { src: "/images/gallery/junior2.avif", altKey: "juniorSession" },
+  intermediate: { src: "/images/gallery/inter1.avif", altKey: "intermediateSession" },
+  advanced: { src: "/images/gallery/adv1.avif", altKey: "advancedSession" },
 };
 
 /**
@@ -146,8 +157,10 @@ export const galleryVideos: {
  *   1. Drop the image files into `public/images/gallery/` (AVIF preferred —
  *      smallest files; JPG/PNG/WebP also work). Use clean, URL-safe filenames
  *      (no spaces, parentheses, or ~) so the paths and precache stay valid.
- *   2. Add an entry below: `src` = public path, `alt` = descriptive English
- *      alt text (media consent confirmed — §0 Gate C), `category` = the section.
+ *   2. Add a `gallery.photoAlt.<key>` entry to all four dictionaries with the
+ *      photo's description (media consent confirmed — §0 Gate C).
+ *   3. Add an entry below: `src` = public path, `altKey` = the new dictionary
+ *      key, `category` = the section.
  *
  * When this array is empty, the Gallery page falls back to placeholder tiles.
  * Photos are NOT precached by the service worker (to keep the offline app
@@ -156,35 +169,35 @@ export const galleryVideos: {
  */
 export const galleryPhotos: {
   src: string;
-  alt: string;
+  altKey: PhotoAltKey;
   category: "junior" | "intermediate" | "advanced" | "general";
 }[] = [
   // Junior program (Grades 4–5)
-  { src: "/images/gallery/junior2.avif", alt: "Junior program students during a golf session", category: "junior" },
-  { src: "/images/gallery/junior3.avif", alt: "Junior program students practicing golf", category: "junior" },
-  { src: "/images/gallery/junior4.avif", alt: "Junior program students on the course", category: "junior" },
+  { src: "/images/gallery/junior2.avif", altKey: "juniorSession", category: "junior" },
+  { src: "/images/gallery/junior3.avif", altKey: "juniorPracticing", category: "junior" },
+  { src: "/images/gallery/junior4.avif", altKey: "juniorCourse", category: "junior" },
 
   // Intermediate program (Grades 6–8)
-  { src: "/images/gallery/inter1.avif", alt: "Intermediate program students during a golf session", category: "intermediate" },
-  { src: "/images/gallery/inter2.avif", alt: "Intermediate program students practicing golf", category: "intermediate" },
-  { src: "/images/gallery/inter3.avif", alt: "Intermediate program students on the course", category: "intermediate" },
-  { src: "/images/gallery/inter4.avif", alt: "Intermediate program students training", category: "intermediate" },
+  { src: "/images/gallery/inter1.avif", altKey: "intermediateSession", category: "intermediate" },
+  { src: "/images/gallery/inter2.avif", altKey: "intermediatePracticing", category: "intermediate" },
+  { src: "/images/gallery/inter3.avif", altKey: "intermediateCourse", category: "intermediate" },
+  { src: "/images/gallery/inter4.avif", altKey: "intermediateTraining", category: "intermediate" },
 
   // Advanced program (Grades 9–12)
-  { src: "/images/gallery/adv1.avif", alt: "Advanced program students during a golf session", category: "advanced" },
-  { src: "/images/gallery/adv2.avif", alt: "Advanced program students practicing golf", category: "advanced" },
-  { src: "/images/gallery/adv3.avif", alt: "Advanced program students on the course", category: "advanced" },
-  { src: "/images/gallery/adv4.avif", alt: "Advanced program students training", category: "advanced" },
-  { src: "/images/gallery/adv5.avif", alt: "Advanced program (Grades 9–12) students", category: "advanced" },
+  { src: "/images/gallery/adv1.avif", altKey: "advancedSession", category: "advanced" },
+  { src: "/images/gallery/adv2.avif", altKey: "advancedPracticing", category: "advanced" },
+  { src: "/images/gallery/adv3.avif", altKey: "advancedCourse", category: "advanced" },
+  { src: "/images/gallery/adv4.avif", altKey: "advancedTraining", category: "advanced" },
+  { src: "/images/gallery/adv5.avif", altKey: "advancedStudents", category: "advanced" },
 
   // General golf classes
-  { src: "/images/gallery/golf-class-1.avif", alt: "Students lining up a putt during a CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-2.avif", alt: "A coach guiding a student's swing at a CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-3.avif", alt: "Students practicing on the driving range at a CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-4.avif", alt: "A student teeing off during a CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-5.avif", alt: "Students walking the fairway at a CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-6.avif", alt: "A group of students at a CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-7.avif", alt: "Short-game chipping practice at a CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-8.avif", alt: "Students on the putting green at a CRIS golf class", category: "general" },
-  { src: "/images/gallery/golf-class-9.avif", alt: "A coaching session at a CRIS golf class", category: "general" },
+  { src: "/images/gallery/golf-class-1.avif", altKey: "classPutt", category: "general" },
+  { src: "/images/gallery/golf-class-2.avif", altKey: "classSwingGuidance", category: "general" },
+  { src: "/images/gallery/golf-class-3.avif", altKey: "classDrivingRange", category: "general" },
+  { src: "/images/gallery/golf-class-4.avif", altKey: "classTeeOff", category: "general" },
+  { src: "/images/gallery/golf-class-5.avif", altKey: "classFairway", category: "general" },
+  { src: "/images/gallery/golf-class-6.avif", altKey: "classGroup", category: "general" },
+  { src: "/images/gallery/golf-class-7.avif", altKey: "classChipping", category: "general" },
+  { src: "/images/gallery/golf-class-8.avif", altKey: "classPuttingGreen", category: "general" },
+  { src: "/images/gallery/golf-class-9.avif", altKey: "classCoaching", category: "general" },
 ];

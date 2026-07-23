@@ -178,6 +178,29 @@
     "disclaimer": "Golf program fees are separate from and in addition to standard CRIS school tuition. Equipment and tournament entry fees may apply separately."
   },
   "gallery": {
+    "photoAlt": {
+      "juniorSession": "Junior program students during a golf session",
+      "juniorPracticing": "Junior program students practicing golf",
+      "juniorCourse": "Junior program students on the course",
+      "intermediateSession": "Intermediate program students during a golf session",
+      "intermediatePracticing": "Intermediate program students practicing golf",
+      "intermediateCourse": "Intermediate program students on the course",
+      "intermediateTraining": "Intermediate program students training",
+      "advancedSession": "Advanced program students during a golf session",
+      "advancedPracticing": "Advanced program students practicing golf",
+      "advancedCourse": "Advanced program students on the course",
+      "advancedTraining": "Advanced program students training",
+      "advancedStudents": "Advanced program (Grades 9–12) students",
+      "classPutt": "Students lining up a putt during a CRIS golf class",
+      "classSwingGuidance": "A coach guiding a student's swing at a CRIS golf class",
+      "classDrivingRange": "Students practicing on the driving range at a CRIS golf class",
+      "classTeeOff": "A student teeing off during a CRIS golf class",
+      "classFairway": "Students walking the fairway at a CRIS golf class",
+      "classGroup": "A group of students at a CRIS golf class",
+      "classChipping": "Short-game chipping practice at a CRIS golf class",
+      "classPuttingGreen": "Students on the putting green at a CRIS golf class",
+      "classCoaching": "A coaching session at a CRIS golf class"
+    },
     "heading": "Gallery",
     "lead": "A curated collection of photos and videos from the CRIS Golf Program — training sessions, tournaments, and student achievements.",
     "photosHeading": "Photos",
@@ -198,6 +221,7 @@
       "general": "Golf Classes"
     },
     "lightbox": {
+      "dialogLabel": "Photo viewer",
       "open": "View photo",
       "close": "Close",
       "previous": "Previous photo",

@@ -178,6 +178,29 @@
     "disclaimer": "골프 프로그램 비용은 CRIS 정규 학비와 별도로 추가 부과됩니다. 장비 및 대회 참가비는 별도로 발생할 수 있습니다."
   },
   "gallery": {
+    "photoAlt": {
+      "juniorSession": "골프 세션 중인 주니어 프로그램 학생들",
+      "juniorPracticing": "골프를 연습하는 주니어 프로그램 학생들",
+      "juniorCourse": "코스에 있는 주니어 프로그램 학생들",
+      "intermediateSession": "골프 세션 중인 인터미디에이트 프로그램 학생들",
+      "intermediatePracticing": "골프를 연습하는 인터미디에이트 프로그램 학생들",
+      "intermediateCourse": "코스에 있는 인터미디에이트 프로그램 학생들",
+      "intermediateTraining": "훈련 중인 인터미디에이트 프로그램 학생들",
+      "advancedSession": "골프 세션 중인 어드밴스드 프로그램 학생들",
+      "advancedPracticing": "골프를 연습하는 어드밴스드 프로그램 학생들",
+      "advancedCourse": "코스에 있는 어드밴스드 프로그램 학생들",
+      "advancedTraining": "훈련 중인 어드밴스드 프로그램 학생들",
+      "advancedStudents": "어드밴스드 프로그램(9~12학년) 학생들",
+      "classPutt": "CRIS 골프 수업에서 퍼팅을 조준하는 학생들",
+      "classSwingGuidance": "CRIS 골프 수업에서 학생의 스윈을 지도하는 코치",
+      "classDrivingRange": "CRIS 골프 수업에서 드라이빙 레인지에서 연습하는 학생들",
+      "classTeeOff": "CRIS 골프 수업에서 티샷을 하는 학생",
+      "classFairway": "CRIS 골프 수업에서 페어웨이를 걷는 학생들",
+      "classGroup": "CRIS 골프 수업에 참여한 학생들",
+      "classChipping": "CRIS 골프 수업에서의 숫게임 칩샷 연습",
+      "classPuttingGreen": "CRIS 골프 수업에서 퍼팅 그린에 있는 학생들",
+      "classCoaching": "CRIS 골프 수업의 코칭 세션"
+    },
     "heading": "갤러리",
     "lead": "CRIS 골프 프로그램의 훈련 세션, 토너먼트, 학생 성취 사진과 동영상 모음.",
     "photosHeading": "사진",
@@ -198,6 +221,7 @@
       "general": "골프 수업"
     },
     "lightbox": {
+      "dialogLabel": "사진 뷰어",
       "open": "사진 보기",
       "close": "닫기",
       "previous": "이전 사진",

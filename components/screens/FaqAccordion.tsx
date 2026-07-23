@@ -46,7 +46,9 @@ export function FaqAccordion({ items }: FaqAccordionProps): React.ReactElement {
         const answerId = `faq-answer-${index}`;
 
         return (
-          <div key={index}>
+          // Keyed by the (unique) question rather than the array index so React
+          // keeps each row's open/closed state tied to its content.
+          <div key={item.question}>
             <button
               type="button"
               onClick={() => toggleItem(index)}

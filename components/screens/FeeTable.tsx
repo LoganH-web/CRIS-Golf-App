@@ -15,8 +15,8 @@
 import { useState } from "react";
 import type { Locale } from "@/i18n/types";
 import {
-  FEE_CURRENCIES,
-  FEE_CATEGORY_ORDER,
+  feeCurrencies,
+  feeCategoryOrder,
   feeGradeBands,
   feeAmount,
   formatFee,
@@ -55,21 +55,21 @@ export function FeeTable({ locale, defaultCurrency, labels }: FeeTableProps): Re
       <div className="mb-3 flex flex-wrap items-center gap-2">
         <span className="text-xs font-semibold text-slate-500">{labels.currencyLabel}</span>
         <div role="group" aria-label={labels.currencyLabel} className="flex flex-wrap gap-1.5">
-          {FEE_CURRENCIES.map((c) => {
-            const active = c === currency;
+          {feeCurrencies.map((currencyOption) => {
+            const isActive = currencyOption === currency;
             return (
               <button
-                key={c}
+                key={currencyOption}
                 type="button"
-                onClick={() => setCurrency(c)}
-                aria-pressed={active}
+                onClick={() => setCurrency(currencyOption)}
+                aria-pressed={isActive}
                 className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
-                  active
+                  isActive
                     ? "bg-cris-navy text-white"
                     : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                 }`}
               >
-                {currencyLabels[c]}
+                {currencyLabels[currencyOption]}
               </button>
             );
           })}
@@ -107,10 +107,10 @@ export function FeeTable({ locale, defaultCurrency, labels }: FeeTableProps): Re
             </tr>
           </thead>
           <tbody>
-            {FEE_CATEGORY_ORDER.map((key, i) => {
+            {feeCategoryOrder.map((key, rowIndex) => {
               const note = noteFor(key);
               return (
-                <tr key={key} className={i % 2 ? "bg-slate-50/60" : "bg-white"}>
+                <tr key={key} className={rowIndex % 2 ? "bg-slate-50/60" : "bg-white"}>
                   <th scope="row" className="px-3 py-3 text-left font-medium text-slate-800">
                     {labels.categories[key]}
                     {note && (
@@ -119,12 +119,12 @@ export function FeeTable({ locale, defaultCurrency, labels }: FeeTableProps): Re
                       </span>
                     )}
                   </th>
-                  {feeGradeBands.map((_, gi) => (
+                  {feeGradeBands.map((band, gradeIndex) => (
                     <td
-                      key={gi}
+                      key={band}
                       className="whitespace-nowrap px-3 py-3 text-right tabular-nums text-slate-700"
                     >
-                      {formatFee(feeAmount(key, gi, currency), currency, locale)}
+                      {formatFee(feeAmount(key, gradeIndex, currency), currency, locale)}
                     </td>
                   ))}
                 </tr>
@@ -136,12 +136,12 @@ export function FeeTable({ locale, defaultCurrency, labels }: FeeTableProps): Re
               <th scope="row" className="px-3 py-3 text-left text-cris-navy">
                 {labels.categories.total}
               </th>
-              {feeGradeBands.map((_, gi) => (
+              {feeGradeBands.map((band, gradeIndex) => (
                 <td
-                  key={gi}
+                  key={band}
                   className="whitespace-nowrap px-3 py-3 text-right tabular-nums text-cris-navy"
                 >
-                  {formatFee(feeAmount("total", gi, currency), currency, locale)}
+                  {formatFee(feeAmount("total", gradeIndex, currency), currency, locale)}
                 </td>
               ))}
             </tr>

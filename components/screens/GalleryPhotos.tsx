@@ -29,6 +29,7 @@ export interface GalleryPhotoGroup {
 interface GalleryPhotosProps {
   groups: GalleryPhotoGroup[];
   labels: {
+    dialogLabel: string;
     open: string;
     close: string;
     previous: string;
@@ -38,17 +39,26 @@ interface GalleryPhotosProps {
 
 export function GalleryPhotos({ groups, labels }: GalleryPhotosProps): React.ReactElement {
   // Flat, ordered list across every group — the sequence the viewer swipes.
-  const flat = groups.flatMap((g) => g.photos);
+  const orderedPhotos = groups.flatMap((group) => group.photos);
 
   // null = viewer closed; otherwise the flat index the viewer opened at.
   const [openAt, setOpenAt] = useState<number | null>(null);
   // Index currently centered in the viewer (drives the counter + prev/next).
   const [current, setCurrent] = useState(0);
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const viewerRef = useRef<HTMLDivElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  // The tile that opened the viewer — focus returns here when it closes (§11).
+  const openerRef = useRef<HTMLElement | null>(null);
 
   const isOpen = openAt !== null;
+  // Non-null index for use while the viewer is open (0 is an unused placeholder
+  // when closed) — keeps the render honest without a `null` type assertion.
+  const activeIndex = openAt ?? 0;
 
   const open = useCallback((index: number) => {
+    // Remember the trigger so focus can return to it on close.
+    openerRef.current = document.activeElement as HTMLElement | null;
     setOpenAt(index);
     setCurrent(index);
   }, []);
@@ -58,57 +68,101 @@ export function GalleryPhotos({ groups, labels }: GalleryPhotosProps): React.Rea
   // Scroll a given flat index into view (used by buttons + keyboard).
   const goTo = useCallback(
     (index: number, behavior: ScrollBehavior = "smooth") => {
-      const el = scrollRef.current;
-      if (!el) return;
-      const clamped = Math.max(0, Math.min(flat.length - 1, index));
-      el.scrollTo({ left: clamped * el.clientWidth, behavior });
+      const track = scrollRef.current;
+      if (!track) return;
+      const clamped = Math.max(0, Math.min(orderedPhotos.length - 1, index));
+      track.scrollTo({ left: clamped * track.clientWidth, behavior });
     },
-    [flat.length],
+    [orderedPhotos.length],
   );
 
   // On open, jump the track to the tapped photo before the first paint so the
   // viewer never flashes photo #1 first.
   useLayoutEffect(() => {
-    if (!isOpen) return;
-    goTo(openAt as number, "instant");
-  }, [isOpen, openAt, goTo]);
+    if (openAt === null) return;
+    goTo(openAt, "instant");
+  }, [openAt, goTo]);
 
-  // While open: lock body scroll and wire keyboard navigation.
+  // Move focus into the viewer on open and restore it to the opener on close;
+  // lock body scroll while open (§11). Keyed on isOpen alone, so swiping (which
+  // changes `current`) never yanks focus back to the tile mid-viewing.
+  useEffect(() => {
+    if (!isOpen) return;
+    closeButtonRef.current?.focus();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const opener = openerRef.current;
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      opener?.focus();
+    };
+  }, [isOpen]);
+
+  // Keyboard navigation (arrows + Escape) and a focus trap while open, so a
+  // keyboard user never tabs onto the page hidden behind the overlay (§11).
   useEffect(() => {
     if (!isOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
-      else if (e.key === "ArrowLeft") goTo(current - 1);
-      else if (e.key === "ArrowRight") goTo(current + 1);
+      if (e.key === "Escape") {
+        close();
+        return;
+      }
+      if (e.key === "ArrowLeft") {
+        goTo(current - 1);
+        return;
+      }
+      if (e.key === "ArrowRight") {
+        goTo(current + 1);
+        return;
+      }
+      // Query focusable controls at trap time so it keeps working as the
+      // prev/next buttons appear and disappear at the ends of the set.
+      if (e.key === "Tab") {
+        const viewer = viewerRef.current;
+        if (!viewer) return;
+        const focusable = viewer.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])',
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
     window.addEventListener("keydown", onKey);
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prevOverflow;
-    };
+    return () => window.removeEventListener("keydown", onKey);
   }, [isOpen, current, close, goTo]);
 
   // Keep `current` in sync as the user swipes/snaps.
   const onScroll = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const width = el.clientWidth || 1;
-    const index = Math.round(el.scrollLeft / width);
-    setCurrent((c) => (c === index ? c : index));
+    const track = scrollRef.current;
+    if (!track) return;
+    const width = track.clientWidth || 1;
+    const index = Math.round(track.scrollLeft / width);
+    setCurrent((previous) => (previous === index ? previous : index));
   }, []);
 
-  // Running offset so each tile knows its position in the flat sequence.
-  let flatOffset = 0;
+  // Flat index where each group begins — the running total of the sizes of the
+  // groups before it. Precomputed (no mutation during render) so a tile can map
+  // to its position in the swipe sequence.
+  const groupStartIndexes = groups.map((_group, groupIndex) =>
+    groups
+      .slice(0, groupIndex)
+      .reduce((total, precedingGroup) => total + precedingGroup.photos.length, 0),
+  );
 
   return (
     <>
       {/* Grid — grouped by program level, identical layout to before */}
       <div className="flex flex-col gap-6">
-        {groups.map((group) => {
-          const groupStart = flatOffset;
-          flatOffset += group.photos.length;
+        {groups.map((group, groupIndex) => {
+          const groupStart = groupStartIndexes[groupIndex];
           return (
             <div key={group.category}>
               <h3 className="mb-2 text-sm font-semibold text-cris-navy">{group.label}</h3>
@@ -120,7 +174,10 @@ export function GalleryPhotos({ groups, labels }: GalleryPhotosProps): React.Rea
                       key={photo.src}
                       type="button"
                       onClick={() => open(flatIndex)}
-                      aria-label={labels.open}
+                      // Include the photo's description so screen readers
+                      // distinguish tiles instead of announcing "View photo" N
+                      // times identically.
+                      aria-label={`${labels.open}: ${photo.alt}`}
                       className="relative aspect-[3/4] cursor-pointer overflow-hidden rounded-lg bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-cris-navy"
                     >
                       {/*
@@ -148,9 +205,11 @@ export function GalleryPhotos({ groups, labels }: GalleryPhotosProps): React.Rea
       {/* Full-screen viewer */}
       {isOpen && (
         <div
+          ref={viewerRef}
           className="fixed inset-0 z-50 bg-black"
           role="dialog"
           aria-modal="true"
+          aria-label={labels.dialogLabel}
         >
           {/* Swipeable, snap-to-photo track (native scrolling) */}
           <div
@@ -158,7 +217,7 @@ export function GalleryPhotos({ groups, labels }: GalleryPhotosProps): React.Rea
             onScroll={onScroll}
             className="no-scrollbar flex h-full w-full snap-x snap-mandatory overflow-x-auto overflow-y-hidden overscroll-contain"
           >
-            {flat.map((photo, i) => (
+            {orderedPhotos.map((photo, i) => (
               <div
                 key={photo.src}
                 className="relative h-full w-full shrink-0 snap-center"
@@ -170,7 +229,7 @@ export function GalleryPhotos({ groups, labels }: GalleryPhotosProps): React.Rea
                   sizes="100vw"
                   // Only the photos adjacent to the opener need to be eager;
                   // the rest lazy-load as the user swipes toward them.
-                  priority={Math.abs(i - (openAt as number)) <= 1}
+                  priority={Math.abs(i - activeIndex) <= 1}
                   className="object-contain"
                 />
               </div>
@@ -179,6 +238,7 @@ export function GalleryPhotos({ groups, labels }: GalleryPhotosProps): React.Rea
 
           {/* Close button — padded below the status-bar safe area */}
           <button
+            ref={closeButtonRef}
             type="button"
             onClick={close}
             aria-label={labels.close}
@@ -198,7 +258,7 @@ export function GalleryPhotos({ groups, labels }: GalleryPhotosProps): React.Rea
               <Icon name="chevron-left" size={24} />
             </button>
           )}
-          {current < flat.length - 1 && (
+          {current < orderedPhotos.length - 1 && (
             <button
               type="button"
               onClick={() => goTo(current + 1)}
@@ -212,7 +272,7 @@ export function GalleryPhotos({ groups, labels }: GalleryPhotosProps): React.Rea
           {/* Counter — padded above the home-indicator safe area */}
           <div className="pointer-events-none absolute inset-x-0 bottom-[calc(env(safe-area-inset-bottom)+1rem)] flex justify-center">
             <span className="rounded-full bg-black/50 px-3 py-1 text-xs font-medium text-white">
-              {current + 1} / {flat.length}
+              {current + 1} / {orderedPhotos.length}
             </span>
           </div>
         </div>

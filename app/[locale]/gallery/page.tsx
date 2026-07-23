@@ -28,8 +28,12 @@ interface GalleryPageProps {
   params: Promise<{ locale: string }>;
 }
 
-/** Number of placeholder photo tiles to render in the grid. */
-const PHOTO_PLACEHOLDER_COUNT = 6;
+/**
+ * Stable keys for the placeholder photo tiles shown while no real photos are
+ * configured. A fixed list (rather than an index range) gives each tile a
+ * content-independent React key.
+ */
+const photoPlaceholderKeys = ["one", "two", "three", "four", "five", "six"];
 
 export default async function GalleryPage({ params }: GalleryPageProps): Promise<React.ReactElement> {
   const { locale } = await params;
@@ -81,19 +85,23 @@ export default async function GalleryPage({ params }: GalleryPageProps): Promise
           // The grid + full-screen swipeable viewer live in GalleryPhotos
           // (client component — the viewer needs tap/swipe/keyboard state).
           <GalleryPhotos
-            groups={photoGroups.map((g) => ({
-              category: g.category,
-              label: g.label,
-              photos: g.photos.map((p) => ({ src: p.src, alt: p.alt })),
+            groups={photoGroups.map((group) => ({
+              category: group.category,
+              label: group.label,
+              // Resolve each photo's alt key to the active locale's text (§5).
+              photos: group.photos.map((photo) => ({
+                src: photo.src,
+                alt: d.photoAlt[photo.altKey],
+              })),
             }))}
             labels={d.lightbox}
           />
         ) : (
           // No photos configured yet — show placeholder tiles.
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-            {Array.from({ length: PHOTO_PLACEHOLDER_COUNT }).map((_, i) => (
+            {photoPlaceholderKeys.map((placeholderKey) => (
               <div
-                key={i}
+                key={placeholderKey}
                 className="flex aspect-square items-center justify-center rounded-lg bg-slate-100"
                 role="img"
                 aria-label={d.photoPlaceholder}

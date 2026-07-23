@@ -178,6 +178,29 @@
     "disclaimer": "高尔夫课程费用独立于CRIS常规学费之外，需另行缴纳。装备费与赛事报名费可能另计。"
   },
   "gallery": {
+    "photoAlt": {
+      "juniorSession": "初级课程学生在高尔夫训练中",
+      "juniorPracticing": "初级课程学生在练习高尔夫",
+      "juniorCourse": "初级课程学生在球场上",
+      "intermediateSession": "中级课程学生在高尔夫训练中",
+      "intermediatePracticing": "中级课程学生在练习高尔夫",
+      "intermediateCourse": "中级课程学生在球场上",
+      "intermediateTraining": "中级课程学生在训练",
+      "advancedSession": "高级课程学生在高尔夫训练中",
+      "advancedPracticing": "高级课程学生在练习高尔夫",
+      "advancedCourse": "高级课程学生在球场上",
+      "advancedTraining": "高级课程学生在训练",
+      "advancedStudents": "高级课程（9–12年级）学生",
+      "classPutt": "学生在 CRIS 高尔夫课堂上瞄准推杆",
+      "classSwingGuidance": "教练在 CRIS 高尔夫课堂上指导学生挥杆",
+      "classDrivingRange": "学生在 CRIS 高尔夫课堂的练习场上练习",
+      "classTeeOff": "学生在 CRIS 高尔夫课堂上开球",
+      "classFairway": "学生在 CRIS 高尔夫课堂上走过球道",
+      "classGroup": "CRIS 高尔夫课堂上的一群学生",
+      "classChipping": "CRIS 高尔夫课堂上的短杆切球练习",
+      "classPuttingGreen": "学生在 CRIS 高尔夫课堂的果岭上",
+      "classCoaching": "CRIS 高尔夫课堂的教练指导"
+    },
     "heading": "图库",
     "lead": "CRIS高尔夫课程的精选照片和视频——训练课、比赛及学员成就。",
     "photosHeading": "照片",
@@ -198,6 +221,7 @@
       "general": "高尔夫课堂"
     },
     "lightbox": {
+      "dialogLabel": "照片查看器",
       "open": "查看照片",
       "close": "关闭",
       "previous": "上一张",

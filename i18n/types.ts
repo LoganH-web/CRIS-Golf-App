@@ -193,8 +193,39 @@ export interface Dictionary {
       advanced: string;
       general: string;
     };
+    /**
+     * Descriptive alt text for each gallery photo, keyed by a stable slug
+     * (see galleryPhotos[].altKey in config/links.ts). Also reused for the
+     * grade-level photos on the About screen (introductionLevelPhotos).
+     * Every image the user sees pulls its alt text from here (§5 / §11).
+     */
+    photoAlt: {
+      juniorSession: string;
+      juniorPracticing: string;
+      juniorCourse: string;
+      intermediateSession: string;
+      intermediatePracticing: string;
+      intermediateCourse: string;
+      intermediateTraining: string;
+      advancedSession: string;
+      advancedPracticing: string;
+      advancedCourse: string;
+      advancedTraining: string;
+      advancedStudents: string;
+      classPutt: string;
+      classSwingGuidance: string;
+      classDrivingRange: string;
+      classTeeOff: string;
+      classFairway: string;
+      classGroup: string;
+      classChipping: string;
+      classPuttingGreen: string;
+      classCoaching: string;
+    };
     /** Accessible labels for the full-screen photo viewer (lightbox) */
     lightbox: {
+      /** aria-label naming the viewer dialog itself ("Photo viewer") */
+      dialogLabel: string;
       /** aria-label for the tappable photo tile ("View photo") */
       open: string;
       /** aria-label for the close (X) button */

@@ -22,6 +22,15 @@ workflows:
       # an existing provisioning profile during machine setup, which fails for a
       # brand-new app ("No matching profiles found"). Instead the signing script
       # below fetches **or creates** the certificate + profile via the API key.
+      groups:
+        # Provides CERTIFICATE_PRIVATE_KEY — a persistent RSA private key added
+        # as a secure variable in the Codemagic UI (group "signing"). Without it,
+        # each build's --create makes a throwaway certificate whose private key
+        # dies with the build machine; the next build then downloads only the
+        # public cert and fails with "Cannot save Signing Certificates without
+        # certificate private key". Tying the cert to this fixed key makes it
+        # reusable across builds.
+        - signing
       vars:
         BUNDLE_ID: "th.ac.cris.golf"
         APP_STORE_APP_ID: 6793028047           # numeric Apple ID of the App Store Connect record
@@ -44,8 +53,13 @@ workflows:
         script: |
           set -e
           keychain initialize
+          # --certificate-key ties the distribution certificate to a persistent
+          # private key (secure var, group "signing"), so the same cert is reused
+          # every build instead of being orphaned. On the first run with this key
+          # --create mints a new cert from it; later runs just download+reuse it.
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
             --type IOS_APP_STORE \
+            --certificate-key @env:CERTIFICATE_PRIVATE_KEY \
             --create
           keychain add-certificates
           # Apply the fetched profile to the App target. Point --project at the

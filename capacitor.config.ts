@@ -16,6 +16,17 @@ const config: CapacitorConfig = {
   appId: "th.ac.cris.golf",
   appName: "CRIS Golf Program",
   webDir: "out",
+  server: {
+    /*
+     * iosScheme: "https" makes the iOS WebView origin "https://localhost",
+     * matching Android's default (androidScheme is "https"). Without this, iOS
+     * defaults to "capacitor://localhost" — a non-http(s) origin that YouTube's
+     * embed player refuses, throwing "Error 153: Video player configuration
+     * error". The videos play on Android precisely because it already uses the
+     * https scheme; this brings iOS to parity. Applies on the next `cap sync`.
+     */
+    iosScheme: "https",
+  },
 };
 
 export default config;

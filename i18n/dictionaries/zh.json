@@ -196,6 +196,12 @@
       "intermediate": "中级课程",
       "advanced": "高级课程",
       "general": "高尔夫课堂"
+    },
+    "lightbox": {
+      "open": "查看照片",
+      "close": "关闭",
+      "previous": "上一张",
+      "next": "下一张"
     }
   },
   "faq": {

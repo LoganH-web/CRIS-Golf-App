@@ -196,6 +196,12 @@
       "intermediate": "인터미디에이트 프로그램",
       "advanced": "어드밴스드 프로그램",
       "general": "골프 수업"
+    },
+    "lightbox": {
+      "open": "사진 보기",
+      "close": "닫기",
+      "previous": "이전 사진",
+      "next": "다음 사진"
     }
   },
   "faq": {

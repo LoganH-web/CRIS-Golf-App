@@ -16,11 +16,11 @@
  * No tracking or analytics (§8). No autoplay.
  */
 
-import Image from "next/image";
 import { getDictionary } from "@/i18n/getDictionary";
 import { isValidLocale } from "@/i18n/detectLocale";
 import { YoutubeNocookieEmbed } from "@/components/ui/YoutubeNocookieEmbed";
 import { Icon } from "@/components/ui/Icon";
+import { GalleryPhotos } from "@/components/screens/GalleryPhotos";
 import { galleryVideos, galleryPhotos } from "@/config/links";
 import type { Locale } from "@/i18n/types";
 
@@ -78,40 +78,16 @@ export default async function GalleryPage({ params }: GalleryPageProps): Promise
 
         {hasPhotos ? (
           // Real curated photos (AVIF/JPG/PNG), grouped by program level.
-          <div className="flex flex-col gap-6">
-            {photoGroups.map((group) => (
-              <div key={group.category}>
-                <h3 className="mb-2 text-sm font-semibold text-cris-navy">
-                  {group.label}
-                </h3>
-                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                  {group.photos.map((photo) => (
-                    <div
-                      key={photo.src}
-                      className="relative aspect-[3/4] overflow-hidden rounded-lg bg-slate-100"
-                    >
-                      {/*
-                       * object-contain, matching the level cards on the About
-                       * screen: these are photos of students, and object-cover
-                       * on a square tile center-cropped the tall portraits
-                       * (junior3 is 0.47:1 — over half its height was cut),
-                       * beheading the subject. Contain never crops; the 3:4
-                       * tile keeps the letterboxing small for the portraits
-                       * that make up most of the set.
-                       */}
-                      <Image
-                        src={photo.src}
-                        alt={photo.alt}
-                        fill
-                        sizes="(min-width: 640px) 33vw, 50vw"
-                        className="object-contain"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          // The grid + full-screen swipeable viewer live in GalleryPhotos
+          // (client component — the viewer needs tap/swipe/keyboard state).
+          <GalleryPhotos
+            groups={photoGroups.map((g) => ({
+              category: g.category,
+              label: g.label,
+              photos: g.photos.map((p) => ({ src: p.src, alt: p.alt })),
+            }))}
+            labels={d.lightbox}
+          />
         ) : (
           // No photos configured yet — show placeholder tiles.
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">

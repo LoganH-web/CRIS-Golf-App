@@ -196,6 +196,12 @@
       "intermediate": "Intermediate Program",
       "advanced": "Advanced Program",
       "general": "Golf Classes"
+    },
+    "lightbox": {
+      "open": "View photo",
+      "close": "Close",
+      "previous": "Previous photo",
+      "next": "Next photo"
     }
   },
   "faq": {

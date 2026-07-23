@@ -26,6 +26,8 @@ export type IconName =
   | "info-circle"
   | "chevron-down"
   | "chevron-right"
+  | "chevron-left"
+  | "x"
   | "check"
   | "book-open"
   | "credit-card"
@@ -90,6 +92,13 @@ const STROKE_ICON_PATHS: Record<Exclude<IconName, "play-solid">, ReactNode> = {
   ),
   "chevron-down": <polyline points="6 9 12 15 18 9" />,
   "chevron-right": <path d="m9 18 6-6-6-6" />,
+  "chevron-left": <path d="m15 18-6-6 6-6" />,
+  x: (
+    <>
+      <line x1="18" x2="6" y1="6" y2="18" />
+      <line x1="6" x2="18" y1="6" y2="18" />
+    </>
+  ),
   check: <polyline points="20 6 9 17 4 12" />,
   "book-open": (
     <>

@@ -193,6 +193,17 @@ export interface Dictionary {
       advanced: string;
       general: string;
     };
+    /** Accessible labels for the full-screen photo viewer (lightbox) */
+    lightbox: {
+      /** aria-label for the tappable photo tile ("View photo") */
+      open: string;
+      /** aria-label for the close (X) button */
+      close: string;
+      /** aria-label for the previous-photo button */
+      previous: string;
+      /** aria-label for the next-photo button */
+      next: string;
+    };
   };
   faq: {
     heading: string;

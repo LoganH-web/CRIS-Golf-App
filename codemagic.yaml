@@ -25,7 +25,6 @@ workflows:
       vars:
         BUNDLE_ID: "th.ac.cris.golf"
         APP_STORE_APP_ID: 6793028047           # numeric Apple ID of the App Store Connect record
-        XCODE_WORKSPACE: "ios/App/App.xcworkspace"
         XCODE_SCHEME: "App"
       node: 22          # Capacitor 8 CLI requires Node >= 22
       xcode: latest
@@ -43,12 +42,19 @@ workflows:
         script: npx cap sync ios
       - name: Set up code signing (creates cert + profile if missing)
         script: |
+          set -e
           keychain initialize
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
-          xcode-project use-profiles
+          # Apply the fetched profile to the App target. Point --project at the
+          # Capacitor project explicitly so it can't miss it, and print what it
+          # did — if this reports 0 profiles applied, the archive will fail with
+          # "requires a provisioning profile", so we want that visible here.
+          echo "--- Provisioning profiles on disk ---"
+          ls -la "$HOME/Library/MobileDevice/Provisioning Profiles" || true
+          xcode-project use-profiles --project "ios/App/App.xcodeproj"
       - name: Set build number (latest TestFlight build + 1)
         script: |
           LATEST=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID" 2>/dev/null || echo 0)
@@ -56,18 +62,24 @@ workflows:
           agvtool new-version -all $((LATEST + 1))
       - name: Build .ipa
         script: |
-          # Capacitor 8 generates an SPM-based project (no CocoaPods), so there
-          # is no .xcworkspace — only App.xcodeproj. Older/CocoaPods layouts do
-          # have a workspace. Detect whichever exists and build that.
+          set -e
           echo "--- iOS project layout ---"
           ls -la ios/App || true
-          WS=$(find ios -maxdepth 3 -name "*.xcworkspace" | head -1)
-          PROJ=$(find ios -maxdepth 3 -name "*.xcodeproj" | head -1)
+          # Capacitor 8 generates an SPM-based project (no CocoaPods), so there
+          # is NO real .xcworkspace — only App.xcodeproj. Note that every
+          # .xcodeproj bundle contains an *internal* project.xcworkspace; that is
+          # NOT a build workspace and must not be archived (doing so ignores the
+          # manual-signing settings use-profiles wrote to the .xcodeproj, which
+          # is exactly what caused the "requires a provisioning profile" failure).
+          # So: look for a real, top-level workspace only (maxdepth 2, and never
+          # one living inside a .xcodeproj). Otherwise build the project directly.
+          WS=$(find ios -maxdepth 2 -name "*.xcworkspace" -not -path "*.xcodeproj/*" | head -1)
+          PROJ=$(find ios -maxdepth 2 -name "*.xcodeproj" | head -1)
           if [ -n "$WS" ]; then
-            echo "Building workspace: $WS"
+            echo "Building real workspace: $WS"
             xcode-project build-ipa --workspace "$WS" --scheme "$XCODE_SCHEME"
           elif [ -n "$PROJ" ]; then
-            echo "No workspace; building project: $PROJ"
+            echo "Building project directly: $PROJ"
             xcode-project build-ipa --project "$PROJ" --scheme "$XCODE_SCHEME"
           else
             echo "ERROR: no .xcworkspace or .xcodeproj found under ios/"

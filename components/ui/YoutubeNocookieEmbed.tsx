@@ -29,6 +29,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Icon } from "@/components/ui/Icon";
+import { canonicalSiteUrl } from "@/config/links";
 
 interface YoutubeNocookieEmbedProps {
   /** YouTube video ID (e.g. "dQw4w9WgXcQ"). Set to null for placeholder mode. */
@@ -64,8 +65,26 @@ export function YoutubeNocookieEmbed({
 }: YoutubeNocookieEmbedProps): React.ReactElement {
   const [playing, setPlaying] = useState(false);
 
+  /*
+   * Embed URL params:
+   *   - autoplay=1: starts playback after the user taps play
+   *   - rel=0: no related videos from other channels afterwards
+   *   - modestbranding=1: reduces the YouTube logo
+   *   - playsinline=1: plays inline on iOS instead of forcing the fullscreen
+   *     native player (needed for the in-card player to work in the WebView)
+   *   - widget_referrer: THE iOS fix for "Error 153". iOS WKWebView serves the
+   *     app via a custom scheme handler and strips the HTTP Referer on the
+   *     cross-origin request to YouTube, so the player sees no referrer and
+   *     refuses to start (153). Android's https scheme sends a real Referer,
+   *     which is why it already worked. widget_referrer supplies the referrer
+   *     explicitly — our public, embeddable site URL — so iOS behaves like
+   *     Android. (Still youtube-nocookie.com; still click-to-load — the §8
+   *     privacy posture is unchanged, no request fires until the user taps.)
+   */
   const embedUrl = videoId
-    ? `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`
+    ? `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&widget_referrer=${encodeURIComponent(
+        canonicalSiteUrl,
+      )}`
     : null;
 
   // Once the user clicks, swap placeholder for the iframe

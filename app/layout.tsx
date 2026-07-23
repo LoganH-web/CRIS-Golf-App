@@ -139,6 +139,15 @@ export const metadata: Metadata = {
  */
 export const viewport: Viewport = {
   themeColor: BRAND_NAVY,
+  /*
+   * viewport-fit=cover is REQUIRED for CSS env(safe-area-inset-*) to report
+   * real values on iOS. Without it those insets are always 0, so in the
+   * Capacitor native shell (WebView fills the whole screen) the header would
+   * draw under the status bar clock/battery and the tab bar under the home
+   * indicator. The app shell reserves that space via safe-area padding in
+   * AppHeader / BottomTabBar / [locale]/layout.
+   */
+  viewportFit: "cover",
 };
 
 /**

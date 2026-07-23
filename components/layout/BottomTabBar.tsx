@@ -31,33 +31,41 @@ export function BottomTabBar({ dict }: BottomTabBarProps): React.ReactElement {
   const navItems = getLocaleNavItems(locale);
 
   return (
+    /*
+     * pb-[env(safe-area-inset-bottom)] extends the white bar background down
+     * into the iOS home-indicator area so the tab labels sit above it. The
+     * h-16 tab row lives in an inner div so the safe-area padding adds to the
+     * bar rather than squashing the tappable row. Inset is 0 where absent.
+     */
     <nav
       aria-label="Main navigation"
-      className="fixed bottom-0 left-0 right-0 z-40 flex h-16 items-stretch border-t border-slate-200 bg-white"
+      className="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white pb-[env(safe-area-inset-bottom)]"
     >
-      {navItems.map((item) => {
-        const isActive = currentPathname === item.path;
-        const label = dict.nav[item.labelKey];
-        const accessibleLabel = dict.nav[item.accessibleLabelKey];
+      <div className="flex h-16 items-stretch">
+        {navItems.map((item) => {
+          const isActive = currentPathname === item.path;
+          const label = dict.nav[item.labelKey];
+          const accessibleLabel = dict.nav[item.accessibleLabelKey];
 
-        return (
-          <Link
-            key={item.path}
-            href={item.path}
-            aria-label={accessibleLabel}
-            aria-current={isActive ? "page" : undefined}
-            className={[
-              "flex flex-1 flex-col items-center justify-center gap-0.5 text-[10px] font-medium transition-colors",
-              isActive
-                ? "text-sky-700"
-                : "text-slate-500 hover:text-slate-700",
-            ].join(" ")}
-          >
-            <NavIcon iconName={item.iconName} isActive={isActive} />
-            <span>{label}</span>
-          </Link>
-        );
-      })}
+          return (
+            <Link
+              key={item.path}
+              href={item.path}
+              aria-label={accessibleLabel}
+              aria-current={isActive ? "page" : undefined}
+              className={[
+                "flex flex-1 flex-col items-center justify-center gap-0.5 text-[10px] font-medium transition-colors",
+                isActive
+                  ? "text-sky-700"
+                  : "text-slate-500 hover:text-slate-700",
+              ].join(" ")}
+            >
+              <NavIcon iconName={item.iconName} isActive={isActive} />
+              <span>{label}</span>
+            </Link>
+          );
+        })}
+      </div>
     </nav>
   );
 }

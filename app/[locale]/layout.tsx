@@ -63,10 +63,11 @@ export default async function LocaleLayout({
       <AppHeader dict={dict} />
 
       {/*
-       * Page content. pb-16 reserves space so the fixed BottomTabBar
-       * (h-16) never overlaps the bottom of screen content.
+       * Page content. Reserve space so the fixed BottomTabBar never overlaps
+       * screen content: its 4rem (h-16) row plus the iOS home-indicator safe
+       * area the bar now pads into. Inset is 0 where absent (Android/desktop).
        */}
-      <div className="flex flex-1 flex-col pb-16">
+      <div className="flex flex-1 flex-col pb-[calc(4rem+env(safe-area-inset-bottom))]">
         {children}
         <ContactFooter dict={dict} locale={locale} />
       </div>

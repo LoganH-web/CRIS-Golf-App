@@ -197,7 +197,7 @@ export const galleryPhotos: {
   { src: "/images/gallery/golf-class-4.avif", altKey: "classTeeOff", category: "general" },
   { src: "/images/gallery/golf-class-5.avif", altKey: "classFairway", category: "general" },
   { src: "/images/gallery/golf-class-6.avif", altKey: "classGroup", category: "general" },
-  { src: "/images/gallery/golf-class-7.avif", altKey: "classChipping", category: "general" },
+  { src: "/images/gallery/golf-class-7.avif", altKey: "classSwingCoaching", category: "general" },
   { src: "/images/gallery/golf-class-8.avif", altKey: "classPuttingGreen", category: "general" },
   { src: "/images/gallery/golf-class-9.avif", altKey: "classCoaching", category: "general" },
 ];

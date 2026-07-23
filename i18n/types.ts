@@ -218,7 +218,7 @@ export interface Dictionary {
       classTeeOff: string;
       classFairway: string;
       classGroup: string;
-      classChipping: string;
+      classSwingCoaching: string;
       classPuttingGreen: string;
       classCoaching: string;
     };

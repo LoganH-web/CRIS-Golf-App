@@ -49,6 +49,7 @@ next-env.d.ts
 
 # Store screenshots (generated locally, not tracked)
 play-store-assets/
+app-store-assets/
 
 # Local markdown docs (guides, prep sheets) — keep out of the repo going forward.
 # Already-tracked .md files remain tracked; this only ignores new ones.

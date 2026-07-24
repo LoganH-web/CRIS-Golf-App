@@ -46,7 +46,11 @@ workflows:
       - name: Add iOS platform (native project is not committed)
         script: npx cap add ios
       - name: Generate app icon + launch images
-        script: npx capacitor-assets generate --ios
+        # --assetPath resources is REQUIRED: the CRIS source icon/splash live in
+        # resources/ (icon.png, splash.png), not the tool's default assets/ dir.
+        # Without it the generator finds no source and the app ships Capacitor's
+        # default placeholder icon. Must match package.json's cap:assets script.
+        script: npx capacitor-assets generate --ios --assetPath resources
       - name: Sync web assets into the iOS project
         script: npx cap sync ios
       - name: Set up code signing (creates cert + profile if missing)

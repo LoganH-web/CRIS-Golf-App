@@ -26,10 +26,9 @@
  *   - modestbranding=1: reduces YouTube logo prominence
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Icon } from "@/components/ui/Icon";
-import { canonicalSiteUrl } from "@/config/links";
 
 interface YoutubeNocookieEmbedProps {
   /** YouTube video ID (e.g. "dQw4w9WgXcQ"). Set to null for placeholder mode. */
@@ -66,26 +65,55 @@ export function YoutubeNocookieEmbed({
   const [playing, setPlaying] = useState(false);
 
   /*
+   * iOS native (Capacitor) only. The iframe embed works everywhere EXCEPT the
+   * iOS native WebView: WKWebView serves the app via a custom scheme handler
+   * that drops the HTTP Referer on the cross-origin request to YouTube, so the
+   * player gets no referrer and refuses to start ("Error 153"). Confirmed by
+   * elimination — the identical embed plays in mobile Safari and in the Android
+   * WebView (both send a Referer); only iOS in-app fails, and no URL parameter
+   * (widget_referrer, origin, …) can re-add a header the WebView never sends.
+   *
+   * So on iOS native we don't inline the iframe; tapping opens the video in an
+   * in-app Safari sheet (@capacitor/browser), a real Safari context where it
+   * plays reliably. Detected after mount (Capacitor is a runtime global) so the
+   * first render still matches the server HTML and avoids a hydration mismatch.
+   */
+  const [isIosNative, setIsIosNative] = useState(false);
+  useEffect(() => {
+    const cap = (window as unknown as { Capacitor?: { getPlatform?: () => string } }).Capacitor;
+    if (cap?.getPlatform?.() === "ios") setIsIosNative(true);
+  }, []);
+
+  /*
    * Embed URL params:
    *   - autoplay=1: starts playback after the user taps play
    *   - rel=0: no related videos from other channels afterwards
    *   - modestbranding=1: reduces the YouTube logo
-   *   - playsinline=1: plays inline on iOS instead of forcing the fullscreen
-   *     native player (needed for the in-card player to work in the WebView)
-   *   - widget_referrer: THE iOS fix for "Error 153". iOS WKWebView serves the
-   *     app via a custom scheme handler and strips the HTTP Referer on the
-   *     cross-origin request to YouTube, so the player sees no referrer and
-   *     refuses to start (153). Android's https scheme sends a real Referer,
-   *     which is why it already worked. widget_referrer supplies the referrer
-   *     explicitly — our public, embeddable site URL — so iOS behaves like
-   *     Android. (Still youtube-nocookie.com; still click-to-load — the §8
-   *     privacy posture is unchanged, no request fires until the user taps.)
+   *   - playsinline=1: plays inline on iOS Safari/PWA instead of forcing the
+   *     fullscreen native player
+   * (Still youtube-nocookie.com; still click-to-load — no request fires until
+   * the user taps, so the §8 privacy posture is unchanged.)
    */
   const embedUrl = videoId
-    ? `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&widget_referrer=${encodeURIComponent(
-        canonicalSiteUrl,
-      )}`
+    ? `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`
     : null;
+
+  const openInSafariSheet = async (): Promise<void> => {
+    if (!videoId) return;
+    // Dynamic import keeps the native plugin out of the web bundle; only loaded
+    // when an iOS-native user actually taps a video.
+    const { Browser } = await import("@capacitor/browser");
+    await Browser.open({ url: `https://www.youtube.com/watch?v=${videoId}` });
+  };
+
+  const handlePlay = (): void => {
+    if (!videoId) return;
+    if (isIosNative) {
+      void openInSafariSheet();
+      return;
+    }
+    setPlaying(true);
+  };
 
   // Once the user clicks, swap placeholder for the iframe
   if (playing && embedUrl) {
@@ -107,9 +135,7 @@ export function YoutubeNocookieEmbed({
   return (
     <button
       type="button"
-      onClick={() => {
-        if (videoId) setPlaying(true);
-      }}
+      onClick={handlePlay}
       aria-label={label}
       disabled={!videoId}
       className={[

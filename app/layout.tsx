@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import { HtmlLangSync } from "@/components/HtmlLangSync";
 import { PwaRegister } from "@/components/PwaRegister";
+import { AndroidBackButton } from "@/components/AndroidBackButton";
 import { BRAND_NAVY } from "@/config/theme";
 
 /**
@@ -216,6 +217,8 @@ export default function RootLayout({
         <HtmlLangSync />
         {/* Registers the service worker for PWA installability + offline (1F) */}
         <PwaRegister />
+        {/* Android back button: navigate in-app, minimize (not exit) at root */}
+        <AndroidBackButton />
         {children}
       </body>
     </html>

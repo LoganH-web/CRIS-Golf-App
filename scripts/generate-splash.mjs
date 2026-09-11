@@ -8,9 +8,10 @@
  *
  * Run once:  node scripts/generate-splash.mjs
  *
- * Source: assets/brand/app-logo.jpg — the circular CRIS Golf crest. We isolate
- *         the crest circle and centre it on a WHITE canvas at each device
- *         resolution. (To change the splash art, replace app-logo.jpg and re-run.)
+ * Source: resources/CRIS_logo.png — the official CRIS school crest, already a
+ *         circular emblem on a transparent background, centred on a WHITE canvas
+ *         at each device resolution. (To change the splash art, replace that file
+ *         and re-run.)
  *
  * Output directory: public/icons/splash/
  *
@@ -35,15 +36,12 @@ import { dirname, join } from "path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const outDir = join(__dirname, "..", "public", "icons", "splash");
-const SRC = join(__dirname, "..", "assets", "brand", "app-logo.jpg");
+const SRC = join(__dirname, "..", "resources", "CRIS_logo.png");
 
 await mkdir(outDir, { recursive: true });
 
-// Splash background — white, matching the app-logo background and the manifest.
+// Splash background — white, matching the crest's background and the manifest.
 const SPLASH_BG = "#ffffff";
-
-// Crest circle geometry in the 2048² source (measured): centered, radius ~745.
-const CIRCLE = { size: 2048, cx: 1024, cy: 1024, r: 748 };
 
 /**
  * iOS device table.
@@ -107,25 +105,12 @@ const DEVICES = [
 ];
 
 /**
- * Isolate the crest circle from the source (transparent outside the gold ring),
- * returned as a square PNG. Built once and reused for every device.
+ * The source crest is already a circular emblem on a transparent background,
+ * so no circle-mask extraction is needed — return it as a square PNG, built
+ * once and reused for every device.
  */
 async function buildCrest() {
-  const mask = Buffer.from(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${CIRCLE.size}" height="${CIRCLE.size}">
-       <circle cx="${CIRCLE.cx}" cy="${CIRCLE.cy}" r="${CIRCLE.r}" fill="#fff"/>
-     </svg>`
-  );
-  const masked = await sharp(SRC)
-    .ensureAlpha()
-    .composite([{ input: mask, blend: "dest-in" }])
-    .png()
-    .toBuffer();
-
-  const left = CIRCLE.cx - CIRCLE.r;
-  const top = CIRCLE.cy - CIRCLE.r;
-  const side = CIRCLE.r * 2;
-  return sharp(masked).extract({ left, top, width: side, height: side }).png().toBuffer();
+  return sharp(SRC).ensureAlpha().png().toBuffer();
 }
 
 /**

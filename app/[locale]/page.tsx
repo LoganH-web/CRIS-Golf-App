@@ -68,14 +68,16 @@ export default async function HomePage({ params }: HomePageProps): Promise<React
     <main className="flex flex-col px-4 py-8 sm:px-6">
       {/* Hero / brand mark */}
       <section className="mb-8 flex flex-col items-center text-center">
-        {/* CRIS Golf eagle crest */}
-        <div className="mb-5 h-20 w-20 overflow-hidden rounded-full shadow-md">
+        {/* Official CRIS crest — rendered whole (object-contain, no circular
+            crop): the emblem carries fine ring text and its own drop shadow, so
+            a rounded-full mask would shave the lettering and double the shadow. */}
+        <div className="mb-5">
           <Image
             src="/brand/logo.png"
             alt={dict.header.appName}
-            width={80}
-            height={80}
-            className="h-full w-full object-cover"
+            width={112}
+            height={112}
+            className="h-28 w-28 object-contain"
             priority
           />
         </div>

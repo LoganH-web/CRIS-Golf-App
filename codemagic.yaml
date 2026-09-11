@@ -35,6 +35,13 @@ workflows:
         BUNDLE_ID: "th.ac.cris.golf"
         APP_STORE_APP_ID: 6793028047           # numeric Apple ID of the App Store Connect record
         XCODE_SCHEME: "App"
+        # Marketing version (CFBundleShortVersionString). MUST be bumped for each
+        # App Store release: once a version is released it is "closed", and
+        # uploading another build stamped with it fails with iris-code 90186
+        # ("Invalid Pre-Release Train. The train version 'X' is closed"). Capacitor
+        # defaults the native project to 1.0, so we stamp this value explicitly.
+        # Bump it to match the version you create in App Store Connect.
+        MARKETING_VERSION: "1.0.1"
       node: 22          # Capacitor 8 CLI requires Node >= 22
       xcode: latest
       cocoapods: default
@@ -73,10 +80,13 @@ workflows:
           echo "--- Provisioning profiles on disk ---"
           ls -la "$HOME/Library/MobileDevice/Provisioning Profiles" || true
           xcode-project use-profiles --project "ios/App/App.xcodeproj"
-      - name: Set build number (latest TestFlight build + 1)
+      - name: Set version + build number (latest build + 1)
         script: |
           LATEST=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID" 2>/dev/null || echo 0)
           cd ios/App
+          # Marketing version (train) — must be an open version, not a released one.
+          agvtool new-marketing-version "$MARKETING_VERSION"
+          # Build number — unique/increasing within the app.
           agvtool new-version -all $((LATEST + 1))
       - name: Build .ipa
         script: |
